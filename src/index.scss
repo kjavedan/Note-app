@@ -1,10 +1,11 @@
 @import './Scss/config';
 
 body{
+
   .container{
     height: 100vh;
     width: 100%;
-
+//------------------- start page styling-------------------------------
       .start{
         width: 337px;
         height: 100vh;
@@ -40,61 +41,87 @@ body{
       &.dark{
         background-color: $primary-dark-clr-1;
       }
-
+//------------------- home page styling-------------------------------
       .home{
         width: 100%;
         
         &-nav{
-          width: 90%;
+          width: 100%;
           height: 50px;
-          @include centrlize-space-between;
-
+          position: fixed;
+          display: flex;
+          padding-top: 2rem;
+          justify-content: space-around;
           &__title{
-            font: 700 1.5rem $ff-primary-1;
+            padding-top: .3rem;
+            font: 700 1.2rem $ff-primary-2;
             color: $primary-txt-clr-1;
           }
 
           &__btn{
             position: fixed;
             bottom: 40px;
-            right: 40px;
+            right: 50px;
+            border: none;
+            color: $primary-txt-clr-3;
             background-color: $primary-clr-2;
-            height: 50px;
-            width: 50px;
-            border-radius: 100%;
+            padding: 1.5rem 1.5rem 1rem 1.5rem;
+            border-radius: 50%;
+            cursor: pointer;
+
+            .mobile{
+              font-size: 2.3rem;
+            }
+
+            &:hover{
+              background-color: #5D5DCB;
+            }
           }
           
           &__search-container{
-            width: 180px;
+            width: 200px;
+            height: 35px;
+            border-radius: 20px;
+            background-color: #F8F8F8;
+            padding: 0 1rem;
             @include centrlize-space-between;
 
             input{
-              background-color: blue;
+              height: 100%;
+              width: 160px;
+              outline: none;
+              border: none;
+              background-color: #F8F8F8;
+              font: 500 .8rem $ff-primary-2 ;
+            }
+            
+            .search-icon{
+              cursor: pointer;
+              color: $primary-dark-txt-clr-2;
             }
           }
 
           &__theme-switcher{
-            height: 35px;
-            width: 70px;
             border-radius: 20px;
+            border: 1px solid $primary-txt-clr-2;
+            height: 30px;
+            margin-top: .2rem;
             @include centrlize-space-between;
 
-            .default-mode, .dark-mode{
-              height: 35px;
-              width: 35px;
-              border-radius: 100%;
+            .default-mode,.dark-mode{
+              padding: .3rem .3rem .2rem .3rem;
+              border-radius: 50%;
             }
             .default-mode{
-              color: $primary-txt-clr-3;
               &.active{
                 background-color: $primary-clr-3;
               }
             
             }
             .dark-mode{
-              color: $primary-dark-clr-1;
+              color: $primary-clr-1;
               &.active{
-                background-color: $primary-dark-clr-3;
+                background-color: $primary-dark-clr-1;
               }
             }
           }
