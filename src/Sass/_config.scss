@@ -1,0 +1,36 @@
+*,
+::before,
+::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  @import url('https://fonts.googleapis.com/css2?family=Montserrat+Alternates:wght@400;500;700&family=Montserrat:wght@300;400;500;700;800&display=swap');
+  font-family: -apple-system, BlinkMacSystemFont, 'Montserrat', 'Montserrat Alternates', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+// variables
+//colors dark mode
+$primary-dark-clr-1 : #1E1E1E;
+$primary-dark-clr-2 : #272636;
+$primary-dark-clr-3 : #3A3A4C;
+$primary-dark-clr-4 : #6F6FC8;
+$primary-dark-clr-5 : #32A7E2;
+// text colors dark mode
+$primary-dark-txt-clr-1 : #FFF;
+$primary-dark-txt-clr-2 : #6C6C78;
+//--------------------------------------
+//colors 
+$primary-clr-1 : #FFF;
+$primary-clr-2 : #6F6FC8;
+$primary-clr-3 : #FEBF47;
+//text colors 
+$primary-txt-clr-1 : #000;
+$primary-txt-clr-2 : #767676;
+//---------------------------------------
+//fonts
+$ff-primary-1 : 'Montserrat', sans-serif;
+$ff-primary-2 : 'Montserrat Alternates', sans-serif;
