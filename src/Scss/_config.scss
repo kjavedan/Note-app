@@ -35,3 +35,11 @@ $primary-txt-clr-3 : #FFF;
 //fonts
 $ff-primary-1 : 'Montserrat', sans-serif;
 $ff-primary-2 : 'Montserrat Alternates', sans-serif;
+//---------------------------------------
+
+//mixins
+@mixin centrlize-space-between {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}

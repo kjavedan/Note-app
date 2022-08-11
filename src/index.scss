@@ -1,7 +1,9 @@
-@import './Sass/config';
+@import './Scss/config';
 
 body{
   .container{
+    height: 100vh;
+    width: 100%;
 
       .start{
         width: 337px;
@@ -32,11 +34,71 @@ body{
           font : 500 1rem $ff-primary-2;
           color: $primary-txt-clr-3;
           margin-top: 2rem;
-    
+          cursor: pointer;
         }
       }
       &.dark{
         background-color: $primary-dark-clr-1;
+      }
+
+      .home{
+        width: 100%;
+        
+        &-nav{
+          width: 90%;
+          height: 50px;
+          @include centrlize-space-between;
+
+          &__title{
+            font: 700 1.5rem $ff-primary-1;
+            color: $primary-txt-clr-1;
+          }
+
+          &__btn{
+            position: fixed;
+            bottom: 40px;
+            right: 40px;
+            background-color: $primary-clr-2;
+            height: 50px;
+            width: 50px;
+            border-radius: 100%;
+          }
+          
+          &__search-container{
+            width: 180px;
+            @include centrlize-space-between;
+
+            input{
+              background-color: blue;
+            }
+          }
+
+          &__theme-switcher{
+            height: 35px;
+            width: 70px;
+            border-radius: 20px;
+            @include centrlize-space-between;
+
+            .default-mode, .dark-mode{
+              height: 35px;
+              width: 35px;
+              border-radius: 100%;
+            }
+            .default-mode{
+              color: $primary-txt-clr-3;
+              &.active{
+                background-color: $primary-clr-3;
+              }
+            
+            }
+            .dark-mode{
+              color: $primary-dark-clr-1;
+              &.active{
+                background-color: $primary-dark-clr-3;
+              }
+            }
+          }
+        }
       }
     }
 
