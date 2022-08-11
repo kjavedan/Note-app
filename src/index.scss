@@ -43,17 +43,21 @@ body{
       }
 //------------------- home page styling-------------------------------
       .home{
+        position: relative;
         width: 100%;
-        
+
         &-nav{
+          background-color: $primary-clr-1;
+          z-index: 10;
           width: 100%;
-          height: 50px;
+          height: 80px;
           position: fixed;
+          top: 0px;
+          left: 0;
           display: flex;
-          padding-top: 2rem;
+          align-items: center;
           justify-content: space-around;
           &__title{
-            padding-top: .3rem;
             font: 700 1.2rem $ff-primary-2;
             color: $primary-txt-clr-1;
           }
@@ -105,7 +109,6 @@ body{
             border-radius: 20px;
             border: 1px solid $primary-txt-clr-2;
             height: 30px;
-            margin-top: .2rem;
             @include centrlize-space-between;
 
             .default-mode,.dark-mode{
@@ -125,6 +128,11 @@ body{
               }
             }
           }
+        }
+
+        &-notes{
+          position: relative;
+          margin-top: 5rem;
         }
       }
     }

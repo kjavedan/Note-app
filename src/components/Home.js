@@ -14,8 +14,8 @@ export default function Home() {
                 <span className="search-icon"><FiSearch /></span>
             </div>
             <div className="home-nav__theme-switcher">
-                <div className="default-mode"><BsSun /></div>
-                <div className="dark-mode active"><BsMoon /></div>
+                <div className="default-mode active"><BsSun /></div>
+                <div className="dark-mode "><BsMoon /></div>
             </div>
         </nav>
         <div className="home-notes">
