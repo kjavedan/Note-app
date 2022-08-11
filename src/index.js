@@ -6,5 +6,5 @@ import reportWebVitals from './reportWebVitals';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-    <><App /></>
+    <div className='container dark'><App /></div>
 );
