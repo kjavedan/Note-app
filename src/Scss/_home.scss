@@ -16,6 +16,10 @@
           &__title{
             font: 700 1.2rem $ff-primary-2;
             color: $primary-txt-clr-1;
+
+            &.dark{
+              color: $primary-clr-1;
+            }
           }
 
           &__btn{
@@ -53,18 +57,29 @@
               border: none;
               background-color: #F8F8F8;
               font: 500 .8rem $ff-primary-2 ;
+
+              &.dark{
+                background-color: $primary-dark-clr-6;
+                color: $primary-clr-1;
+              }
             }
             
             .search-icon{
               cursor: pointer;
               color: $primary-dark-txt-clr-2;
             }
+
+            &.dark{
+              background-color: $primary-dark-clr-6;
+            }
+
           }
 
           &__theme-switcher{
             border-radius: 20px;
             border: 1px solid $primary-txt-clr-2;
             height: 30px;
+            background-color: $primary-clr-1;
             @include centrlize-space-between;
 
             .default-mode,.dark-mode{
@@ -80,10 +95,13 @@
             .dark-mode{
               color: $primary-clr-1;
               &.active{
-                background-color: $primary-dark-clr-1;
+                background-color: $primary-dark-clr-6;
               }
             }
           }
+          &.dark{
+              background-color: $primary-dark-clr-2;
+            }
         }
 
         &-notes{

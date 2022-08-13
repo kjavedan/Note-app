@@ -5,7 +5,7 @@ export default function App() {
 
   const [start, setStart] = React.useState(true)
   return (
-    <div className='container'>
+    <div className='container dark'>
     <main>
     {start 
     ? 

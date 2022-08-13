@@ -29,7 +29,8 @@
           margin-top: 2rem;
           cursor: pointer;
         }
-      }
-      &.dark{
-        background-color: $primary-dark-clr-1;
+        
+        &.dark{
+          background-color: $primary-dark-clr-1;
+        }
       }
