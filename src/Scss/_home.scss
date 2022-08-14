@@ -105,7 +105,41 @@
         }
 
         &-notes{
-          position: relative;
-          margin-top: 5rem;
+          margin: 0 auto;
+          padding-left: 4%;
+          margin-top: 80px;
+          width: 100%;
+          background-color: white;
+
+          &__note{
+            height: auto;
+            width: 45%;
+            // max-height: 250px;
+            margin-top: 10px;
+            padding: 1rem;
+            background-color: #E6F0FD;
+            border-radius: 20px;
+            word-wrap: break-word;
+
+            .note-title{
+              font: 700 1.3rem $ff-primary-2;
+              color: $primary-txt-clr-4;
+            }
+
+            .note-text{
+              font-size: .9rem;
+              line-height: 1.3rem;
+              font-weight: 500;
+              color: $primary-txt-clr-4;
+              padding: .7rem 0;
+            }
+
+            .note-info{
+              @include centrlize-space-between;
+              font: 700 .7rem $ff-primary-2;
+              color: $primary-txt-clr-4;
+              margin-top: .3rem;
+            }
+          }
         }
       }

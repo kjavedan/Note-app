@@ -4,8 +4,9 @@ import Start from './components/Start'
 export default function App() {
 
   const [start, setStart] = React.useState(true)
+
   return (
-    <div className='container dark'>
+    <div className='container'>
     <main>
     {start 
     ? 
