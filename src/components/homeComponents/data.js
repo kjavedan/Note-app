@@ -7,3 +7,16 @@
 5. theme
 6. 
 */
+[
+    {
+        category : "note",
+        title : "title",
+        date : "jan 17",
+        theme : "white",
+        text : "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ullam, molestiae.",
+        lists : {
+            listText : "check the test",
+            isChecked : false
+        }
+    }
+]

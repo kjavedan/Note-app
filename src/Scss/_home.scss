@@ -121,7 +121,7 @@
             border-radius: 20px;
             word-wrap: break-word;
 
-            .note-title{
+            .note-title,.todo-title{
               font: 700 1.3rem $ff-primary-2;
               color: $primary-txt-clr-4;
             }
@@ -139,6 +139,27 @@
               font: 700 .7rem $ff-primary-2;
               color: $primary-txt-clr-4;
               margin-top: .3rem;
+            }
+            .todo-list{
+              max-height: 200px;
+              margin: .7rem 0;
+              font: 500 .9rem $ff-primary-1;
+              color: $primary-txt-clr-4;
+
+              .todo-task{
+                background-color: red;
+                height: 20px;
+                display: flex;
+                align-items: center;
+
+                .check-box{
+                  height: 16px;
+                  width: 16px;
+                  margin-right: .2rem;
+                  border: solid 1px $primary-txt-clr-4;
+                  border-radius: 50%;
+                }
+              }
             }
           }
         }
