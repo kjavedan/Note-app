@@ -5,6 +5,7 @@ export default function ToDo() {
     <div className="home-notes__note">
                 <h4 className="todo-title">Title</h4>
                 <div className="todo-list">
+                {/*  */}
                   <div className="todo-task">
                     <div className="check-box"><span className="check"></span></div>
                     <div className="task-body">Hit the Gym</div>
