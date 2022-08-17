@@ -12,7 +12,9 @@ export default function Editor(props) {
     ?
     <ToDoEditor />
     :
-    <NoteEditor />
+    <NoteEditor
+    darkMode = {props.darkMode}
+    />
     }
     </div>
   )

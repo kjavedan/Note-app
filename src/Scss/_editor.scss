@@ -6,6 +6,10 @@
         height: 80px;
         display: flex;
         padding: 0 20px;
+
+        &.dark{
+            color: $primary-dark-txt-clr-1;
+        }
         
         .back-to-home{
             cursor: pointer;
@@ -28,12 +32,12 @@
             @include centrlize-space-between;
             
             .share{
-                color: $primary-txt-clr-4;
+                color: $primary-txt-clr-6;
                 font-size: 1.3rem;
                 cursor: pointer;
             }
             .more{
-                color: $primary-txt-clr-4;
+                color: $primary-txt-clr-6;
                 cursor: pointer;
                 margin-top: .2rem;
                 font-size: 1.5rem;
@@ -51,10 +55,18 @@
             text-transform: capitalize;
             font: 700 1.5rem $ff-primary-2;
             margin-bottom: .3rem;
+
+            &.dark{
+                color: $primary-dark-txt-clr-1;
+            }
         }
         .date{
             color: $primary-txt-clr-4;
             font-size: .8rem;
+
+            &.dark{
+                color: $primary-dark-txt-clr-2;
+            }
         }
         .body{
             height: 200px;
@@ -63,6 +75,10 @@
             font: 500 .9rem $ff-primary-1;
             color: $primary-txt-clr-4;
             line-height: 1.5rem;
+
+            &.dark{
+                color: $primary-dark-txt-clr-2;
+            }
         }
     }
     &-footer{
@@ -76,6 +92,9 @@
         font-size: 2rem;
         padding: 0 10%;
 
+        &.dark{
+            color: $primary-dark-txt-clr-1;
+        }
         .theme-btn{
             cursor: pointer;
         }

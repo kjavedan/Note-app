@@ -3,7 +3,7 @@ import { IoIosArrowBack, IoMdMore } from 'react-icons/io'
 import { FiShare } from 'react-icons/fi'
 import { MdOutlineColorLens } from 'react-icons/md'
 
-export default function NoteEditor() {
+export default function NoteEditor(props) {
 
     const [openTheme, setOpenTheme] = React.useState(false)
 
@@ -13,7 +13,7 @@ export default function NoteEditor() {
 
   return (
     <div>
-        <div className="editor-nav">
+        <div className={`editor-nav ${props.darkMode ? 'dark' : ''}`}>
             <div className="back-to-home">
                 <span className='back-to-home__icon'><IoIosArrowBack /></span>
                 <span>Home</span>
@@ -28,11 +28,11 @@ export default function NoteEditor() {
             </div>
         </div>
         <div className="editor-main">
-            <h2 className="title">title</h2>
-            <span className="date">January 21. 18:24 Tuesday | 325 words</span>
-            <div className="body">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ipsam excepturi optio reiciendis nulla eos nobis voluptas consequuntur iusto quia quaerat blanditiis, earum voluptatem sunt molestias quod molestiae nesciunt, deserunt corrupti?</div>
+            <h2 className={`title ${props.darkMode ? 'dark' : ''}`}>title</h2>
+            <span className={`date ${props.darkMode ? 'dark' : ''}`}>January 21. 18:24 Tuesday | 325 words</span>
+            <div className={`body ${props.darkMode ? 'dark' : ''}`}>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Animi, culpa numquam nesciunt, repudiandae magnam autem quasi dicta illo nobis, doloribus deleniti amet architecto! Fugiat, magni maxime mollitia deleniti obcaecati aspernatur.</div>
         </div>
-        <div className="editor-footer">
+        <div className={`editor-footer ${props.darkMode ? 'dark' : ''}`}>
             <div 
             className="theme-btn"
             onClick={handleTheme}
