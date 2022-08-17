@@ -8,7 +8,7 @@ import { MdAdd } from "react-icons/md";
 // ------------------------
 
 
-export default function Nav() {
+export default function Nav(props) {
 
 const [showBtns, setShowBtns] = React.useState(false)
 
@@ -16,31 +16,36 @@ function toggleBtns(){
   setShowBtns(!showBtns)
 }
 
-
   return (
     <nav className="home-nav">
       <h2 className="home-nav__title">notes</h2>
       <div className="home-nav__btns-container">
+      {/* note btn */}
         <div className={`container ${showBtns ? 'show' : ''}`}>
-          <span className="create-note">
+          <span 
+          className="create-note"
+          onClick = {()=> props.openRelativeEditor('note')}
+          >
             <AiOutlineFileAdd />
           </span>
           Note
         </div>
-
+        {/* todo btn */}
         <div className={`container ${showBtns ? 'show' : ''}`}>
-          <span className="create-todo">
+          <span 
+          className="create-todo"
+          onClick={()=> props.openRelativeEditor('todo')}
+          >
             <TiTick />
           </span>
           To Do
         </div>
-
+        {/* create btn */}
         <div className="create-container">
           <span className= 'create' onClick={toggleBtns}>
             <MdAdd />
           </span>
-        </div>
-        
+        </div> 
       </div>
 
       <div className="home-nav__search-container">
