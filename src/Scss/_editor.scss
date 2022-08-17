@@ -1,5 +1,41 @@
 .editor{
-    background-color: $primary-clr-2;
     height: 100vh;
     width: 100%;
+
+    &-nav{
+        height: 50px;
+        display: flex;
+        padding: 0 20px;
+        
+        .back-to-home{
+            cursor: pointer;
+            margin-right: auto;
+            font: 700 1rem $ff-primary-1;
+            width: 100px;
+            height: 100%;
+            display: flex;
+            align-items: center;
+
+            &__icon{
+                font-size: 1.5rem;
+                margin-right: .2rem;
+                margin-top: .4rem;
+            }
+        }
+        .more-container{
+            width: 70px;
+            font-weight: bold;
+            @include centrlize-space-between;
+            
+            .share{
+                font-size: 1.3rem;
+                cursor: pointer;
+            }
+            .more{
+                cursor: pointer;
+                margin-top: .2rem;
+                font-size: 1.5rem;
+            }
+        }
+    }
 }

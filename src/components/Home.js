@@ -4,7 +4,7 @@ import ElementsList from './homeComponents/ElementsList'
 export default function Home() {
 
   // state to open the editor
-  const [openEditor, setOpenEditor] = React.useState(false)
+  const [openEditor, setOpenEditor] = React.useState(true)
   
   // state to open the relative editor
   const [editorType, setEditorType] = React.useState()

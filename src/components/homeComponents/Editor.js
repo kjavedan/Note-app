@@ -10,9 +10,9 @@ export default function Editor(props) {
     <div className='editor'>
     {props.editorType === 'note' 
     ?
-    <NoteEditor />
-    :
     <ToDoEditor />
+    :
+    <NoteEditor />
     }
     </div>
   )
