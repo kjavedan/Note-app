@@ -3,8 +3,10 @@ import Editor from './homeComponents/Editor'
 import ElementsList from './homeComponents/ElementsList'
 export default function Home() {
 
+  const [darkMode, setDarkMode] = React.useState(false)
+
   // state to open the editor
-  const [openEditor, setOpenEditor] = React.useState(true)
+  const [openEditor, setOpenEditor] = React.useState(false)
   
   // state to open the relative editor
   const [editorType, setEditorType] = React.useState()
@@ -16,14 +18,17 @@ export default function Home() {
 }
 
   return (
-    <div className='home'>
+    <div className={`home ${darkMode ? 'dark' : ''}`}>
     {openEditor 
     ? 
     <Editor
+    darkMode = {darkMode}
     editorType = {editorType}
      />
     : 
     <ElementsList
+    darkMode = {darkMode}
+    setDarkMode = {setDarkMode}
     openRelativeEditor = {openRelativeEditor}
      />
     }  

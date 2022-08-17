@@ -3,7 +3,7 @@ import Masonry from 'masonry-layout'
 import Note from './Note';
 import ToDo from './ToDo';
 
-export default function Notes() {
+export default function Notes(props) {
 
      window.onload = ()=>{
         const grid = document.querySelector('.home-notes');
@@ -15,9 +15,13 @@ export default function Notes() {
     }
 
   return (
-      <div className="home-notes">
-           <Note />
-           <ToDo />
+      <div className={`home-notes ${props.darkMode ? 'dark' : ''}`}>
+           <Note 
+            darkMode = {props.darkMode}
+           />
+           <ToDo
+           darkMode = {props.darkMode}
+          />
         </div>
   )
 }

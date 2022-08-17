@@ -7,10 +7,18 @@ export default function ElementsList(props) {
   return (
     <div>
     <Nav
+    darkMode = {props.darkMode}
+    setDarkMode = {props.setDarkMode}
     openRelativeEditor = {props.openRelativeEditor}
-     />
-    <Notes />
-    <Sidebar />
+    />
+
+    <Notes
+    darkMode = {props.darkMode}
+    />
+    
+    <Sidebar
+    darkMode = {props.darkMode}
+    />
     </div>
   )
 }

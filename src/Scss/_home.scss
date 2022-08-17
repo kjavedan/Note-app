@@ -1,6 +1,11 @@
 .home {
   position: relative;
   width: 100%;
+  height: 100vh;
+
+  &.dark{
+    background-color: $primary-dark-clr-2;
+  }
 
   &-nav {
     background-color: $primary-clr-1;
@@ -122,9 +127,11 @@
     }
 
     &__theme-switcher {
+      cursor: pointer;
+      border: solid 1px $primary-txt-clr-5;
       border-radius: 20px;
-      border: 1px solid $primary-txt-clr-2;
       height: 30px;
+      width: 55px;
       background-color: $primary-clr-1;
       @include centrlize-space-between;
 
@@ -133,18 +140,24 @@
         padding: 0.3rem 0.3rem 0.2rem 0.3rem;
         border-radius: 50%;
       }
+
       .default-mode {
-        &.active {
-          background-color: $primary-clr-3;
+        background-color: $primary-clr-3;
+        color: $primary-clr-1;
+        &.dark{
+          color: $primary-clr-3;
+          background-color: $primary-clr-1;
         }
       }
+
       .dark-mode {
-        color: $primary-clr-1;
-        &.active {
+        &.dark{
+          color: $primary-clr-1;
           background-color: $primary-dark-clr-6;
         }
       }
     }
+
     &.dark {
       background-color: $primary-dark-clr-2;
     }
@@ -157,7 +170,12 @@
     width: 100%;
     background-color: white;
 
+    &.dark{
+      background-color: $primary-dark-clr-2;
+    }
+
     &__note {
+      cursor: pointer;
       max-height: 270px;
       width: 45%;
       margin-top: 10px;
@@ -166,10 +184,18 @@
       border-radius: 20px;
       word-wrap: break-word;
 
+      &.dark{
+        background-color: $primary-dark-clr-3;
+      }
+
       .note-title,
       .todo-title {
         font: 700 1.3rem $ff-primary-2;
         color: $primary-txt-clr-4;
+
+        &.dark{
+          color: $primary-dark-txt-clr-1;
+        }
       }
 
       .note-text {
@@ -178,12 +204,20 @@
         font-weight: 500;
         color: $primary-txt-clr-4;
         padding: 0.7rem 0;
+
+        &.dark{
+          color: $primary-dark-txt-clr-2;
+        }
       }
 
       .note-info {
         @include centrlize-space-between;
-        font: 700 0.7rem $ff-primary-2;
+        font: 500 0.7rem $ff-primary-2;
         color: $primary-txt-clr-4;
+
+         &.dark{
+          color: $primary-dark-txt-clr-2;
+        }
       }
       .todo-list {
         max-height: 200px;
@@ -196,12 +230,20 @@
           display: flex;
           align-items: center;
 
+          &.dark{
+            color: $primary-dark-txt-clr-2;
+          }
+
           .check-box {
             height: 16px;
             width: 16px;
             margin-right: 0.2rem;
             border: solid 1px $primary-txt-clr-4;
             border-radius: 50%;
+
+            &.dark{
+              border-color: $primary-dark-txt-clr-2;
+            }
           }
         }
       }

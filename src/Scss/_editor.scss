@@ -3,7 +3,7 @@
     width: 100%;
 
     &-nav{
-        height: 50px;
+        height: 80px;
         display: flex;
         padding: 0 20px;
         
@@ -28,13 +28,90 @@
             @include centrlize-space-between;
             
             .share{
+                color: $primary-txt-clr-4;
                 font-size: 1.3rem;
                 cursor: pointer;
             }
             .more{
+                color: $primary-txt-clr-4;
                 cursor: pointer;
                 margin-top: .2rem;
                 font-size: 1.5rem;
+            }
+        }
+    }
+
+    &-main{
+        width: 80%;
+        margin: 1rem auto;
+        padding-top: 3rem;
+        height: 500px;
+
+        .title{
+            text-transform: capitalize;
+            font: 700 1.5rem $ff-primary-2;
+            margin-bottom: .3rem;
+        }
+        .date{
+            color: $primary-txt-clr-4;
+            font-size: .8rem;
+        }
+        .body{
+            height: 200px;
+            margin-top: 3rem;
+            word-spacing: .1rem;
+            font: 500 .9rem $ff-primary-1;
+            color: $primary-txt-clr-4;
+            line-height: 1.5rem;
+        }
+    }
+    &-footer{
+        width: 100%;
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        height: 80px;
+        display: flex;
+        color: $primary-txt-clr-4;
+        font-size: 2rem;
+        padding: 0 10%;
+
+        .theme-btn{
+            cursor: pointer;
+        }
+
+        .theme-container{
+            height: 100%;
+            width: 100%;
+            display: flex;
+            justify-content: space-around;
+
+            .color{
+                cursor: pointer;
+                width: 30px;
+                height: 30px;
+                background-color: red;
+                border-radius: 50%;
+                display: none;
+
+                &.show{
+                    display: block;
+                }
+            }
+            .color-1{
+                background-color: $color-1;
+            }
+            .color-2{
+                background-color: $color-2;
+            }
+            .color-3{
+                background-color: $color-3;
+            }
+            .color-4{
+                background-color: $color-4;
+            }
+            .color-5{
+                background-color: $color-5;
             }
         }
     }

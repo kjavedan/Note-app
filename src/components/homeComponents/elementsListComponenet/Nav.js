@@ -13,12 +13,16 @@ export default function Nav(props) {
 const [showBtns, setShowBtns] = React.useState(false)
 
 function toggleBtns(){
-  setShowBtns(!showBtns)
+  setShowBtns(prevState => !prevState)
+}
+
+function changeTheme(){
+  props.setDarkMode(prevState => !prevState)
 }
 
   return (
-    <nav className="home-nav">
-      <h2 className="home-nav__title">notes</h2>
+    <nav className={`home-nav ${props.darkMode ? 'dark' : ''}`}>
+      <h2 className={`home-nav__title ${props.darkMode ? 'dark' : ''}`}>notes</h2>
       <div className="home-nav__btns-container">
       {/* note btn */}
         <div className={`container ${showBtns ? 'show' : ''}`}>
@@ -48,17 +52,25 @@ function toggleBtns(){
         </div> 
       </div>
 
-      <div className="home-nav__search-container">
-        <input className="" type="text" placeholder="Search for your note" />
+      <div className={`home-nav__search-container ${props.darkMode ? 'dark' : ''}`}>
+        <input 
+        className={props.darkMode ? 'dark' : ''} 
+        type="text" 
+        placeholder="Search for your note"
+         />
+
         <span className="search-icon">
           <FiSearch />
         </span>
       </div>
-      <div className="home-nav__theme-switcher">
-        <div className="default-mode ">
+      <div 
+      className="home-nav__theme-switcher"
+      onClick={changeTheme}
+      >
+        <div className={`default-mode ${props.darkMode ? 'dark' : ''} `}>
           <BsSun />
         </div>
-        <div className="dark-mode active ">
+        <div className={`dark-mode ${props.darkMode ? 'dark' : ''} `}>
           <BsMoon />
         </div>
       </div>
