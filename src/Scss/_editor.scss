@@ -69,12 +69,25 @@
             }
         }
         .body{
-            height: 200px;
             margin-top: 3rem;
-            word-spacing: .1rem;
             font: 500 .9rem $ff-primary-1;
-            color: $primary-txt-clr-4;
-            line-height: 1.5rem;
+            height: auto;
+
+            textarea{
+                color: $primary-txt-clr-4;
+                width: 100%;
+                min-height: 400px;
+                word-spacing: .1rem;
+                line-height: 1.5rem;
+                outline: none;
+                border: none;
+                resize: none;
+
+                &.dark{
+                    background-color: $primary-dark-clr-2;
+                    color: $primary-dark-txt-clr-2;
+                }
+            }
 
             &.dark{
                 color: $primary-dark-txt-clr-2;
