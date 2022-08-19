@@ -51,18 +51,18 @@ export default function Editor(props) {
             {/* ---------- */}
         </div>
         <div className={`editor-footer ${props.darkMode ? 'dark' : ''}`}>
-            <div 
-            className="theme-btn"
-            onClick={handleTheme}
-            >
-                <MdOutlineColorLens />
-            </div>
             <div className="theme-container">
                 <span className={`color color-1 ${openTheme ? 'show' : ''}`}></span>
                 <span className={`color color-2 ${openTheme ? 'show' : ''}`}></span>
                 <span className={`color color-3 ${openTheme ? 'show' : ''}`}></span>
                 <span className={`color color-4 ${openTheme ? 'show' : ''}`}></span>
                 <span className={`color color-5 ${openTheme ? 'show' : ''}`}></span>
+            </div>
+            <div 
+            className="theme-btn"
+            onClick={handleTheme}
+            >
+                <MdOutlineColorLens />
             </div>
         </div>
     </div>
