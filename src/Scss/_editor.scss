@@ -46,9 +46,10 @@
     }
 
     &-main{
-        width: 72%;
+        width: 100%;
+        padding: 8%;
         margin: 1rem auto;
-        padding-top: 3rem;
+        padding-top: 1rem;
         height: auto;
         padding-bottom: 5rem;
 
@@ -70,10 +71,10 @@
             }
         }
         .body{
-            margin-top: 3rem;
+            margin-top: 1rem;
             font: 500 .9rem $ff-primary-1;
             height: auto;
-
+//******************************* Note editor*******************************************
             textarea{
                 color: $primary-txt-clr-4;
                 width: 100%;
@@ -90,12 +91,92 @@
                     width: 0px;
                 }
 
-
                 &.dark{
                     background-color: $primary-dark-clr-2;
                     color: $primary-dark-txt-clr-2;
                 }
             }
+//******************************* ToDo editor*******************************************
+            .tasks-container{
+                min-height: 300px;
+                width: 100%;
+                border: solid 1px black;
+                padding: .2rem 0;
+
+                .create-task{
+                    width: 100%;
+                    height: auto;
+                    background-color: $primary-clr-1;
+                    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+                    border-radius: 20px;
+                    padding: .3rem 0 .1rem 0;
+
+                    input{
+                        width: 80%;
+                        height: 35px;
+                        border-top-left-radius: 20px;
+                        border-bottom-left-radius: 20px;
+                        border: none;
+                        outline: none;
+                        padding-left: .5rem;
+                        font-family: $ff-primary-1;
+                        color: $primary-txt-clr-4;
+                        font-weight: 500;
+                    }
+
+                    button{
+                        position: absolute;
+                        background-color: transparent;
+                        font-size: 1.2rem;
+                        width: 20%;
+                        height: 35px;
+                        border: none;
+                        cursor: pointer;
+
+                    }
+                }
+                
+                .tasks{
+                    height: 100px;
+                    width: 100%;
+                    border: solid 1px blue;
+                    margin-top: 1rem;
+
+                    .task{
+                        height: 35px;
+                        border-radius: 20px;
+                        display: flex;
+                        justify-content: space-between;
+                        align-items : center;
+                        box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+
+                          .check{
+                            width: 20px;
+                            height : 20px;
+                            margin-left : .5rem;
+                            border : solid 1px lightgray;
+                            border-radius: 50%;
+                            cursor : pointer;
+                            display : flex;
+                            justify-content:  center;
+                            align-items : center;
+                            
+                            .tick{
+                            // display : none;
+                        
+                                &.checked{
+                                    // display : block;
+                                }
+                            }
+                        }
+
+                        .btns{
+                            width: 100%;
+
+                        }
+                    }
+                }
+            }   
 
             &.dark{
                 color: $primary-dark-txt-clr-2;

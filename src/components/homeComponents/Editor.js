@@ -43,11 +43,11 @@ export default function Editor(props) {
             <div className={`body ${props.darkMode ? 'dark' : ''}`}>
             {props.editorType === 'note'
             ?
-            <ToDoEditor />
-            :
             <NoteEditor
             darkMode = {props.darkMode}
             />
+            :
+            <ToDoEditor />
             }
             </div>
             {/* ---------- */}
