@@ -1,17 +1,17 @@
-.editor{
+.editor {
     height: 100vh;
     width: 100%;
 
-    &-nav{
+    &-nav {
         height: 80px;
         display: flex;
         padding: 0 20px;
 
-        &.dark{
+        &.dark {
             color: $primary-dark-txt-clr-1;
         }
-        
-        .back-to-home{
+
+        .back-to-home {
             cursor: pointer;
             margin-right: auto;
             font: 700 1rem $ff-primary-1;
@@ -20,23 +20,25 @@
             display: flex;
             align-items: center;
 
-            &__icon{
+            &__icon {
                 font-size: 1.5rem;
                 margin-right: .2rem;
                 margin-top: .4rem;
             }
         }
-        .more-container{
+
+        .more-container {
             width: 70px;
             font-weight: bold;
             @include centrlize-space-between;
-            
-            .share{
+
+            .share {
                 color: $primary-txt-clr-6;
                 font-size: 1.3rem;
                 cursor: pointer;
             }
-            .more{
+
+            .more {
                 color: $primary-txt-clr-6;
                 cursor: pointer;
                 margin-top: .2rem;
@@ -45,7 +47,7 @@
         }
     }
 
-    &-main{
+    &-main {
         width: 100%;
         padding: 8%;
         margin: 1rem auto;
@@ -53,29 +55,32 @@
         height: auto;
         padding-bottom: 5rem;
 
-        .title{
+        .title {
             text-transform: capitalize;
             font: 700 1.5rem $ff-primary-2;
             margin-bottom: .3rem;
 
-            &.dark{
+            &.dark {
                 color: $primary-dark-txt-clr-1;
             }
         }
-        .date{
+
+        .date {
             color: $primary-txt-clr-4;
             font-size: .8rem;
 
-            &.dark{
+            &.dark {
                 color: $primary-dark-txt-clr-2;
             }
         }
-        .body{
+
+        .body {
             margin-top: 1rem;
             font: 500 .9rem $ff-primary-1;
             height: auto;
-//******************************* Note editor*******************************************
-            textarea{
+
+            //******************************* Note editor*******************************************
+            textarea {
                 color: $primary-txt-clr-4;
                 width: 100%;
                 min-height: 300px;
@@ -87,23 +92,24 @@
                 border: none;
                 resize: none;
 
-                &::-webkit-scrollbar{
+                &::-webkit-scrollbar {
                     width: 0px;
                 }
 
-                &.dark{
+                &.dark {
                     background-color: $primary-dark-clr-2;
                     color: $primary-dark-txt-clr-2;
                 }
             }
-//******************************* ToDo editor*******************************************
-            .tasks-container{
+
+            //******************************* ToDo editor*******************************************
+            .tasks-container {
                 min-height: 300px;
                 width: 100%;
                 border: solid 1px black;
                 padding: .2rem 0;
 
-                .create-task{
+                .create-task {
                     width: 100%;
                     height: auto;
                     background-color: $primary-clr-1;
@@ -111,20 +117,20 @@
                     border-radius: 20px;
                     padding: .3rem 0 .1rem 0;
 
-                    input{
+                    input {
                         width: 80%;
                         height: 35px;
                         border-top-left-radius: 20px;
                         border-bottom-left-radius: 20px;
                         border: none;
                         outline: none;
-                        padding-left: .5rem;
+                        padding-left: 1rem;
                         font-family: $ff-primary-1;
                         color: $primary-txt-clr-4;
                         font-weight: 500;
                     }
 
-                    button{
+                    button {
                         position: absolute;
                         background-color: transparent;
                         font-size: 1.2rem;
@@ -135,55 +141,103 @@
 
                     }
                 }
-                
-                .tasks{
-                    height: 100px;
+
+                .tasks, .accomplished-tasks {
+                    height: auto;
                     width: 100%;
                     border: solid 1px blue;
                     margin-top: 1rem;
 
-                    .task{
-                        height: 35px;
+                    .task {
+                        margin-top: 1rem;
+                        min-height: 35px;
                         border-radius: 20px;
                         display: flex;
                         justify-content: space-between;
-                        align-items : center;
+                        align-items: center;
                         box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 
-                          .check{
+                        .check {
                             width: 20px;
-                            height : 20px;
-                            margin-left : .5rem;
-                            border : solid 1px lightgray;
+                            height: 20px;
+                            margin-left: .5rem;
+                            margin-right: .3rem;
+                            border: solid 1px lightgray;
                             border-radius: 50%;
-                            cursor : pointer;
-                            display : flex;
-                            justify-content:  center;
-                            align-items : center;
-                            
-                            .tick{
-                            // display : none;
-                        
-                                &.checked{
+                            cursor: pointer;
+                            display: flex;
+                            justify-content: center;
+                            align-items: center;
+
+                            .tick {
+                                // display : none;
+
+                                &.checked {
                                     // display : block;
                                 }
                             }
                         }
 
-                        .btns{
-                            width: 100%;
+                        .btns {
+                            width: 88%;
+                            margin-right: auto;
+                            height: 100%;
+                            display: flex;
+                            align-items: center;
+                            justify-content: space-around;
 
+                            #btn {
+                                width: 75%;
+                                font: 500 .8rem $ff-primary-1;
+                                background-color: transparent;
+                                border: none;
+                                height: 100%;
+                                cursor: pointer;
+                                text-align: left;
+                            }
+
+                            .edit,
+                            .delete {
+                                background-color: transparent;
+                                border: none;
+                                height: 30px;
+                                width: 30px;
+                                font-size: 1.2rem;
+                                cursor: pointer;
+                            }
+
+                            .edit {
+                                color: #42c547;
+                            }
+
+                            .delete {
+                                color: #db6d6d
+;
+                            }
                         }
                     }
                 }
-            }   
-
-            &.dark{
-                color: $primary-dark-txt-clr-2;
+                .accomplished-tasks{
+                    height: 200px;
+                    margin-top: 1rem;
+                    border-top: solid 2px green;
+                    .check{
+                        color: $primary-clr-1;
+                        padding-top: .2rem;
+                        background-color: $primary-dark-clr-5;
+                    }
+                    .to-do-text{
+                        text-decoration-line: line-through;
+                    }
+                }
             }
         }
+
+        &.dark {
+            color: $primary-dark-txt-clr-2;
+        }
     }
-    &-footer{
+    &-footer {
         position: fixed;
         bottom: 0px;
         left: 0px;
@@ -193,46 +247,53 @@
         display: flex;
         color: $primary-txt-clr-4;
         font-size: 2rem;
-
-        &.dark{
+    
+        &.dark {
             color: $primary-dark-txt-clr-1;
             background-color: $primary-dark-clr-2;
         }
-        .theme-btn{
+    
+        .theme-btn {
             cursor: pointer;
         }
-
-        .theme-container{
+    
+        .theme-container {
             width: 100%;
             display: flex;
             justify-content: space-around;
-
-            .color{
+    
+            .color {
                 cursor: pointer;
                 width: 30px;
                 height: 30px;
                 border-radius: 50%;
                 display: none;
-
-                &.show{
+    
+                &.show {
                     display: block;
                 }
             }
-            .color-1{
+    
+            .color-1 {
                 background-color: $color-1;
             }
-            .color-2{
+    
+            .color-2 {
                 background-color: $color-2;
             }
-            .color-3{
+    
+            .color-3 {
                 background-color: $color-3;
             }
-            .color-4{
+    
+            .color-4 {
                 background-color: $color-4;
             }
-            .color-5{
+    
+            .color-5 {
                 background-color: $color-5;
             }
         }
     }
 }
+
