@@ -2,81 +2,78 @@ import React from "react";
 import { FaPlus } from "react-icons/fa";
 import { FiEdit, FiTrash2 } from "react-icons/fi";
 import { MdDone } from "react-icons/md";
+import { BsChevronDown } from "react-icons/bs";
 
-export default function ToDoEditor() {
+export default function ToDoEditor(props) {
+  console.log(props.darkMode)
   return (
     <div className="tasks-container">
-      <div className="create-task">
-        <input type="text" placeholder="Enter your task..." />
-        <button>
+      <div className={`create-task ${props.darkMode ? 'dark' : ''}`}>
+        <input className={props.darkMode ? 'dark' : ''} type="text" placeholder="Enter your task..." />
+        <button className={props.darkMode ? 'dark' : ''}>
           <FaPlus />
         </button>
       </div>
       <div className="tasks">
-        <div className="task">
-          <div class="check">
-            <span class="tick"></span>
+        <div className="hide-tasks">
+          <BsChevronDown
+          className="down-icon" />
+          Tasks
+        </div>
+        <div className={`task ${props.darkMode ? 'dark' : ''}`}>
+          <div className="check">
+            <span className="tick"></span>
           </div>
-          <div class="btns">
-            <button id="btn">
-              <span class="to-do-text"></span> hit the gym
+          <div className="btns">
+            <button id="btn" className={props.darkMode ? 'dark' : ''}>
+              <span className="to-do-text">hit the gym</span> 
             </button>
-            <button class="edit">
+            <button className="edit">
               <FiEdit />
             </button>
-            <button class="delete">
+            <button className="delete">
               <FiTrash2 />
             </button>
           </div>
         </div>
         <div className="task">
-          <div class="check">
-            <span class="tick"></span>
+          <div className="check">
+            <span className="tick"></span>
           </div>
-          <div class="btns">
+          <div className="btns">
             <button id="btn">
-              <span class="to-do-text"></span> go shopping
+              <span className="to-do-text"></span> go shopping
             </button>
-            <button class="edit">
+            <button className="edit">
               <FiEdit />
             </button>
-            <button class="delete">
-              <FiTrash2 />
-            </button>
-          </div>
-        </div>
-        <div className="task">
-          <div class="check">
-            <span class="tick"></span>
-          </div>
-          <div class="btns">
-            <button id="btn">
-              <span class="to-do-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt illum doloremque ab eveniet quod fugit enim quibusdam fuga temporibus vitae natus distinctio odio culpa itaque, suscipit saepe explicabo mollitia accusantium!</span> 
-            </button>
-            <button class="edit">
-              <FiEdit />
-            </button>
-            <button class="delete">
+            <button className="delete">
               <FiTrash2 />
             </button>
           </div>
         </div>
       </div>
       <div className="accomplished-tasks">
+          <div className="hide-tasks">
+          <BsChevronDown 
+          className="down-icon"
+          />
+           Accomplished Tasks
+          </div>
           <div className="task">
-          <div class="check">
-            <span class="tick">
+          <div className="check">
+            <span className="tick">
               <MdDone />
             </span>
           </div>
-          <div class="btns">
+          <div className="btns">
             <button id="btn">
-              <span class="to-do-text">hit the gym</span> 
+              <span className="to-do-text">hit the gym</span> 
             </button>
-            <button class="edit">
+            <button className="edit">
               <FiEdit />
             </button>
-            <button class="delete">
+            <button className="delete">
               <FiTrash2 />
             </button>
           </div>

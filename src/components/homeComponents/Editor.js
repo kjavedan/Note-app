@@ -44,7 +44,7 @@ export default function Editor(props) {
           {props.editorType === "note" ? (
             <NoteEditor darkMode={props.darkMode} />
           ) : (
-            <ToDoEditor />
+            <ToDoEditor darkMode={props.darkMode} />
           )}
         </div>
         {/* ---------- */}

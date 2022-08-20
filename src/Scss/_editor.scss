@@ -106,7 +106,7 @@
             .tasks-container {
                 min-height: 300px;
                 width: 100%;
-                border: solid 1px black;
+                // border: solid 1px black;
                 padding: .2rem 0;
 
                 .create-task {
@@ -116,6 +116,11 @@
                     box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
                     border-radius: 20px;
                     padding: .3rem 0 .1rem 0;
+
+                        &.dark{
+                        background-color: $primary-dark-clr-1;
+                        box-shadow: rgba(0, 0, 0, 0.25) 0px 7px 29px 0px;
+                    }
 
                     input {
                         width: 80%;
@@ -128,6 +133,12 @@
                         font-family: $ff-primary-1;
                         color: $primary-txt-clr-4;
                         font-weight: 500;
+
+                        &.dark{
+                            background-color: $primary-dark-clr-1;
+                            color: $primary-clr-1;
+                        }
+
                     }
 
                     button {
@@ -138,24 +149,42 @@
                         height: 35px;
                         border: none;
                         cursor: pointer;
-
+                        
+                        &.dark{
+                            color: $primary-clr-1;
+                        }
                     }
                 }
 
                 .tasks, .accomplished-tasks {
                     height: auto;
                     width: 100%;
-                    border: solid 1px blue;
                     margin-top: 1rem;
+
+                    .hide-tasks{
+                        padding-left: 1rem;
+                        cursor: pointer;
+                        width: 100%;
+                        padding-top: 1rem;
+                        font: 400 1.2rem $ff-primary-2;
+
+                        .down-icon{
+                            margin-right: 1rem;
+                        }
+                    }
 
                     .task {
                         margin-top: 1rem;
-                        min-height: 35px;
+                        min-height: 45px;
                         border-radius: 20px;
                         display: flex;
                         justify-content: space-between;
                         align-items: center;
                         box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+
+                        &.dark{
+                            background-color: $primary-dark-clr-1;
+                        }
 
                         .check {
                             width: 20px;
@@ -194,15 +223,20 @@
                                 height: 100%;
                                 cursor: pointer;
                                 text-align: left;
+
+                                &.dark{
+                                    color: $primary-clr-1;
+                                }
                             }
 
                             .edit,
                             .delete {
                                 background-color: transparent;
                                 border: none;
-                                height: 30px;
+                                // height: 30px;
+                                margin-top: .4rem;
                                 width: 30px;
-                                font-size: 1.2rem;
+                                font-size: 1rem;
                                 cursor: pointer;
                             }
 
@@ -220,7 +254,7 @@
                 .accomplished-tasks{
                     height: 200px;
                     margin-top: 1rem;
-                    border-top: solid 2px green;
+                    border-top: solid 1px $primary-txt-clr-5;
                     .check{
                         color: $primary-clr-1;
                         padding-top: .2rem;
