@@ -177,7 +177,7 @@
 
     &__note {
       cursor: pointer;
-      max-height: 270px;
+      max-height: 300px;
       width: 45%;
       margin-top: 10px;
       padding: 1rem;
@@ -197,14 +197,21 @@
         &.dark {
           color: $primary-dark-txt-clr-1;
         }
+
+        &:hover{
+
+        }
       }
 
       .note-text {
-        font-size: 0.9rem;
+        max-height: 174px;
+        font-size: 0.8rem;
         line-height: 1.3rem;
+        overflow: hidden;
         font-weight: 500;
         color: $primary-txt-clr-4;
         padding: 0.7rem 0;
+        
 
         &.dark {
           color: $primary-dark-txt-clr-2;
@@ -215,6 +222,7 @@
         @include centrlize-space-between;
         font: 500 0.7rem $ff-primary-2;
         color: $primary-txt-clr-4;
+        margin-top: 1rem;
 
         &.dark {
           color: $primary-dark-txt-clr-2;

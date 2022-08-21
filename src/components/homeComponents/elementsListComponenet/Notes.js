@@ -19,7 +19,7 @@ export default function Notes(props) {
       return <Note key={item.id} darkMode = {props.darkMode} id={item.id} body={item.body} theme={item.theme} date={item.date} title={item.title} category={item.category} />
     }
     else{
-      return <ToDo key={item.id} id={item.id} title={item.title} tasks={item.tasks} theme={item.theme} category={item.category} date={item.date} accomplishedTasks ={item.accomplishedTasks}  />
+      return <ToDo key={item.id} darkMode={props.darkMode} id={item.id} title={item.title} tasks={item.tasks} theme={item.theme} category={item.category} date={item.date} accomplishedTasks ={item.accomplishedTasks}  />
     }
   })
   console.log(elements)

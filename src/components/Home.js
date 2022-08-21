@@ -45,7 +45,7 @@ export default function Home() {
   {
     id: nanoid(),
     title : 'noteTitle',
-    body : 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nihil, consequatur!',
+    body : 'lets add more text so we can pass the 270px height limit hey my name is khaled javedan and i am 24 years old I am thinking about what is the best height for the note element one two three four five six seven eight',
     date : date.toLocaleString(),
     category : 'note',
     theme : 'default'

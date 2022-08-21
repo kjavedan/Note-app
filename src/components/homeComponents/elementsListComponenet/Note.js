@@ -1,6 +1,9 @@
 import React from 'react'
+import { MdFormatLineSpacing } from 'react-icons/md';
 
 export default function Note(props) {
+
+ 
   return (
      <div className={`home-notes__note ${props.darkMode ? 'dark' : ''}`}>
                 <h4 className={`note-title ${props.darkMode ? 'dark' : ''}`}>{props.title}</h4>
