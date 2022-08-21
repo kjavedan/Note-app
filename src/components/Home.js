@@ -26,7 +26,7 @@ export default function Home() {
       {
         id : nanoid(),
         body : 'task 2',
-        isChecked : false
+        isChecked : true
       }],
     accomplishedTasks : 
       [{
