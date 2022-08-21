@@ -14,7 +14,6 @@ export default function Home() {
     {
     id: nanoid,
     title : 'mytitle',
-    body : '',
     theme : 'default',
     date : date.toLocaleString(),
     category : 'todo',
@@ -57,7 +56,7 @@ export default function Home() {
   const [darkMode, setDarkMode] = React.useState(false);
 
   // state to open the editor
-  const [openEditor, setOpenEditor] = React.useState(true);
+  const [openEditor, setOpenEditor] = React.useState(false);
 
   // state to open the relative editor
   const [editorType, setEditorType] = React.useState();
@@ -74,12 +73,16 @@ export default function Home() {
           darkMode={darkMode}
           editorType={editorType}
           openEditor={setOpenEditor}
+          mainState = {mainState}
+          setMainState = {setMainState}
         />
       ) : (
         <ElementsList
           darkMode={darkMode}
           setDarkMode={setDarkMode}
           openRelativeEditor={openRelativeEditor}
+          mainState = {mainState}
+          setMainState = {setMainState}
         />
       )}
     </div>

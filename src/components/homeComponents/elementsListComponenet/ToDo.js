@@ -3,7 +3,7 @@ import React from 'react'
 export default function ToDo(props) {
   return (
     <div className={`home-notes__note ${props.darkMode ? 'dark' : ''}`}>
-                  <h4 className={`note-title ${props.darkMode ? 'dark' : ''}`}>Title</h4>
+                  <h4 className={`note-title ${props.darkMode ? 'dark' : ''}`}>{props.title}</h4>
                 <div className="todo-list">
                 {/*  */}
                   <div className={`todo-task ${props.darkMode ? 'dark' : ''}`}>
@@ -12,8 +12,8 @@ export default function ToDo(props) {
                   </div>
                 </div>
                 <div className={`note-info ${props.darkMode ? 'dark' : ''}`}>
-                    <span className="note-date">Jan 17</span>
-                    <span className="note-category">Note</span>
+                    <span className="note-date">{props.date}</span>
+                    <span className="note-category">{props.category}</span>
                 </div>
             </div>
   )

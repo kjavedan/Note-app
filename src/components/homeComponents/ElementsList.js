@@ -12,9 +12,13 @@ export default function ElementsList(props) {
         openRelativeEditor={props.openRelativeEditor}
       />
 
-      <Notes darkMode={props.darkMode} />
+      <Notes darkMode={props.darkMode}
+      mainState = {props.mainState}
+      />
 
-      <Sidebar darkMode={props.darkMode} />
+      <Sidebar darkMode={props.darkMode} 
+      mainState = {props.mainState}
+      />
     </div>
   );
 }
