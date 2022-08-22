@@ -12,17 +12,20 @@ export default function Notes(props) {
     });
   });
 
-  // we will show elements dynamically from our state
-  console.log(props.mainState)
+
+
+  // display the elements from the main state
   const elements = props.mainState.map(item =>{
     if(item.category === 'note'){
-      return <Note key={item.id} darkMode = {props.darkMode} id={item.id} body={item.body} theme={item.theme} date={item.date} title={item.title} category={item.category} />
+      return (<Note openClickedElement={props.openClickedElement} key={item.id} darkMode = {props.darkMode} id={item.id} body={item.body} theme={item.theme} date={item.date} title={item.title} category={item.category} />)
     }
     else{
-      return <ToDo key={item.id} darkMode={props.darkMode} id={item.id} title={item.title} tasks={item.tasks} theme={item.theme} category={item.category} date={item.date} accomplishedTasks ={item.accomplishedTasks}  />
+      return( <ToDo openClickedElement={props.openClickedElement} key={item.id} darkMode={props.darkMode} id={item.id} title={item.title} tasks={item.tasks} theme={item.theme} category={item.category} date={item.date} />)
     }
   })
-  console.log(elements)
+
+  // console.log(elements)
+
   return (
     <div className={`home-notes ${props.darkMode ? "dark" : ""}`}>
       {elements}

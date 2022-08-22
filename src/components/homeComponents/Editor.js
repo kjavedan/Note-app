@@ -6,14 +6,34 @@ import { FiShare } from "react-icons/fi";
 import { MdOutlineColorLens } from "react-icons/md";
 
 export default function Editor(props) {
+
   const [openTheme, setOpenTheme] = React.useState(false);
+
+  
+    function backToHome() {
+      props.openEditor(false);
+    }
 
   function handleTheme() {
     setOpenTheme((prevTheme) => !prevTheme);
   }
 
-  function backToHome() {
-    props.openEditor(false);
+  
+  let element = {}; 
+  function selectedElement(){
+      props.mainState.forEach(item => {
+      if(item.id === props.clickedElement){
+        element = item;
+      }
+    })
+  }
+  selectedElement();
+  console.log(element)
+  
+  const [elementTitle, setElementTitle] = React.useState(element.title)
+
+  function changeTitle(e){
+    setElementTitle(e.target.value)
   }
 
   return (
@@ -35,14 +55,14 @@ export default function Editor(props) {
         </div>
       </div>
       <div className="editor-main">
-        <h2 className={`title ${props.darkMode ? "dark" : ""}`}>title</h2>
+        <textarea type="text" className={`title ${props.darkMode ? "dark" : ""}`} value={elementTitle} onChange={changeTitle}></textarea>
         <span className={`date ${props.darkMode ? "dark" : ""}`}>
-          January 21. 18:24 Tuesday | 325 words
+          {element.date}
         </span>
         {/* editor body */}
         <div className={`body ${props.darkMode ? "dark" : ""}`}>
           {props.editorType === "note" ? (
-            <NoteEditor darkMode={props.darkMode} />
+            <NoteEditor text={element.body} darkMode={props.darkMode} />
           ) : (
             <ToDoEditor darkMode={props.darkMode} />
           )}

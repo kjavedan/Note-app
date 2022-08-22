@@ -6,39 +6,41 @@ import { nanoid } from "nanoid";
 
 export default function Home() {
 
-    const date = new Date()
-    console.log(date.toLocaleString())
+  const date = new Date();
 
-  const[mainState, setMainState] = React.useState ([
+  const [darkMode, setDarkMode] = React.useState(false);
+
+  const [mainState, setMainState] = React.useState ([
     //object 1 -> to-do
     {
-    id: nanoid,
+    id: nanoid(),
     title : 'mytitle',
     theme : 'default',
     date : date.toLocaleString(),
     category : 'todo',
     tasks : 
-      [{
+    [
+      {
         id: nanoid(),
         body : 'task one',
         isChecked : false,
       },
       {
-        id : nanoid(),
-        body : 'task 2',
-        isChecked : true
-      }],
-    accomplishedTasks : 
-      [{
+        id: nanoid(),
+        body : 'task two',
+        isChecked : false,
+      },
+      {
         id: nanoid(),
         body : 'task three',
-        isChecked : true,
+        isChecked : false,
       },
       {
         id : nanoid(),
-        body : 'task 4',
+        body : 'task four',
         isChecked : true
-      }]   
+      }
+    ]
   },
 
   //object 2 -> note
@@ -49,20 +51,45 @@ export default function Home() {
     date : date.toLocaleString(),
     category : 'note',
     theme : 'default'
+  },
+  {
+    id: nanoid(),
+    title : 'sick',
+    body : 'lets add more years old the note element one two three four five six seven eight',
+    date : date.toLocaleString(),
+    category : 'note',
+    theme : 'default'
+  },
+  {
+    id: nanoid(),
+    title : 'Another one',
+    body : 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Animi doloremque aut cum illo minus dolorem voluptate adipisci porro minima aliquam?',
+    date : date.toLocaleString(),
+    category : 'note',
+    theme : 'default'
+  },
+  {
+    id: nanoid(),
+    title : 'HoHo',
+    body : ' voluptate adipisci porro minima aliquam?',
+    date : date.toLocaleString(),
+    category : 'note',
+    theme : 'default'
   }
+
 ])
-
-
-  const [darkMode, setDarkMode] = React.useState(false);
-
   // state to open the editor
   const [openEditor, setOpenEditor] = React.useState(false);
 
   // state to open the relative editor
   const [editorType, setEditorType] = React.useState();
 
-  function openRelativeEditor(type) {
-    setEditorType(type);
+  // state to save the clicked element id so we can open it in its relative editor
+  const [clickedElement, setClickedElement] = React.useState();
+
+  function openClickedElement(id, category) {
+    setClickedElement(id);
+    setEditorType(category);
     setOpenEditor((prevState) => !prevState);
   }
 
@@ -75,12 +102,13 @@ export default function Home() {
           openEditor={setOpenEditor}
           mainState = {mainState}
           setMainState = {setMainState}
+          clickedElement = {clickedElement}
         />
       ) : (
         <ElementsList
           darkMode={darkMode}
           setDarkMode={setDarkMode}
-          openRelativeEditor={openRelativeEditor}
+          openClickedElement={openClickedElement}
           mainState = {mainState}
           setMainState = {setMainState}
         />

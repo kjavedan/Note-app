@@ -5,7 +5,6 @@ import { MdDone } from "react-icons/md";
 import { BsChevronDown } from "react-icons/bs";
 
 export default function ToDoEditor(props) {
-  console.log(props.darkMode)
   return (
     <div className="tasks-container">
       <div className={`create-task ${props.darkMode ? 'dark' : ''}`}>
@@ -20,6 +19,7 @@ export default function ToDoEditor(props) {
           className="down-icon" />
           Tasks
         </div>
+
         <div className={`task ${props.darkMode ? 'dark' : ''}`}>
           <div className="check">
             <span className="tick"></span>
@@ -27,22 +27,6 @@ export default function ToDoEditor(props) {
           <div className="btns">
             <button id="btn" className={props.darkMode ? 'dark' : ''}>
               <span className="to-do-text">hit the gym</span> 
-            </button>
-            <button className="edit">
-              <FiEdit />
-            </button>
-            <button className="delete">
-              <FiTrash2 />
-            </button>
-          </div>
-        </div>
-        <div className="task">
-          <div className="check">
-            <span className="tick"></span>
-          </div>
-          <div className="btns">
-            <button id="btn">
-              <span className="to-do-text"></span> go shopping
             </button>
             <button className="edit">
               <FiEdit />

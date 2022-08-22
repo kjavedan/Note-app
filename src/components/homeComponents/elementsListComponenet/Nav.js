@@ -20,15 +20,20 @@ function changeTheme(){
   props.setDarkMode(prevState => !prevState)
 }
 
+function createNote(){
+
+}
+
   return (
     <nav className={`home-nav ${props.darkMode ? 'dark' : ''}`}>
       <h2 className={`home-nav__title ${props.darkMode ? 'dark' : ''}`}>notes</h2>
       <div className="home-nav__btns-container">
+
       {/* note btn */}
         <div className={`container ${showBtns ? 'show' : ''}`}>
           <span 
           className="create-note"
-          onClick = {()=> props.openRelativeEditor('note')}
+          // onClick = {()=> props.openRelativeEditor('note')}
           >
             <AiOutlineFileAdd />
           </span>
@@ -38,7 +43,7 @@ function changeTheme(){
         <div className={`container ${showBtns ? 'show' : ''}`}>
           <span 
           className="create-todo"
-          onClick={()=> props.openRelativeEditor('todo')}
+          // onClick={()=> props.openRelativeEditor('todo')}
           >
             <TiTick />
           </span>
@@ -58,7 +63,6 @@ function changeTheme(){
         type="text" 
         placeholder="Search for your note"
          />
-
         <span className="search-icon">
           <FiSearch />
         </span>
