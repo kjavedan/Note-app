@@ -5,6 +5,19 @@ import { MdDone } from "react-icons/md";
 import { BsChevronDown } from "react-icons/bs";
 
 export default function ToDoEditor(props) {
+
+  const [showTasks, setShowTasks] = React.useState(true);
+
+  const [showFinishedTasks, setShowFinishedTask ] = React.useState(true);
+
+  function toggleDisplayTasks(){
+    setShowTasks(prevState => !prevState)
+  }
+
+  function toggleFinishedTasks(){
+    setShowFinishedTask(prevState => !prevState)
+  }
+
   return (
     <div className="tasks-container">
       <div className={`create-task ${props.darkMode ? 'dark' : ''}`}>
@@ -13,8 +26,11 @@ export default function ToDoEditor(props) {
           <FaPlus />
         </button>
       </div>
-      <div className="tasks">
-        <div className="hide-tasks">
+      <div className={`tasks ${showTasks ? '' : 'hide'}`}>
+        <div 
+        className="hide-tasks"
+        onClick={toggleDisplayTasks}
+        >
           <BsChevronDown
           className="down-icon" />
           Tasks
@@ -37,8 +53,11 @@ export default function ToDoEditor(props) {
           </div>
         </div>
       </div>
-      <div className="accomplished-tasks">
-          <div className="hide-tasks">
+      <div className={`accomplished-tasks ${showFinishedTasks ? '' : 'hide'}`}>
+          <div 
+          className="hide-tasks"
+          onClick={toggleFinishedTasks}
+          >
           <BsChevronDown 
           className="down-icon"
           />

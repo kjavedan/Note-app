@@ -178,7 +178,7 @@
                     height: auto;
                     width: 100%;
                     margin-top: 1rem;
-
+                    
                     .hide-tasks{
                         padding-left: 1rem;
                         cursor: pointer;
@@ -189,6 +189,11 @@
                         .down-icon{
                             margin-right: 1rem;
                         }
+                    }
+
+                    &.hide{
+                        height: 45px;
+                        overflow: hidden;
                     }
 
                     .task {
