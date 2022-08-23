@@ -2,10 +2,12 @@ import React from "react";
 
 export default function NoteEditor(props) {
 
+  const [data, setData] = React.useState(props.body);
   
-
-  const [data, setData] = React.useState(props.text);
-
+  React.useEffect(()=>{
+      setData(props.body)
+    }, [props.body])
+        
 
   const [height, setHeight] = React.useState();
 

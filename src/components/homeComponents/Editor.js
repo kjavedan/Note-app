@@ -7,9 +7,13 @@ import { MdOutlineColorLens } from "react-icons/md";
 
 export default function Editor(props) {
 
+  const [elementData, setElementData] = React.useState({})
+
+  const [title, setTitle] = React.useState();
+
   const [openTheme, setOpenTheme] = React.useState(false);
 
-  
+
     function backToHome() {
       props.openEditor(false);
     }
@@ -18,22 +22,21 @@ export default function Editor(props) {
     setOpenTheme((prevTheme) => !prevTheme);
   }
 
-  
-  let element = {}; 
-  function selectedElement(){
-      props.mainState.forEach(item => {
-      if(item.id === props.clickedElement){
-        element = item;
-      }
-    })
-  }
-  selectedElement();
-  console.log(element)
-  
-  const [elementTitle, setElementTitle] = React.useState(element.title)
 
+    React.useEffect(()=>{
+        props.mainState.forEach(item => {
+        if(item.id === props.clickedElement){
+          setElementData(item);
+          setTitle(item.title)
+        }
+      })
+    }, [])
+  
+ 
+
+  
   function changeTitle(e){
-    setElementTitle(e.target.value)
+    setTitle(e.target.value)
   }
 
   return (
@@ -55,14 +58,14 @@ export default function Editor(props) {
         </div>
       </div>
       <div className="editor-main">
-        <textarea type="text" className={`title ${props.darkMode ? "dark" : ""}`} value={elementTitle} onChange={changeTitle}></textarea>
+        <textarea type="text" className={`title ${props.darkMode ? "dark" : ""}`} value={title} onChange={changeTitle}></textarea>
         <span className={`date ${props.darkMode ? "dark" : ""}`}>
-          {element.date}
+          {elementData.date}
         </span>
         {/* editor body */}
         <div className={`body ${props.darkMode ? "dark" : ""}`}>
           {props.editorType === "note" ? (
-            <NoteEditor text={element.body} darkMode={props.darkMode} />
+            <NoteEditor body={elementData.body} darkMode={props.darkMode} />
           ) : (
             <ToDoEditor darkMode={props.darkMode} />
           )}
