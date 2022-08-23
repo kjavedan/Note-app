@@ -9,18 +9,16 @@ export default function ElementsList(props) {
       <Nav
         darkMode={props.darkMode}
         setDarkMode={props.setDarkMode}
+        createElement={props.createElement}
+      />
+
+      <Notes
+        darkMode={props.darkMode}
+        mainState={props.mainState}
         openClickedElement={props.openClickedElement}
       />
 
-      <Notes 
-      darkMode={props.darkMode}
-      mainState = {props.mainState}
-      openClickedElement={props.openClickedElement}
-      />
-
-      <Sidebar darkMode={props.darkMode} 
-      mainState = {props.mainState}
-      />
+      <Sidebar darkMode={props.darkMode} mainState={props.mainState} />
     </div>
   );
 }

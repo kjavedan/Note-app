@@ -1,356 +1,359 @@
 .editor {
-    height: 100vh;
-    width: 100%;
+  height: 100vh;
+  width: 100%;
 
-    &-nav {
-        height: 80px;
-        display: flex;
-        padding: 0 20px;
+  &-nav {
+    height: 80px;
+    display: flex;
+    padding: 0 20px;
 
-        &.dark {
-            color: $primary-dark-txt-clr-1;
-        }
-
-        .back-to-home {
-            cursor: pointer;
-            margin-right: auto;
-            font: 700 1rem $ff-primary-1;
-            width: 100px;
-            height: 100%;
-            display: flex;
-            align-items: center;
-
-            &__icon {
-                font-size: 1.5rem;
-                margin-right: .2rem;
-                margin-top: .4rem;
-            }
-        }
-
-        .more-container {
-            width: 70px;
-            font-weight: bold;
-            @include centrlize-space-between;
-
-            .share {
-                color: $primary-txt-clr-6;
-                font-size: 1.3rem;
-                cursor: pointer;
-            }
-
-            .more {
-                color: $primary-txt-clr-6;
-                cursor: pointer;
-                margin-top: .2rem;
-                font-size: 1.5rem;
-            }
-        }
+    &.dark {
+      color: $primary-dark-txt-clr-1;
     }
 
-    &-main {
+    .back-to-home {
+      cursor: pointer;
+      margin-right: auto;
+      font: 700 1rem $ff-primary-1;
+      width: 100px;
+      height: 100%;
+      display: flex;
+      align-items: center;
+
+      &__icon {
+        font-size: 1.5rem;
+        margin-right: 0.2rem;
+        margin-top: 0.4rem;
+      }
+    }
+
+    .more-container {
+      width: 70px;
+      font-weight: bold;
+      @include centrlize-space-between;
+
+      .share {
+        color: $primary-txt-clr-6;
+        font-size: 1.3rem;
+        cursor: pointer;
+      }
+
+      .more {
+        color: $primary-txt-clr-6;
+        cursor: pointer;
+        margin-top: 0.2rem;
+        font-size: 1.5rem;
+      }
+    }
+  }
+
+  &-main {
+    width: 100%;
+    padding: 8%;
+    margin: 1rem auto;
+    padding-top: 1rem;
+    height: auto;
+    padding-bottom: 5rem;
+
+    .title {
+      text-transform: capitalize;
+      max-height: 70px;
+      font: 700 1.5rem $ff-primary-2;
+
+      margin-bottom: 0.3rem;
+      border: none;
+      outline: none;
+      resize: none;
+      width: 100%;
+
+      &.dark {
+        color: $primary-dark-txt-clr-1;
+        background-color: $primary-dark-clr-2;
+      }
+
+      &::-webkit-scrollbar {
+        width: 3px;
+        height: 10px;
+      }
+      &::-webkit-scrollbar-thumb {
+        height: 10px;
+        border-radius: 2px;
+        background-color: rgb(187, 184, 184);
+      }
+    }
+
+    .date {
+      color: $primary-txt-clr-4;
+      font-size: 0.8rem;
+
+      &.dark {
+        color: $primary-dark-txt-clr-2;
+      }
+    }
+
+    .body {
+      margin-top: 1rem;
+      font: 500 0.9rem $ff-primary-1;
+      height: auto;
+
+      //******************************* Note editor*******************************************
+      textarea {
+        color: $primary-txt-clr-4;
         width: 100%;
-        padding: 8%;
-        margin: 1rem auto;
-        padding-top: 1rem;
-        height: auto;
-        padding-bottom: 5rem;
+        min-height: 300px;
+        font-family: $ff-primary-1;
+        font-weight: 500;
+        word-spacing: 0.1rem;
+        line-height: 1.5rem;
+        outline: none;
+        border: none;
+        resize: none;
 
-        .title {
-            text-transform: capitalize;
-            max-height: 70px;
-            font: 700 1.5rem $ff-primary-2;
+        &::-webkit-scrollbar {
+          width: 0px;
+        }
 
-            margin-bottom: .3rem;
+        &.dark {
+          background-color: $primary-dark-clr-2;
+          color: $primary-dark-txt-clr-2;
+        }
+      }
+
+      //******************************* ToDo editor*******************************************
+      .tasks-container {
+        min-height: 200px;
+        width: 100%;
+        // border: solid 1px black;
+        padding: 0.2rem 0;
+
+        .create-task {
+          width: 100%;
+          height: auto;
+          background-color: $primary-clr-1;
+          box-shadow: 0 3px 5px rgba(100, 183, 216, 0.8);
+          border-radius: 20px;
+          padding: 0.3rem 0 0.1rem 0;
+
+          &.dark {
+            background-color: $primary-dark-clr-1;
+            box-shadow: rgba(0, 0, 0, 0.25) 0px 7px 29px 0px;
+            box-shadow: 0 3px 5px rgba(100, 183, 216, 0.8);
+          }
+
+          input {
+            width: 80%;
+            height: 35px;
+            border-top-left-radius: 20px;
+            border-bottom-left-radius: 20px;
             border: none;
             outline: none;
-            resize: none;
-            width: 100%;
-
-            &.dark {
-                color: $primary-dark-txt-clr-1;
-                background-color: $primary-dark-clr-2;
-            }
-
-            &::-webkit-scrollbar{
-                width: 3px;
-                height: 10px;
-            }
-            &::-webkit-scrollbar-thumb{
-                height: 10px;
-                border-radius: 2px;
-                background-color: rgb(187, 184, 184);
-            }
-        }
-
-        .date {
+            padding-left: 1rem;
+            font-family: $ff-primary-1;
             color: $primary-txt-clr-4;
-            font-size: .8rem;
+            font-weight: 500;
 
             &.dark {
-                color: $primary-dark-txt-clr-2;
+              background-color: $primary-dark-clr-1;
+              color: $primary-clr-1;
             }
+          }
+
+          button {
+            position: absolute;
+            background-color: transparent;
+            font-size: 1.2rem;
+            width: 20%;
+            height: 35px;
+            border: none;
+            cursor: pointer;
+
+            &.dark {
+              color: $primary-clr-1;
+            }
+          }
         }
 
-        .body {
+        .tasks,
+        .accomplished-tasks {
+          height: auto;
+          width: 100%;
+          margin-top: 1rem;
+          transition: all ease-in-out 0.3s;
+
+          .hide-tasks {
+            padding-left: 1rem;
+            cursor: pointer;
+            width: 100%;
+            padding-top: 1rem;
+            font: 400 1.2rem $ff-primary-2;
+
+            .down-icon {
+              margin-right: 1rem;
+            }
+
+            &.dark {
+              color: $primary-dark-txt-clr-2;
+            }
+          }
+
+          &.hide {
+            height: 45px;
+            overflow: hidden;
+          }
+
+          .task {
             margin-top: 1rem;
-            font: 500 .9rem $ff-primary-1;
-            height: auto;
+            min-height: 45px;
+            border-radius: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 
-            //******************************* Note editor*******************************************
-            textarea {
-                color: $primary-txt-clr-4;
-                width: 100%;
-                min-height: 300px;
-                font-family: $ff-primary-1;
-                font-weight: 500;
-                word-spacing: .1rem;
-                line-height: 1.5rem;
-                outline: none;
-                border: none;
-                resize: none;
+            &.dark {
+              background-color: $primary-dark-clr-1;
+            }
 
-                &::-webkit-scrollbar {
-                    width: 0px;
+            .check {
+              width: 20px;
+              height: 20px;
+              margin-left: 0.5rem;
+              margin-right: 0.3rem;
+              border: solid 1px lightgray;
+              border-radius: 50%;
+              cursor: pointer;
+              display: flex;
+              justify-content: center;
+              align-items: center;
+
+              .tick {
+                // display : none;
+
+                &.checked {
+                  // display : block;
                 }
+              }
+            }
+
+            .btns {
+              width: 88%;
+              margin-right: auto;
+              height: 100%;
+              display: flex;
+              align-items: center;
+              justify-content: space-around;
+
+              #btn {
+                width: 75%;
+                font: 500 0.8rem $ff-primary-1;
+                background-color: transparent;
+                border: none;
+                height: 100%;
+                cursor: pointer;
+                text-align: left;
 
                 &.dark {
-                    background-color: $primary-dark-clr-2;
-                    color: $primary-dark-txt-clr-2;
+                  color: $primary-clr-1;
                 }
-            }
+              }
 
-            //******************************* ToDo editor*******************************************
-            .tasks-container {
-                min-height: 300px;
-                width: 100%;
-                // border: solid 1px black;
-                padding: .2rem 0;
-
-                .create-task {
-                    width: 100%;
-                    height: auto;
-                    background-color: $primary-clr-1;
-                    box-shadow: 0 3px 5px rgba(100, 183, 216, 0.8);
-                    border-radius: 20px;
-                    padding: .3rem 0 .1rem 0;
-
-                        &.dark{
-                        background-color: $primary-dark-clr-1;
-                        box-shadow: rgba(0, 0, 0, 0.25) 0px 7px 29px 0px;
-                        box-shadow: 0 3px 5px rgba(100, 183, 216, 0.8);
-                    }
-
-                    input {
-                        width: 80%;
-                        height: 35px;
-                        border-top-left-radius: 20px;
-                        border-bottom-left-radius: 20px;
-                        border: none;
-                        outline: none;
-                        padding-left: 1rem;
-                        font-family: $ff-primary-1;
-                        color: $primary-txt-clr-4;
-                        font-weight: 500;
-
-                        &.dark{
-                            background-color: $primary-dark-clr-1;
-                            color: $primary-clr-1;
-                        }
-
-                    }
-
-                    button {
-                        position: absolute;
-                        background-color: transparent;
-                        font-size: 1.2rem;
-                        width: 20%;
-                        height: 35px;
-                        border: none;
-                        cursor: pointer;
-                        
-                        &.dark{
-                            color: $primary-clr-1;
-                        }
-                    }
-                }
-
-                .tasks, .accomplished-tasks {
-                    height: auto;
-                    width: 100%;
-                    margin-top: 1rem;
-                    
-                    .hide-tasks{
-                        padding-left: 1rem;
-                        cursor: pointer;
-                        width: 100%;
-                        padding-top: 1rem;
-                        font: 400 1.2rem $ff-primary-2;
-
-                        .down-icon{
-                            margin-right: 1rem;
-                        }
-                    }
-
-                    &.hide{
-                        height: 45px;
-                        overflow: hidden;
-                    }
-
-                    .task {
-                        margin-top: 1rem;
-                        min-height: 45px;
-                        border-radius: 20px;
-                        display: flex;
-                        justify-content: space-between;
-                        align-items: center;
-                        box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-
-                        &.dark{
-                            background-color: $primary-dark-clr-1;
-                        }
-
-                        .check {
-                            width: 20px;
-                            height: 20px;
-                            margin-left: .5rem;
-                            margin-right: .3rem;
-                            border: solid 1px lightgray;
-                            border-radius: 50%;
-                            cursor: pointer;
-                            display: flex;
-                            justify-content: center;
-                            align-items: center;
-
-                            .tick {
-                                // display : none;
-
-                                &.checked {
-                                    // display : block;
-                                }
-                            }
-                        }
-
-                        .btns {
-                            width: 88%;
-                            margin-right: auto;
-                            height: 100%;
-                            display: flex;
-                            align-items: center;
-                            justify-content: space-around;
-
-                            #btn {
-                                width: 75%;
-                                font: 500 .8rem $ff-primary-1;
-                                background-color: transparent;
-                                border: none;
-                                height: 100%;
-                                cursor: pointer;
-                                text-align: left;
-
-                                &.dark{
-                                    color: $primary-clr-1;
-                                }
-                            }
-
-                            .edit,
-                            .delete {
-                                background-color: transparent;
-                                border: none;
-                                // height: 30px;
-                                margin-top: .4rem;
-                                width: 30px;
-                                font-size: 1rem;
-                                cursor: pointer;
-                            }
-
-                            .edit {
-                                color: #42c547;
-                            }
-
-                            .delete {
-                                color: #db6d6d
-;
-                            }
-                        }
-                    }
-                }
-                .accomplished-tasks{
-                    height: 200px;
-                    margin-top: 1rem;
-                    border-top: solid 1px $primary-txt-clr-5;
-                    .check{
-                        color: $primary-clr-1;
-                        padding-top: .2rem;
-                        background-color: $primary-dark-clr-5;
-                    }
-                    .to-do-text{
-                        text-decoration-line: line-through;
-                    }
-                }
-            }
-        }
-
-        &.dark {
-            color: $primary-dark-txt-clr-2;
-        }
-    }
-    &-footer {
-        position: fixed;
-        bottom: 0px;
-        left: 0px;
-        width: 100%;
-        background-color: $primary-clr-1;
-        padding: 15px 10%;
-        display: flex;
-        color: $primary-txt-clr-4;
-        font-size: 2rem;
-    
-        &.dark {
-            color: $primary-dark-txt-clr-1;
-            background-color: $primary-dark-clr-2;
-        }
-    
-        .theme-btn {
-            cursor: pointer;
-        }
-    
-        .theme-container {
-            width: 100%;
-            display: flex;
-            justify-content: space-around;
-    
-            .color {
-                cursor: pointer;
+              .edit,
+              .delete {
+                background-color: transparent;
+                border: none;
+                // height: 30px;
+                margin-top: 0.4rem;
                 width: 30px;
-                height: 30px;
-                border-radius: 50%;
-                display: none;
-    
-                &.show {
-                    display: block;
-                }
-            }
-    
-            .color-1 {
-                background-color: $color-1;
-            }
-    
-            .color-2 {
-                background-color: $color-2;
-            }
-    
-            .color-3 {
-                background-color: $color-3;
-            }
-    
-            .color-4 {
-                background-color: $color-4;
-            }
-    
-            .color-5 {
-                background-color: $color-5;
-            }
-        }
-    }
-}
+                font-size: 1rem;
+                cursor: pointer;
+              }
 
+              .edit {
+                color: #42c547;
+              }
+
+              .delete {
+                color: #db6d6d;
+              }
+            }
+          }
+        }
+        .accomplished-tasks {
+          height: 200px;
+          margin-top: 1rem;
+          border-top: solid 1px $primary-txt-clr-5;
+          .check {
+            color: $primary-clr-1;
+            padding-top: 0.2rem;
+            background-color: $primary-dark-clr-5;
+          }
+          .to-do-text {
+            text-decoration-line: line-through;
+          }
+        }
+      }
+    }
+
+    &.dark {
+      color: $primary-dark-txt-clr-2;
+    }
+  }
+  &-footer {
+    position: fixed;
+    bottom: 0px;
+    left: 0px;
+    width: 100%;
+    background-color: $primary-clr-1;
+    padding: 15px 10%;
+    display: flex;
+    color: $primary-txt-clr-4;
+    font-size: 2rem;
+
+    &.dark {
+      color: $primary-dark-txt-clr-1;
+      background-color: $primary-dark-clr-2;
+    }
+
+    .theme-btn {
+      cursor: pointer;
+    }
+
+    .theme-container {
+      width: 100%;
+      display: flex;
+      justify-content: space-around;
+
+      .color {
+        cursor: pointer;
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        display: none;
+
+        &.show {
+          display: block;
+        }
+      }
+
+      .color-1 {
+        background-color: $color-1;
+      }
+
+      .color-2 {
+        background-color: $color-2;
+      }
+
+      .color-3 {
+        background-color: $color-3;
+      }
+
+      .color-4 {
+        background-color: $color-4;
+      }
+
+      .color-5 {
+        background-color: $color-5;
+      }
+    }
+  }
+}

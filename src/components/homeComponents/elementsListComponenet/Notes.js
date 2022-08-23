@@ -12,17 +12,38 @@ export default function Notes(props) {
     });
   });
 
-
-
   // display the elements from the main state
-  const elements = props.mainState.map(item =>{
-    if(item.category === 'note'){
-      return (<Note openClickedElement={props.openClickedElement} key={item.id} darkMode = {props.darkMode} id={item.id} body={item.body} theme={item.theme} date={item.date} title={item.title} category={item.category} />)
+  const elements = props.mainState.map((item) => {
+    if (item.category === "note") {
+      return (
+        <Note
+          openClickedElement={props.openClickedElement}
+          key={item.id}
+          darkMode={props.darkMode}
+          id={item.id}
+          body={item.body}
+          theme={item.theme}
+          date={item.date}
+          title={item.title}
+          category={item.category}
+        />
+      );
+    } else {
+      return (
+        <ToDo
+          openClickedElement={props.openClickedElement}
+          key={item.id}
+          darkMode={props.darkMode}
+          id={item.id}
+          title={item.title}
+          tasks={item.tasks}
+          theme={item.theme}
+          category={item.category}
+          date={item.date}
+        />
+      );
     }
-    else{
-      return( <ToDo openClickedElement={props.openClickedElement} key={item.id} darkMode={props.darkMode} id={item.id} title={item.title} tasks={item.tasks} theme={item.theme} category={item.category} date={item.date} />)
-    }
-  })
+  });
 
   // console.log(elements)
 

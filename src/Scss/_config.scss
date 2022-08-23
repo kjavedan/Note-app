@@ -6,48 +6,49 @@
   box-sizing: border-box;
 }
 body {
-  @import url('https://fonts.googleapis.com/css2?family=Montserrat+Alternates:wght@400;500;700&family=Montserrat:wght@300;400;500;700;800&display=swap');
-  font-family: -apple-system, BlinkMacSystemFont, 'Montserrat', 'Montserrat Alternates', sans-serif;
+  @import url("https://fonts.googleapis.com/css2?family=Montserrat+Alternates:wght@400;500;700&family=Montserrat:wght@300;400;500;700;800&display=swap");
+  font-family: -apple-system, BlinkMacSystemFont, "Montserrat",
+    "Montserrat Alternates", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
 // variables
 //colors dark mode
-$primary-dark-clr-1 : #272636;
-$primary-dark-clr-2 : #1F1D2B;
-$primary-dark-clr-3 : #3A3A4C;
-$primary-dark-clr-4 : #6F6FC8;
-$primary-dark-clr-5 : #32A7E2;
-$primary-dark-clr-6 : #353444;
+$primary-dark-clr-1: #272636;
+$primary-dark-clr-2: #1f1d2b;
+$primary-dark-clr-3: #3a3a4c;
+$primary-dark-clr-4: #6f6fc8;
+$primary-dark-clr-5: #32a7e2;
+$primary-dark-clr-6: #353444;
 
 // text colors dark mode
-$primary-dark-txt-clr-1 : #FFF;
-$primary-dark-txt-clr-2 : #D3CECE;
+$primary-dark-txt-clr-1: #fff;
+$primary-dark-txt-clr-2: #d3cece;
 
 //--------------------------------------
-//colors 
-$primary-clr-1 : #FFF;
-$primary-clr-2 : #6F6FC8;
-$primary-clr-3 : #FEBF47;
-//text colors 
-$primary-txt-clr-1 : #2D2C3C;
-$primary-txt-clr-2 : #767676;
-$primary-txt-clr-3 : #FFF;
-$primary-txt-clr-4 : #4F4848;
-$primary-txt-clr-5 : #b8b5b5;
-$primary-txt-clr-6 : #827676;
+//colors
+$primary-clr-1: #fff;
+$primary-clr-2: #6f6fc8;
+$primary-clr-3: #febf47;
+//text colors
+$primary-txt-clr-1: #2d2c3c;
+$primary-txt-clr-2: #767676;
+$primary-txt-clr-3: #fff;
+$primary-txt-clr-4: #4f4848;
+$primary-txt-clr-5: #b8b5b5;
+$primary-txt-clr-6: #827676;
 // notes theme colors
-$color-1 : #FFBBC2;
-$color-2 : #E6F0FD;
-$color-3 : #D9D9D9;
-$color-4 : #FFE598;
-$color-5 : #FFE6D6;
+$color-1: #ffbbc2;
+$color-2: #e6f0fd;
+$color-3: #d9d9d9;
+$color-4: #ffe598;
+$color-5: #ffe6d6;
 
 //---------------------------------------
 //fonts
-$ff-primary-1 : 'Montserrat', sans-serif;
-$ff-primary-2 : 'Montserrat Alternates', sans-serif;
+$ff-primary-1: "Montserrat", sans-serif;
+$ff-primary-2: "Montserrat Alternates", sans-serif;
 //---------------------------------------
 
 //mixins

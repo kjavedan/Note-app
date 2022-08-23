@@ -1,13 +1,11 @@
 import React from "react";
 
 export default function NoteEditor(props) {
-
   const [data, setData] = React.useState(props.body);
-  
-  React.useEffect(()=>{
-      setData(props.body)
-    }, [props.body])
-        
+
+  React.useEffect(() => {
+    setData(props.body);
+  }, [props.body]);
 
   const [height, setHeight] = React.useState();
 
@@ -19,7 +17,7 @@ export default function NoteEditor(props) {
     document.querySelector("textarea").style.height = "auto";
     setData(e.target.value);
     setHeight(e.target.scrollHeight);
-    console.log(e.target.value)
+    console.log(e.target.value);
   }
 
   return (

@@ -6,37 +6,31 @@ import { FiShare } from "react-icons/fi";
 import { MdOutlineColorLens } from "react-icons/md";
 
 export default function Editor(props) {
-
-  const [elementData, setElementData] = React.useState({})
+  const [elementData, setElementData] = React.useState({});
 
   const [title, setTitle] = React.useState();
 
   const [openTheme, setOpenTheme] = React.useState(false);
 
-
-    function backToHome() {
-      props.openEditor(false);
-    }
+  function backToHome() {
+    props.openEditor(false);
+  }
 
   function handleTheme() {
     setOpenTheme((prevTheme) => !prevTheme);
   }
 
+  React.useEffect(() => {
+    props.mainState.forEach((item) => {
+      if (item.id === props.clickedElement) {
+        setElementData(item);
+        setTitle(item.title);
+      }
+    });
+  }, []);
 
-    React.useEffect(()=>{
-        props.mainState.forEach(item => {
-        if(item.id === props.clickedElement){
-          setElementData(item);
-          setTitle(item.title)
-        }
-      })
-    }, [])
-  
- 
-
-  
-  function changeTitle(e){
-    setTitle(e.target.value)
+  function changeTitle(e) {
+    setTitle(e.target.value);
   }
 
   return (
@@ -58,7 +52,13 @@ export default function Editor(props) {
         </div>
       </div>
       <div className="editor-main">
-        <textarea type="text" className={`title ${props.darkMode ? "dark" : ""}`} value={title} onChange={changeTitle}></textarea>
+        <textarea
+          placeholder="Title"
+          type="text"
+          className={`title ${props.darkMode ? "dark" : ""}`}
+          value={title}
+          onChange={changeTitle}
+        ></textarea>
         <span className={`date ${props.darkMode ? "dark" : ""}`}>
           {elementData.date}
         </span>

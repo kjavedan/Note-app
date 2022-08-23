@@ -28,7 +28,7 @@ export default function ToDoEditor(props) {
       </div>
       <div className={`tasks ${showTasks ? '' : 'hide'}`}>
         <div 
-        className="hide-tasks"
+        className={`hide-tasks ${props.darkMode ? 'dark' : ''}`}
         onClick={toggleDisplayTasks}
         >
           <BsChevronDown
@@ -55,7 +55,7 @@ export default function ToDoEditor(props) {
       </div>
       <div className={`accomplished-tasks ${showFinishedTasks ? '' : 'hide'}`}>
           <div 
-          className="hide-tasks"
+          className={`hide-tasks ${props.darkMode ? 'dark' : ''}`}
           onClick={toggleFinishedTasks}
           >
           <BsChevronDown 
