@@ -57,5 +57,10 @@ $ff-primary-2: "Montserrat Alternates", sans-serif;
   align-items: center;
   justify-content: space-between;
 }
+@mixin centrlize-space-around {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
 
 // animaiton

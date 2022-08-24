@@ -14,6 +14,37 @@ export default function Editor(props) {
 
   function backToHome() {
     props.openEditor(false);
+    //check if the element is empty
+    // if it is don't save it into the state and 
+    // notify the user that empty element was note saved
+    // if(!elementData.title && !elementData.body){
+    //   console.log('wasnt saved')
+    // }
+    saveElement()
+  }
+
+  function saveElement(){
+     if(elementData.category === 'note' && !elementData.title && !elementData.body){
+      deleteEmptyNote()
+    }
+    else if(elementData.category === 'todo' && !elementData.title && !elementData.tasks.height){
+      deleteEmptyTodo()
+    }
+    else{
+      props.setMessage('save')
+    }
+
+  }
+
+  function deleteEmptyNote(){
+    // set some kind of state in the home page with note value
+    // create a function that display a message base on the value of the state
+    // display the message for couple of second and reset the value of the state
+    props.setMessage('empty-note')
+  }
+
+  function deleteEmptyTodo(){
+    props.setMessage('empty-todo')
   }
 
   function handleTheme() {
@@ -67,7 +98,7 @@ export default function Editor(props) {
           {props.editorType === "note" ? (
             <NoteEditor body={elementData.body} darkMode={props.darkMode} />
           ) : (
-            <ToDoEditor darkMode={props.darkMode} />
+            <ToDoEditor tasks={elementData.tasks} darkMode={props.darkMode} />
           )}
         </div>
         {/* ---------- */}

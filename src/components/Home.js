@@ -3,6 +3,7 @@ import Masonry from "masonry-layout";
 import Editor from "./homeComponents/Editor";
 import ElementsList from "./homeComponents/ElementsList";
 import { nanoid } from "nanoid";
+import { IoMdHeartEmpty, IoMdReturnLeft } from "react-icons/io";
 
 export default function Home() {
   const date = new Date();
@@ -13,7 +14,7 @@ export default function Home() {
     //object 1 -> to-do
     {
       id: nanoid(),
-      title: "mytitle",
+      title: "tody tasks",
       theme: "default",
       date: date.toLocaleString(),
       category: "todo",
@@ -84,6 +85,35 @@ export default function Home() {
   // state to save the clicked element id so we can open it in its relative editor
   const [clickedElement, setClickedElement] = React.useState();
 
+  // state to notify the user with happening changes
+  const [message, setMessage] = React.useState();
+
+  // clear the message notify after 3 seconds
+  React.useEffect(()=>{
+    setTimeout(()=>{
+      setMessage();
+      deleteEmptyElements();
+    },3000)
+  }, [openEditor])
+
+
+  function displayMessage(){
+  }
+  
+  function deleteEmptyElements(){
+    setMainState(prevState => {
+      return prevState.filter(element =>{
+        if(element.category === 'note' && element.title || element.body){
+          return element;
+        }
+        else if(element.category === 'todo') {
+          if(element.title || element.tasks.length) return element
+        }
+      })
+    })
+  }
+  
+
   function openClickedElement(id, category) {
     setClickedElement(id);
     setEditorType(category);
@@ -106,11 +136,7 @@ export default function Home() {
       date: date.toLocaleString(),
       category: "todo",
       tasks: [
-        {
-          id: nanoid(),
-          body: "task one",
-          isChecked: false,
-        }
+        
       ],
     }
 
@@ -119,8 +145,8 @@ export default function Home() {
       setMainState([newNote, ...mainState]);
       setClickedElement(newNote.id)
     }else{
+      setClickedElement(newTodo.id)
       setMainState([newTodo, ...mainState])
-      setClickedElement(newNote.id)
     }
     setEditorType(category);
     setOpenEditor((prevState) => !prevState);
@@ -136,6 +162,7 @@ export default function Home() {
           mainState={mainState}
           setMainState={setMainState}
           clickedElement={clickedElement}
+          setMessage={setMessage}
         />
       ) : (
         <ElementsList
@@ -145,6 +172,7 @@ export default function Home() {
           mainState={mainState}
           setMainState={setMainState}
           createElement={createElement}
+          message={message}
         />
       )}
     </div>

@@ -2,6 +2,8 @@ import React from "react";
 import Masonry from "masonry-layout";
 import Note from "./Note";
 import ToDo from "./ToDo";
+import { AiOutlineWarning,  AiOutlineFileDone } from 'react-icons/ai'
+import { IoMdDoneAll  } from 'react-icons/io'
 
 export default function Notes(props) {
   React.useEffect(() => {
@@ -44,12 +46,33 @@ export default function Notes(props) {
       );
     }
   });
-
-  // console.log(elements)
+  let style = {};
+ 
+  function getMessage(){
+    if(props.message === 'empty-note'){
+      style.backgroundColor = 'lightcoral'
+      return "empty"
+    }
+    else if(props.message === 'empty-todo'){
+      style.backgroundColor = 'lightcoral'
+      return "empty"
+    }
+    else{
+      style.backgroundColor = 'lightgreen'
+      style.width = '80px'
+      return 'saved'
+    } 
+  }
+  
+  const message = getMessage();
+  
 
   return (
-    <div className={`home-notes ${props.darkMode ? "dark" : ""}`}>
-      {elements}
+    <div>
+     {props.message && <div className="message" style={style}>{message === 'empty' ? <AiOutlineWarning /> : <IoMdDoneAll />}{message}</div>}
+      <div className={`home-notes ${props.darkMode ? "dark" : ""}`}>
+        {elements}
+      </div>
     </div>
   );
 }

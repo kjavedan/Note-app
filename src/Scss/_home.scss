@@ -165,12 +165,26 @@
     }
   }
 
+  .message{
+    color: rgb(255, 255, 255);
+    height: 30px;
+    width: 80px;
+    padding: 0 10px;
+    z-index: 20;
+    top: 70px;
+    left: 50%;
+    transform: translateX(-50%);
+    position: fixed;
+    font: 500 .8rem $ff-primary-2;
+    @include centrlize-space-around;
+    border-radius: 20px;
+  }
+
   &-notes {
     margin: 0 auto;
     padding-left: 4%;
     margin-top: 80px;
     width: 100%;
-    background-color: white;
 
     &.dark {
       background-color: $primary-dark-clr-2;
