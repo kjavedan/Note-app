@@ -1,12 +1,6 @@
 import React from "react";
 
 export default function NoteEditor(props) {
-  
-  const [data, setData] = React.useState(props.body);
-
-  React.useEffect(() => {
-    setData(props.body);
-  }, [props.body]);
 
   const [height, setHeight] = React.useState();
 
@@ -16,7 +10,7 @@ export default function NoteEditor(props) {
 
   function handleChange(e) {
     document.querySelector("textarea").style.height = "auto";
-    setData(e.target.value);
+    props.setElementData({...props.elementData, body : e.target.value})
     setHeight(e.target.scrollHeight);
     console.log(e.target.value);
   }
@@ -26,7 +20,7 @@ export default function NoteEditor(props) {
       <textarea
         className={props.darkMode ? "dark" : ""}
         onChange={handleChange}
-        value={data}
+        value={props.body}
         style={style}
         placeholder="Type your note here..."
       ></textarea>

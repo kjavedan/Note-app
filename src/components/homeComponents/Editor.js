@@ -24,9 +24,13 @@ export default function Editor(props) {
   // open the theme button
   const [openTheme, setOpenTheme] = React.useState(false);
 
+  // this two will be invoked in the more btn where the user can  save and delete element
   function save(){
     console.log('HOHO');
     saveElement();
+  }
+  function deleteElement(){
+    console.log('DELETE')
   }
 
   function backToHome() {
@@ -46,13 +50,10 @@ export default function Editor(props) {
       // modify the main state with the new value of the current Element
       props.setMainState(prevState => {
         return prevState.map(element => {
-           {
-            element.id === elementData.id 
-            ? 
-            elementData
-            :
-            element
-          }
+          if(element.id == elementData.id){
+            console.log(elementData)
+            return elementData;
+          }else return element;
         })
       })
     }
@@ -120,7 +121,7 @@ export default function Editor(props) {
         {/* editor body */}
         <div className={`body ${props.darkMode ? "dark" : ""}`}>
           {props.editorType === "note" ? (
-            <NoteEditor body={elementData.body} darkMode={props.darkMode} />
+            <NoteEditor setElementData={setElementData} elementData={elementData} body={elementData.body} darkMode={props.darkMode} />
           ) : (
             <ToDoEditor tasks={elementData.tasks} darkMode={props.darkMode} />
           )}
