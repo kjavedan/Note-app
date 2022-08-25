@@ -13,8 +13,6 @@ export default function Editor(props) {
   // there is high chance that the element not be saved if something unexpected happens
 
 
-
-
   // save the elemnt data for us
   const [elementData, setElementData] = React.useState({});
 
@@ -26,8 +24,15 @@ export default function Editor(props) {
     console.log('HOHO');
     saveElement();
   }
-  function deleteElement(){
-    console.log('DELETE')
+  function deleteEmptyElement(toBeDeleted){
+    props.setMessage('empty')
+    props.setMainState(prevState => {
+      return prevState.filter(element => {
+        if(element.id !== toBeDeleted.id){
+          return element;
+        }
+      })
+    })
   }
 
   function backToHome() {
@@ -36,33 +41,32 @@ export default function Editor(props) {
   }
 
   function saveElement(){
-     if(elementData.category === 'note' && !elementData.title && !elementData.body){
-      deleteEmptyNote()
+    if(elementData.category === 'note' && !elementData.title && !elementData.body){
+      deleteEmptyElement(elementData); // deleting empty note
     }
-    else if(elementData.category === 'todo' && !elementData.title && !elementData.tasks.height){
-      deleteEmptyTodo()
+    else if(elementData.category === 'todo' && !elementData.title && !elementData.tasks.length){
+      deleteEmptyElement(elementData); // deleting empty todo
     }
     else{
       props.setMessage('save');
-      // modify the main state with the new value of the current Element
-      props.setMainState(prevState => {
-        return prevState.map(element => {
+      // modify the main state with the new value of the current Element and put it on the top of the list
+        const newArr = []
+         props.mainState.map(element => {
           if(element.id == elementData.id){
-            console.log(elementData)
-            return elementData;
-          }else return element;
+            if(elementData.body !== element.body || elementData.title !== element.title){
+              newArr.unshift(elementData);
+            }else{
+              newArr.push(elementData)
+            }
+          }else newArr.push(element);
         })
-      })
+        props.setMainState(newArr)
     }
   }
 
-  function deleteEmptyNote(){
-    props.setMessage('empty-note')
-  }
+ 
 
-  function deleteEmptyTodo(){
-    props.setMessage('empty-todo')
-  }
+  
 
   function handleTheme() {
     setOpenTheme((prevTheme) => !prevTheme);

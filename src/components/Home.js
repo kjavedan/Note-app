@@ -89,27 +89,14 @@ export default function Home() {
   const [message, setMessage] = React.useState();
 
   // clear the notification message after 3 seconds and delete empty elements
+  // bug -> it deletes the element before the user can enter any input
+  // solution -> send the checking to editor page and send the result for the home page
   React.useEffect(()=>{
     setTimeout(()=>{
       setMessage();
-      deleteEmptyElements();
     },3000)
   }, [openEditor])
 
-  
-  function deleteEmptyElements(){
-    setMainState(prevState => {
-      return prevState.filter(element =>{
-        if(element.category === 'note' && element.title || element.body){
-          return element;
-        }
-        else if(element.category === 'todo') {
-          if(element.title || element.tasks.length) return element;
-        }
-      })
-    })
-  }
-  
 
   function openClickedElement(id, category) {
     setClickedElement(id);
