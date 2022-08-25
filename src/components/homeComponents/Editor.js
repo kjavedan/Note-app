@@ -6,21 +6,32 @@ import { FiShare } from "react-icons/fi";
 import { MdOutlineColorLens } from "react-icons/md";
 
 export default function Editor(props) {
+
+  // here we can get the data from the inputs and assign
+  // them to element data  then on clicking certain btn we modify the main state
+  // it would be more efficient but it will cuse us some bad user experience because
+  // there is high chance that the element not be saved if something unexpected happens
+
+
+
+
+  // save the elemnt data for us
   const [elementData, setElementData] = React.useState({});
 
+  // save the element title 
   const [title, setTitle] = React.useState();
 
+  // open the theme button
   const [openTheme, setOpenTheme] = React.useState(false);
+
+  function save(){
+    console.log('HOHO');
+    saveElement();
+  }
 
   function backToHome() {
     props.openEditor(false);
-    //check if the element is empty
-    // if it is don't save it into the state and 
-    // notify the user that empty element was note saved
-    // if(!elementData.title && !elementData.body){
-    //   console.log('wasnt saved')
-    // }
-    saveElement()
+    saveElement();
   }
 
   function saveElement(){
@@ -31,15 +42,23 @@ export default function Editor(props) {
       deleteEmptyTodo()
     }
     else{
-      props.setMessage('save')
+      props.setMessage('save');
+      // modify the main state with the new value of the current Element
+      props.setMainState(prevState => {
+        return prevState.map(element => {
+           {
+            element.id === elementData.id 
+            ? 
+            elementData
+            :
+            element
+          }
+        })
+      })
     }
-
   }
 
   function deleteEmptyNote(){
-    // set some kind of state in the home page with note value
-    // create a function that display a message base on the value of the state
-    // display the message for couple of second and reset the value of the state
     props.setMessage('empty-note')
   }
 
@@ -50,7 +69,11 @@ export default function Editor(props) {
   function handleTheme() {
     setOpenTheme((prevTheme) => !prevTheme);
   }
-
+ // here we are getting the current Element from main state
+ // to save the modified element we can do :
+ // 1- modifying the state on click back to home btn ->pros: faster - less memory consomption || cons: bad user experience
+ // 2- modifying the main state directly on any change happens -> pros: good user experience || cons: memory consomption
+ // 3. better solution is that we add another btn for saving as well so we can modify from to places
   React.useEffect(() => {
     props.mainState.forEach((item) => {
       if (item.id === props.clickedElement) {
@@ -62,6 +85,7 @@ export default function Editor(props) {
 
   function changeTitle(e) {
     setTitle(e.target.value);
+    setElementData({...elementData, [elementData.title] : title})
   }
 
   return (

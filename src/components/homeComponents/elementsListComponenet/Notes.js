@@ -49,18 +49,14 @@ export default function Notes(props) {
   let style = {};
  
   function getMessage(){
-    if(props.message === 'empty-note'){
-      style.backgroundColor = 'lightcoral'
-      return "empty"
-    }
-    else if(props.message === 'empty-todo'){
-      style.backgroundColor = 'lightcoral'
-      return "empty"
-    }
-    else{
+    if(props.message === 'save'){
       style.backgroundColor = 'lightgreen'
       style.width = '80px'
       return 'saved'
+    }
+    else{
+      style.backgroundColor = 'lightcoral'
+      return "empty"
     } 
   }
   

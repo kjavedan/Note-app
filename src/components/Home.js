@@ -88,7 +88,7 @@ export default function Home() {
   // state to notify the user with happening changes
   const [message, setMessage] = React.useState();
 
-  // clear the message notify after 3 seconds
+  // clear the notification message after 3 seconds and delete empty elements
   React.useEffect(()=>{
     setTimeout(()=>{
       setMessage();
@@ -96,9 +96,6 @@ export default function Home() {
     },3000)
   }, [openEditor])
 
-
-  function displayMessage(){
-  }
   
   function deleteEmptyElements(){
     setMainState(prevState => {
@@ -107,7 +104,7 @@ export default function Home() {
           return element;
         }
         else if(element.category === 'todo') {
-          if(element.title || element.tasks.length) return element
+          if(element.title || element.tasks.length) return element;
         }
       })
     })

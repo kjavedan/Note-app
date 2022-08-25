@@ -1,6 +1,7 @@
 import React from "react";
 
 export default function NoteEditor(props) {
+  
   const [data, setData] = React.useState(props.body);
 
   React.useEffect(() => {
