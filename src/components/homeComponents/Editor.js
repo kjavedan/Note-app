@@ -18,9 +18,6 @@ export default function Editor(props) {
   // save the elemnt data for us
   const [elementData, setElementData] = React.useState({});
 
-  // save the element title 
-  const [title, setTitle] = React.useState();
-
   // open the theme button
   const [openTheme, setOpenTheme] = React.useState(false);
 
@@ -79,14 +76,12 @@ export default function Editor(props) {
     props.mainState.forEach((item) => {
       if (item.id === props.clickedElement) {
         setElementData(item);
-        setTitle(item.title);
       }
     });
   }, []);
 
   function changeTitle(e) {
-    setTitle(e.target.value);
-    setElementData({...elementData, [elementData.title] : title})
+    setElementData({...elementData, title : e.target.value})
   }
 
   return (
@@ -112,7 +107,7 @@ export default function Editor(props) {
           placeholder="Title"
           type="text"
           className={`title ${props.darkMode ? "dark" : ""}`}
-          value={title}
+          value={elementData.title}
           onChange={changeTitle}
         ></textarea>
         <span className={`date ${props.darkMode ? "dark" : ""}`}>

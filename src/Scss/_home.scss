@@ -209,6 +209,7 @@
       .todo-title {
         font: 700 1.3rem $ff-primary-2;
         color: $primary-txt-clr-4;
+        text-transform: capitalize;
 
         &.dark {
           color: $primary-dark-txt-clr-1;
