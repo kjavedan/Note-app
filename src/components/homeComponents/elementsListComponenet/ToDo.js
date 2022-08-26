@@ -3,6 +3,7 @@ import { MdDone } from "react-icons/md";
 import { nanoid } from "nanoid";
 
 export default function ToDo(props) {
+
   // function to display the todo task on the screen
   function dispalyTask(tasks) {
     const todoTask = tasks.map((task) => {
@@ -35,7 +36,7 @@ export default function ToDo(props) {
       </h4>
       <div className="todo-list">{dispalyTask(props.tasks)}</div>
       <div className={`note-info ${props.darkMode ? "dark" : ""}`}>
-        <span className="note-date">{props.date}</span>
+        <span className="note-date">{props.shortDate}</span>
         <span className="note-category">{props.category}</span>
       </div>
     </div>

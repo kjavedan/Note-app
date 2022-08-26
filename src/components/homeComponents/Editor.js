@@ -71,7 +71,7 @@ export default function Editor(props) {
   function handleTheme() {
     setOpenTheme((prevTheme) => !prevTheme);
   }
- // here we are getting the current Element from main state
+ // we are getting the current Element from main state
  // to save the modified element we can do :
  // 1- modifying the state on click back to home btn ->pros: faster - less memory consomption || cons: bad user experience
  // 2- modifying the main state directly on any change happens -> pros: good user experience || cons: memory consomption

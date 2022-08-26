@@ -6,7 +6,20 @@ import { nanoid } from "nanoid";
 import { IoMdHeartEmpty, IoMdReturnLeft } from "react-icons/io";
 
 export default function Home() {
+
   const date = new Date();
+
+
+  function getShortDate(){
+    const option1 = { month: 'short'};
+    const option2 = { weekday : 'short'}
+    const shortMonth = new Intl.DateTimeFormat('en-US', option1).format(date);
+    const day = date.getDate();
+    const dayName =  new Intl.DateTimeFormat('en-US', option2).format(date);
+    const shortDate =  dayName + ' ' + day + ' ' + shortMonth;
+    return shortDate;
+  }
+  
 
   const [darkMode, setDarkMode] = React.useState(false);
 
@@ -17,6 +30,7 @@ export default function Home() {
       title: "tody tasks",
       theme: "default",
       date: date.toLocaleString(),
+      shortDate : getShortDate(),
       category: "todo",
       tasks: [
         {
@@ -47,6 +61,7 @@ export default function Home() {
       id: nanoid(),
       title: "noteTitle",
       body: "lets add more text so we can pass the 270px height limit hey my name is khaled javedan and i am 24 years old I am thinking about what is the best height for the note element one two three four five six seven eight",
+      shortDate : getShortDate(),
       date: date.toLocaleString(),
       category: "note",
       theme: "default",
@@ -109,6 +124,7 @@ export default function Home() {
       title: "",
       body: "",
       date: date.toLocaleString(),
+      shortDate : getShortDate(),
       category: "note",
       theme: "default",
     }
@@ -118,6 +134,7 @@ export default function Home() {
       title: "",
       theme: "default",
       date: date.toLocaleString(),
+      shortDate : getShortDate(),
       category: "todo",
       tasks: [
         

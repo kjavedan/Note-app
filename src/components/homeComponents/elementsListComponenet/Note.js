@@ -2,6 +2,7 @@ import React from "react";
 import { MdFormatLineSpacing } from "react-icons/md";
 
 export default function Note(props) {
+  console.log(props.shortDate)
   return (
     <div
       onClick={() => props.openClickedElement(props.id, props.category)}
@@ -14,7 +15,7 @@ export default function Note(props) {
         {props.body}
       </p>
       <div className={`note-info ${props.darkMode ? "dark" : ""}`}>
-        <span className="note-date">{props.date}</span>
+        <span className="note-date">{props.shortDate}</span>
         <span className="note-category">{props.category}</span>
       </div>
     </div>

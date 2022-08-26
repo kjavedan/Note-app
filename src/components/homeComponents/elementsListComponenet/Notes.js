@@ -26,6 +26,7 @@ export default function Notes(props) {
           body={item.body}
           theme={item.theme}
           date={item.date}
+          shortDate={item.shortDate}
           title={item.title}
           category={item.category}
         />
@@ -42,6 +43,7 @@ export default function Notes(props) {
           theme={item.theme}
           category={item.category}
           date={item.date}
+          shortDate={item.shortDate}
         />
       );
     }

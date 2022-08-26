@@ -18,6 +18,14 @@ export default function ToDoEditor(props) {
     setShowFinishedTask(prevState => !prevState)
   }
 
+  // firstly we need a function to grap all tasks from the element and
+  // display them as a single task on the screen
+  // we need to check the is checked value if its true
+  // we will hide the element in the tasks and shows it in finished task
+  
+  // step 1. pass props.tasks to the todo editor
+  // step 2. itirate over them  and display
+
   return (
     <div className="tasks-container">
       <div className={`create-task ${props.darkMode ? 'dark' : ''}`}>
@@ -35,8 +43,9 @@ export default function ToDoEditor(props) {
           className="down-icon" />
           Tasks
         </div>
-
-        <div className={`task ${props.darkMode ? 'dark' : ''}`}>
+        {/* where tasks will go */}
+        
+        {/* <div className={`task ${props.darkMode ? 'dark' : ''}`}>
           <div className="check">
             <span className="tick"></span>
           </div>
@@ -51,7 +60,7 @@ export default function ToDoEditor(props) {
               <FiTrash2 />
             </button>
           </div>
-        </div>
+        </div> */}
       </div>
       <div className={`accomplished-tasks ${showFinishedTasks ? '' : 'hide'}`}>
           <div 
@@ -63,7 +72,9 @@ export default function ToDoEditor(props) {
           />
            Accomplished Tasks
           </div>
-          <div className="task">
+          {/* where finished task will go */}
+          
+          {/* <div className="task">
           <div className="check">
             <span className="tick">
               <MdDone />
@@ -80,7 +91,7 @@ export default function ToDoEditor(props) {
               <FiTrash2 />
             </button>
           </div>
-        </div>
+        </div> */}
       </div>
     </div>
   );
