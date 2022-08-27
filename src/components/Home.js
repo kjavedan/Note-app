@@ -55,6 +55,26 @@ export default function Home() {
         },
       ],
     },
+    {
+      id: nanoid(),
+      title: "test",
+      theme: "default",
+      date: date.toLocaleString(),
+      shortDate : getShortDate(),
+      category: "todo",
+      tasks: [
+        {
+          id: nanoid(),
+          body: "hit the gym",
+          isChecked: true,
+        },
+        {
+          id: nanoid(),
+          body: "buy food",
+          isChecked: false,
+        },
+      ],
+    },
 
     //object 2 -> note
     {

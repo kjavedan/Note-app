@@ -6,6 +6,8 @@ import { FaPlus } from "react-icons/fa";
 
 
 export default function ToDoEditor(props) {
+
+  const [taskBody, setTaskBody] = React.useState('');
  
   const [showTasks, setShowTasks] = React.useState(true);
 
@@ -28,13 +30,33 @@ export default function ToDoEditor(props) {
   }
   const tasks = displayTasks();
 
+  function handleChange(e){
+    setTaskBody(e.target.value);
+  }
+
+  function handleSubmit(e){
+    e.preventDefault();
+    console.log(taskBody)
+    setTaskBody('')
+  }
+
   return (
     <div className="tasks-container">
       <div className={`create-task ${props.darkMode ? 'dark' : ''}`}>
-        <input className={props.darkMode ? 'dark' : ''} type="text" placeholder="Enter your task..." />
-        <button className={props.darkMode ? 'dark' : ''}>
-          <FaPlus />
-        </button>
+        <form onSubmit={handleSubmit}>
+          <input
+          value={taskBody}
+          onChange={handleChange} 
+          className={props.darkMode ? 'dark' : ''} 
+          type="text" 
+          placeholder="Enter your task..." 
+          />
+          <button
+          className={props.darkMode ? 'dark' : ''}
+          >
+            <FaPlus />
+          </button>
+        </form>
       </div>
       <div className={`tasks ${showTasks ? '' : 'hide'}`}>
         <div 
