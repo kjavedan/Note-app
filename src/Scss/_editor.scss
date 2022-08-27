@@ -227,10 +227,10 @@
               align-items: center;
 
               .tick {
-                // display : none;
+                display : none;
 
                 &.checked {
-                  // display : block;
+                  display : block;
                 }
               }
             }
@@ -278,6 +278,14 @@
             }
           }
         }
+        .tasks{
+          .task{
+            display: flex;
+            &.checked{
+              display: none;
+            }
+          }
+        }
         .accomplished-tasks {
           height: 200px;
           margin-bottom: 7rem;
@@ -290,6 +298,12 @@
           }
           .to-do-text {
             text-decoration-line: line-through;
+          }
+          .task{
+            display: none;
+            &.checked{
+              display: flex;
+            }
           }
         }
       }

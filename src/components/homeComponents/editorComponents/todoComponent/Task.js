@@ -4,13 +4,13 @@ import { MdDone } from "react-icons/md";
 
 export default function Task(props) {
   return (
-        <div className={`task ${props.darkMode ? 'dark' : ''}`}>
+        <div className={`task ${props.darkMode ? 'dark' : ''} ${props.isChecked ? 'checked' : ''}`}>
           <div className="check">
-            <span className="tick"><MdDone /></span>
+            <span className={`tick ${props.isChecked ? 'checked' : ''}`}><MdDone /></span>
           </div>
           <div className="btns">
             <button id="btn" className={props.darkMode ? 'dark' : ''}>
-              <span className="to-do-text">hit the gym</span> 
+              <span className="to-do-text">{props.body}</span> 
             </button>
             <button className="edit">
               <FiEdit />

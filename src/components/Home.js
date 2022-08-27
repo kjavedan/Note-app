@@ -36,7 +36,7 @@ export default function Home() {
         {
           id: nanoid(),
           body: "task one",
-          isChecked: false,
+          isChecked: true,
         },
         {
           id: nanoid(),
@@ -46,7 +46,7 @@ export default function Home() {
         {
           id: nanoid(),
           body: "task three",
-          isChecked: false,
+          isChecked: true,
         },
         {
           id: nanoid(),
