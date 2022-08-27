@@ -2,7 +2,6 @@ import React from "react";
 import { MdFormatLineSpacing } from "react-icons/md";
 
 export default function Note(props) {
-  console.log(props.shortDate)
   return (
     <div
       onClick={() => props.openClickedElement(props.id, props.category)}

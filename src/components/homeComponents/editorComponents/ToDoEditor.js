@@ -1,11 +1,12 @@
 import React from "react";
-import { FaPlus } from "react-icons/fa";
-import { FiEdit, FiTrash2 } from "react-icons/fi";
-import { MdDone } from "react-icons/md";
+import Task from "./todoComponent/Task";
 import { BsChevronDown } from "react-icons/bs";
+import { FaPlus } from "react-icons/fa";
+
+
 
 export default function ToDoEditor(props) {
-
+ 
   const [showTasks, setShowTasks] = React.useState(true);
 
   const [showFinishedTasks, setShowFinishedTask ] = React.useState(true);
@@ -17,7 +18,16 @@ export default function ToDoEditor(props) {
   function toggleFinishedTasks(){
     setShowFinishedTask(prevState => !prevState)
   }
-
+  
+  function displayTasks(){
+    if(props.tasks){
+       return props.tasks.map(task =>{
+        return <Task key={task.id} id={task.id} body={task.body} isChecked={task.isChecked} darkMode={props.darkMode}/>
+       })
+    }
+  }
+  const tasks = displayTasks();
+  console.log(tasks)
   // firstly we need a function to grap all tasks from the element and
   // display them as a single task on the screen
   // we need to check the is checked value if its true
@@ -44,7 +54,7 @@ export default function ToDoEditor(props) {
           Tasks
         </div>
         {/* where tasks will go */}
-        
+        {tasks}
      
       </div>
       <div className={`accomplished-tasks ${showFinishedTasks ? '' : 'hide'}`}>
@@ -58,25 +68,8 @@ export default function ToDoEditor(props) {
            Accomplished Tasks
           </div>
           {/* where finished task will go */}
-          
-          {/* <div className="task">
-          <div className="check">
-            <span className="tick">
-              <MdDone />
-            </span>
-          </div>
-          <div className="btns">
-            <button id="btn">
-              <span className="to-do-text">hit the gym</span> 
-            </button>
-            <button className="edit">
-              <FiEdit />
-            </button>
-            <button className="delete">
-              <FiTrash2 />
-            </button>
-          </div>
-        </div> */}
+          {tasks}
+
       </div>
     </div>
   );

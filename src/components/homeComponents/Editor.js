@@ -7,14 +7,11 @@ import { MdOutlineColorLens } from "react-icons/md";
 
 export default function Editor(props) {
 
-  // here we can get the data from the inputs and assign
-  // them to element data  then on clicking certain btn we modify the main state
-  // it would be more efficient but it will cuse us some bad user experience because
-  // there is high chance that the element not be saved if something unexpected happens
-
-
   // save the elemnt data for us
   const [elementData, setElementData] = React.useState({});
+
+  // state for saving todo tasks
+  const [tasks, setTasks] = React.useState()
 
   // open the theme button
   const [openTheme, setOpenTheme] = React.useState(false);
@@ -64,25 +61,21 @@ export default function Editor(props) {
     }
   }
 
- 
 
   
 
   function handleTheme() {
     setOpenTheme((prevTheme) => !prevTheme);
   }
- // we are getting the current Element from main state
- // to save the modified element we can do :
- // 1- modifying the state on click back to home btn ->pros: faster - less memory consomption || cons: bad user experience
- // 2- modifying the main state directly on any change happens -> pros: good user experience || cons: memory consomption
- // 3. better solution is that we add another btn for saving as well so we can modify from to places
   React.useEffect(() => {
     props.mainState.forEach((item) => {
       if (item.id === props.clickedElement) {
         setElementData(item);
+        setTasks(item.tasks)
       }
     });
   }, []);
+
 
   function changeTitle(e) {
     setElementData({...elementData, title : e.target.value})
@@ -122,7 +115,7 @@ export default function Editor(props) {
           {props.editorType === "note" ? (
             <NoteEditor setElementData={setElementData} elementData={elementData} body={elementData.body} darkMode={props.darkMode} />
           ) : (
-            <ToDoEditor tasks={elementData.tasks} darkMode={props.darkMode} />
+            <ToDoEditor tasks={tasks} darkMode={props.darkMode} />
           )}
         </div>
         {/* ---------- */}
