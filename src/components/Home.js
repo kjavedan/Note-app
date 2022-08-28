@@ -179,7 +179,7 @@ export default function Home() {
         <Editor
           darkMode={darkMode}
           editorType={editorType}
-          openEditor={setOpenEditor}
+          setOpenEditor={setOpenEditor}
           mainState={mainState}
           setMainState={setMainState}
           clickedElement={clickedElement}

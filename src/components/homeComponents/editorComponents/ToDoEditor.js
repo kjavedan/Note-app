@@ -57,8 +57,9 @@ export default function ToDoEditor(props) {
     if(taskBody){
       setShowTasks(true)
       setMessage('success');
-      return props.setTasks(prevState => {
-        return [{id:nanoid(), body:taskBody, isChecked:false},...prevState]
+      // updating the elementData tasks property  with the new task
+      return props.setElementData(prevState => {
+        return {...prevState, tasks: [{id: nanoid(), body: taskBody, isChecked: false},...prevState.tasks]}
       })
     }else{
       setMessage('danger');

@@ -11,7 +11,7 @@ export default function Editor(props) {
   const [elementData, setElementData] = React.useState({});
 
   // state for saving todo tasks
-  const [tasks, setTasks] = React.useState()
+  // const [tasks, setTasks] = React.useState()
 
   // open the theme button
   const [openTheme, setOpenTheme] = React.useState(false);
@@ -21,6 +21,7 @@ export default function Editor(props) {
     console.log('HOHO');
     saveElement();
   }
+
   function deleteEmptyElement(toBeDeleted){
     props.setMessage('empty')
     props.setMainState(prevState => {
@@ -34,8 +35,9 @@ export default function Editor(props) {
 
   function backToHome() {
     saveElement(elementData.category);
-    props.openEditor(false);
+    props.setOpenEditor(false);
   }
+  console.log('Editor rendered');
 
   function saveElement(category){
     if(category === 'note' && !elementData.title && !elementData.body){
@@ -84,7 +86,7 @@ export default function Editor(props) {
     props.mainState.forEach((item) => {
       if (item.id === props.clickedElement) {
         setElementData(item);
-        setTasks(item.tasks)
+        // setTasks(item.tasks)
       }
     });
   }, []);
@@ -128,7 +130,7 @@ export default function Editor(props) {
           {props.editorType === "note" ? (
             <NoteEditor setElementData={setElementData} elementData={elementData} body={elementData.body} darkMode={props.darkMode} />
           ) : (
-            <ToDoEditor setElementData={setElementData} tasks={tasks} setTasks={setTasks} darkMode={props.darkMode} />
+            <ToDoEditor setElementData={setElementData} elementData={elementData} tasks={elementData.tasks} darkMode={props.darkMode} />
           )}
         </div>
         {/* ---------- */}
