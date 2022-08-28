@@ -3,6 +3,58 @@ import { FiEdit, FiTrash2 } from "react-icons/fi";
 import { MdDone } from "react-icons/md";
 
 export default function Task(props) {
+
+    const [taskBody, setTaskBody] = React.useState(props.body);
+
+    const [edit, setEdit] = React.useState(false);
+
+    function deleteTask(id){
+         props.setTasks(prevState =>{
+            return prevState.filter(task =>{
+                if(task.id !== id){
+                    return task;
+                }
+            })
+        })
+    }
+
+    function editTask(id){
+        setEdit(true)
+        console.log(id)
+    }
+
+    function handleChange(e){
+        setTaskBody(e.target.value);
+    }
+
+    function confirmEdit(id){
+        props.setTasks(prevState => {
+            return prevState.map(task => {
+                if(task.id === id){
+                    return {...task, body : taskBody}
+                }else{
+                    return task;
+                }
+            })
+        })
+        setEdit(false)
+    }
+
+    function toggleTask(id){
+        props.setShowTasks(true);
+        props.setShowFinishedTasks(true);
+        props.setTasks(prevState => {
+            return prevState.map(task => {
+                if(task.id === id){
+                    return {...task, isChecked: !task.isChecked}
+                }else{
+                    return task;
+                }
+            })
+        })
+    }
+
+
   return (
         <div className={`task ${props.darkMode ? 'dark' : ''} ${props.isChecked ? 'checked' : ''}`}>
           <div className="check">
@@ -10,12 +62,34 @@ export default function Task(props) {
           </div>
           <div className="btns">
             <button id="btn" className={props.darkMode ? 'dark' : ''}>
-              <span className="to-do-text">{props.body}</span> 
+            {edit 
+            ? 
+            <input className={`${props.darkMode ? 'dark' : ''}`} type='text' autoFocus={true} value={taskBody} onChange={handleChange} /> 
+            : 
+            <div onClick={()=> toggleTask(props.id)} className="to-do-text">{props.body}</div>}
+               
             </button>
-            <button className="edit">
+
+            {edit
+            ?     
+            <button 
+            onClick={()=> confirmEdit(props.id)}
+            className="edit">
+              <MdDone />
+            </button>
+            :
+            <button 
+            onClick={()=> editTask(props.id)}
+            className="edit">
               <FiEdit />
             </button>
-            <button className="delete">
+            }
+
+
+            <button 
+            onClick={()=> deleteTask(props.id)}
+            className="delete"
+            >
               <FiTrash2 />
             </button>
           </div>

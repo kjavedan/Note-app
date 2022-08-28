@@ -33,34 +33,47 @@ export default function Editor(props) {
   }
 
   function backToHome() {
+    saveElement(elementData.category);
     props.openEditor(false);
-    saveElement();
   }
 
-  function saveElement(){
-    if(elementData.category === 'note' && !elementData.title && !elementData.body){
+  function saveElement(category){
+    if(category === 'note' && !elementData.title && !elementData.body){
       deleteEmptyElement(elementData); // deleting empty note
     }
-    else if(elementData.category === 'todo' && !elementData.title && !elementData.tasks.length){
+    else if(category === 'todo' && !elementData.title && !elementData.tasks.length){
       deleteEmptyElement(elementData); // deleting empty todo
     }
     else{
       props.setMessage('save');
+    
       // modify the main state with the new value of the current Element and put it on the top of the list
         const newArr = []
          props.mainState.map(element => {
           if(element.id == elementData.id){
-            if(elementData.body !== element.body || elementData.title !== element.title){
-              newArr.unshift(elementData);
-            }else{
-              newArr.push(elementData)
-            }
+            // checking the note value
+              if(category === 'note'){
+                 if(elementData.body !== element.body || elementData.title !== element.title){
+                  newArr.unshift(elementData);
+                }else{
+                  newArr.push(elementData)
+                }
+              }else{
+                if(elementData.tasks.length !== element.tasks.length || elementData.title !== element.title){
+                  newArr.unshift(elementData);
+                }else{
+                  newArr.push(elementData)
+                }
+              }
           }else newArr.push(element);
         })
         props.setMainState(newArr)
     }
   }
 
+
+  //first i need to change elementData tasks into tasks
+  // then i need to change main state todo element to our modified element
 
   
 
@@ -115,7 +128,7 @@ export default function Editor(props) {
           {props.editorType === "note" ? (
             <NoteEditor setElementData={setElementData} elementData={elementData} body={elementData.body} darkMode={props.darkMode} />
           ) : (
-            <ToDoEditor tasks={tasks} darkMode={props.darkMode} />
+            <ToDoEditor setElementData={setElementData} tasks={tasks} setTasks={setTasks} darkMode={props.darkMode} />
           )}
         </div>
         {/* ---------- */}

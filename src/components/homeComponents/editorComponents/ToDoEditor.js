@@ -2,29 +2,42 @@ import React from "react";
 import Task from "./todoComponent/Task";
 import { BsChevronDown } from "react-icons/bs";
 import { FaPlus } from "react-icons/fa";
-
+import { nanoid } from "nanoid";
 
 
 export default function ToDoEditor(props) {
 
+
   const [taskBody, setTaskBody] = React.useState('');
+
+  const [message, setMessage] = React.useState('');
  
   const [showTasks, setShowTasks] = React.useState(true);
 
-  const [showFinishedTasks, setShowFinishedTask ] = React.useState(true);
+  const [showFinishedTasks, setShowFinishedTasks ] = React.useState(true);
 
   function toggleDisplayTasks(){
     setShowTasks(prevState => !prevState)
   }
 
   function toggleFinishedTasks(){
-    setShowFinishedTask(prevState => !prevState)
+    setShowFinishedTasks(prevState => !prevState)
   }
   
   function displayTasks(){
     if(props.tasks){
        return props.tasks.map(task =>{
-        return <Task key={task.id} id={task.id} body={task.body} isChecked={task.isChecked} darkMode={props.darkMode}/>
+        return (
+          <Task 
+          key={task.id} 
+          id={task.id} 
+          body={task.body} 
+          isChecked={task.isChecked} 
+          darkMode={props.darkMode} 
+          setTasks={props.setTasks} 
+          setShowTasks={setShowTasks} 
+          setShowFinishedTasks={setShowFinishedTasks} 
+          />)
        })
     }
   }
@@ -36,12 +49,28 @@ export default function ToDoEditor(props) {
 
   function handleSubmit(e){
     e.preventDefault();
-    console.log(taskBody)
+    addTask();
     setTaskBody('')
+  }
+
+  function addTask(){
+    if(taskBody){
+      setShowTasks(true)
+      setMessage('success');
+      return props.setTasks(prevState => {
+        return [{id:nanoid(), body:taskBody, isChecked:false},...prevState]
+      })
+    }else{
+      setMessage('danger');
+      setTimeout(()=>{
+        setMessage('')
+      },2000)
+    }
   }
 
   return (
     <div className="tasks-container">
+      <div className={`message ${message}`}>{message === 'danger' ? "can't add an empty task" : ""}</div>
       <div className={`create-task ${props.darkMode ? 'dark' : ''}`}>
         <form onSubmit={handleSubmit}>
           <input
@@ -49,6 +78,7 @@ export default function ToDoEditor(props) {
           onChange={handleChange} 
           className={props.darkMode ? 'dark' : ''} 
           type="text" 
+          autoFocus={true}
           placeholder="Enter your task..." 
           />
           <button

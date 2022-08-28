@@ -52,6 +52,11 @@ $ff-primary-2: "Montserrat Alternates", sans-serif;
 //---------------------------------------
 
 //mixins
+@mixin centrlize {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 @mixin centrlize-space-between {
   display: flex;
   align-items: center;

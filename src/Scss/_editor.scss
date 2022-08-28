@@ -126,6 +126,26 @@
         // border: solid 1px black;
         padding: 0.2rem 0;
 
+
+        .message{
+          width: 200px;
+          height: 30px;
+          font: 500 .8rem $ff-primary-2;
+          color: $primary-clr-1;
+          display: none;
+          position: fixed;
+          left: 50%;
+          transform: translateX(-50%);
+          top: 60px;
+          border-radius: 20px;
+          @include centrlize;
+
+          &.danger{
+            background-color: lightcoral;
+            display: flex;
+          }
+        }
+
         .create-task {
           width: 100%;
           height: auto;
@@ -243,6 +263,16 @@
               align-items: center;
               justify-content: space-around;
 
+              input{
+                outline: none;
+                border: none;
+
+                &.dark{
+                  color: $primary-clr-1;
+                  background-color: $primary-dark-clr-1;
+                }
+              }
+
               #btn {
                 width: 75%;
                 font: 500 0.8rem $ff-primary-1;
@@ -297,6 +327,7 @@
             background-color: $primary-dark-clr-5;
           }
           .to-do-text {
+            width: 100%;
             text-decoration-line: line-through;
           }
           .task{
