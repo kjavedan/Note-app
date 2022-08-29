@@ -91,7 +91,6 @@ export default function Editor(props) {
     });
   }, []);
 
-
   function changeTitle(e) {
     setElementData({...elementData, title : e.target.value})
   }

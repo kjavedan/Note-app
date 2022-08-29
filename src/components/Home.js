@@ -5,7 +5,7 @@ import ElementsList from "./homeComponents/ElementsList";
 import { nanoid } from "nanoid";
 import { IoMdHeartEmpty, IoMdReturnLeft } from "react-icons/io";
 
-export default function Home() {
+export default function Home({mainState, setMainState}) {
 
   const date = new Date();
 
@@ -20,97 +20,9 @@ export default function Home() {
     return shortDate;
   }
   
-
   const [darkMode, setDarkMode] = React.useState(false);
 
-  const [mainState, setMainState] = React.useState([
-    //object 1 -> to-do
-    {
-      id: nanoid(),
-      title: "tody tasks",
-      theme: "default",
-      date: date.toLocaleString(),
-      shortDate : getShortDate(),
-      category: "todo",
-      tasks: [
-        {
-          id: nanoid(),
-          body: "task one",
-          isChecked: true,
-        },
-        {
-          id: nanoid(),
-          body: "task two",
-          isChecked: false,
-        },
-        {
-          id: nanoid(),
-          body: "task three",
-          isChecked: true,
-        },
-        {
-          id: nanoid(),
-          body: "task four",
-          isChecked: true,
-        },
-      ],
-    },
-    {
-      id: nanoid(),
-      title: "test",
-      theme: "default",
-      date: date.toLocaleString(),
-      shortDate : getShortDate(),
-      category: "todo",
-      tasks: [
-        {
-          id: nanoid(),
-          body: "hit the gym",
-          isChecked: true,
-        },
-        {
-          id: nanoid(),
-          body: "buy food",
-          isChecked: false,
-        },
-      ],
-    },
 
-    //object 2 -> note
-    {
-      id: nanoid(),
-      title: "noteTitle",
-      body: "lets add more text so we can pass the 270px height limit hey my name is khaled javedan and i am 24 years old I am thinking about what is the best height for the note element one two three four five six seven eight",
-      shortDate : getShortDate(),
-      date: date.toLocaleString(),
-      category: "note",
-      theme: "default",
-    },
-    {
-      id: nanoid(),
-      title: "sick",
-      body: "lets add more years old the note element one two three four five six seven eight",
-      date: date.toLocaleString(),
-      category: "note",
-      theme: "default",
-    },
-    {
-      id: nanoid(),
-      title: "Another one",
-      body: "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Animi doloremque aut cum illo minus dolorem voluptate adipisci porro minima aliquam?",
-      date: date.toLocaleString(),
-      category: "note",
-      theme: "default",
-    },
-    {
-      id: nanoid(),
-      title: "HoHo",
-      body: " voluptate adipisci porro minima aliquam?",
-      date: date.toLocaleString(),
-      category: "note",
-      theme: "default",
-    },
-  ]);
   // state to open the editor
   const [openEditor, setOpenEditor] = React.useState(false);
 

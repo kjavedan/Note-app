@@ -9,12 +9,12 @@ export default function Task(props) {
     const [edit, setEdit] = React.useState(false);
 
     function deleteTask(id){
-         props.setTasks(prevState =>{
-            return prevState.filter(task =>{
+         props.setElementData(prevState =>{
+            return {...prevState, tasks : prevState.tasks.filter(task =>{
                 if(task.id !== id){
                     return task;
                 }
-            })
+            })}
         })
     }
 
@@ -28,36 +28,39 @@ export default function Task(props) {
     }
 
     function confirmEdit(id){
-        props.setTasks(prevState => {
-            return prevState.map(task => {
+        props.setElementData(prevState => {
+            return {...prevState, tasks: prevState.tasks.map(task => {
                 if(task.id === id){
                     return {...task, body : taskBody}
                 }else{
                     return task;
                 }
-            })
+            })}
         })
         setEdit(false)
     }
 
     function toggleTask(id){
+        console.log(id)
         props.setShowTasks(true);
         props.setShowFinishedTasks(true);
-        props.setTasks(prevState => {
-            return prevState.map(task => {
+        props.setElementData(prevState => {
+            return {...prevState, tasks: prevState.tasks.map(task => {
                 if(task.id === id){
                     return {...task, isChecked: !task.isChecked}
                 }else{
                     return task;
                 }
-            })
+            })}
         })
     }
 
 
   return (
         <div className={`task ${props.darkMode ? 'dark' : ''} ${props.isChecked ? 'checked' : ''}`}>
-          <div className="check">
+          <div 
+          onClick={()=> toggleTask(props.id)} 
+          className="check">
             <span className={`tick ${props.isChecked ? 'checked' : ''}`}><MdDone /></span>
           </div>
           <div className="btns">

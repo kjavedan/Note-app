@@ -34,7 +34,7 @@ export default function ToDoEditor(props) {
           body={task.body} 
           isChecked={task.isChecked} 
           darkMode={props.darkMode} 
-          setTasks={props.setTasks} 
+          setElementData={props.setElementData}
           setShowTasks={setShowTasks} 
           setShowFinishedTasks={setShowFinishedTasks} 
           />)
@@ -57,7 +57,6 @@ export default function ToDoEditor(props) {
     if(taskBody){
       setShowTasks(true)
       setMessage('success');
-      // updating the elementData tasks property  with the new task
       return props.setElementData(prevState => {
         return {...prevState, tasks: [{id: nanoid(), body: taskBody, isChecked: false},...prevState.tasks]}
       })

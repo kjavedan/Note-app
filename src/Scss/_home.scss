@@ -250,7 +250,7 @@
         color: $primary-txt-clr-4;
 
         .todo-task {
-          height: 28px;
+          min-height: 28px;
           display: flex;
           align-items: center;
 
@@ -260,7 +260,8 @@
 
           .check-box {
             height: 16px;
-            width: 16px;
+            min-width: 16px;
+         
             margin-right: 0.2rem;
             border: solid 1px $primary-txt-clr-4;
             border-radius: 50%;
