@@ -11,7 +11,14 @@ export default function Note(props) {
         }     
       }else return style;
     }
-   
+   function changeTextColor(color){
+    let style = {};
+    if(color === 'default' && props.darkMode){
+      return style = {
+        color : '#FFF'
+      }  
+    }
+   }
   
   return (
     <div
@@ -19,13 +26,13 @@ export default function Note(props) {
       onClick={() => props.openClickedElement(props.id, props.category)}
       className={`home-notes__note ${props.darkMode ? "dark" : ""}`}
     >
-      <h4 className={`note-title ${props.darkMode ? "dark" : ""}`}>
+      <h4 style={changeTextColor(props.theme)} className={`note-title ${props.darkMode ? "dark" : ""}`}>
         {props.title}
       </h4>
-      <p className={`note-text ${props.darkMode ? "dark" : ""}`}>
+      <p style={changeTextColor(props.theme)} className={`note-text ${props.darkMode ? "dark" : ""}`}>
         {props.body}
       </p>
-      <div className={`note-info ${props.darkMode ? "dark" : ""}`}>
+      <div style={changeTextColor(props.theme)} className={`note-info ${props.darkMode ? "dark" : ""}`}>
         <span className="note-date">{props.shortDate}</span>
         <span className="note-category">{props.category}</span>
       </div>

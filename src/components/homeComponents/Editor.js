@@ -13,26 +13,19 @@ export default function Editor(props) {
   // open the theme button
   const [openTheme, setOpenTheme] = React.useState(false);
 
+  
+  function handleTheme() {
+    setOpenTheme((prevTheme) => !prevTheme);
+  }
+
   function changeTheme(color){
-    // change the color in the main state
     setElementData({...elementData, theme : color})
+    setOpenTheme(false)
   }
+  
 
-  // this two will be invoked in the more btn where the user can  save and delete element
-  function save(){
-    console.log('HOHO');
-    saveElement();
-  }
-
-  function deleteEmptyElement(toBeDeleted){
-    props.setMessage('empty')
-    props.setMainState(prevState => {
-      return prevState.filter(element => {
-        if(element.id !== toBeDeleted.id){
-          return element;
-        }
-      })
-    })
+  function changeTitle(e) {
+    setElementData({...elementData, title : e.target.value})
   }
 
   function backToHome() {
@@ -49,7 +42,6 @@ export default function Editor(props) {
     }
     else{
       props.setMessage('save');
-    
       // modify the main state with the new value of the current Element and put it on the top of the list
         const newArr = []
          props.mainState.map(element => {
@@ -74,15 +66,17 @@ export default function Editor(props) {
     }
   }
 
-
-  //first i need to change elementData tasks into tasks
-  // then i need to change main state todo element to our modified element
-
-  
-
-  function handleTheme() {
-    setOpenTheme((prevTheme) => !prevTheme);
+    function deleteEmptyElement(toBeDeleted){
+    props.setMessage('empty')
+    props.setMainState(prevState => {
+      return prevState.filter(element => {
+        if(element.id !== toBeDeleted.id){
+          return element;
+        }
+      })
+    })
   }
+
   React.useEffect(() => {
     props.mainState.forEach((item) => {
       if (item.id === props.clickedElement) {
@@ -91,10 +85,6 @@ export default function Editor(props) {
       }
     });
   }, []);
-
-  function changeTitle(e) {
-    setElementData({...elementData, title : e.target.value})
-  }
 
   return (
     <div>
