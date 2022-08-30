@@ -1,6 +1,7 @@
 .editor {
   height: 100vh;
   width: 100%;
+  
 
   &-nav {
     height: 80px;
@@ -150,14 +151,12 @@
           width: 100%;
           height: auto;
           background-color: $primary-clr-1;
-          box-shadow: 0 3px 5px rgba(100, 183, 216, 0.8);
+          box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;          
           border-radius: 20px;
           padding: 0.3rem 0 0.1rem 0;
 
           &.dark {
             background-color: $primary-dark-clr-1;
-            box-shadow: rgba(0, 0, 0, 0.25) 0px 7px 29px 0px;
-            box-shadow: 0 3px 5px rgba(100, 183, 216, 0.8);
           }
 
           input {
@@ -350,7 +349,7 @@
     left: 0px;
     width: 100%;
     background-color: $primary-clr-1;
-    padding: 15px 10%;
+    padding: 15px 8%;
     display: flex;
     color: $primary-txt-clr-4;
     font-size: 2rem;
@@ -362,43 +361,73 @@
 
     .theme-btn {
       cursor: pointer;
+      @include centrlize;
     }
 
     .theme-container {
       width: 100%;
-      display: flex;
-      justify-content: space-around;
+      @include centrlize-space-around;
 
       .color {
         cursor: pointer;
-        width: 30px;
-        height: 30px;
+        width: 24px;
+        height: 24px;
         border-radius: 50%;
-        display: none;
-
+        visibility: hidden;
+        opacity: 0;
+        transform: translateX(-50%);
+        transition: all ease-in-out .2s;
+        
         &.show {
-          display: block;
+        visibility: visible;
+        opacity: 1;
+        transform: translateX(0%);
+        }
+      }
+      .default{
+        border: solid 2px $primary-txt-clr-1;
+        @include centrlize;
+
+        .line{
+          height: 23px;
+          width: 2px;
+          background-color: $primary-txt-clr-1;
+          position: absolute;
+          transform: rotate(45deg);
         }
       }
 
       .color-1 {
         background-color: $color-1;
+        transition-delay: .1s;
       }
 
       .color-2 {
         background-color: $color-2;
+        transition-delay: .2s;
       }
 
       .color-3 {
         background-color: $color-3;
+        transition-delay: .3s;
       }
 
       .color-4 {
         background-color: $color-4;
+        transition-delay: .4s;
       }
 
       .color-5 {
         background-color: $color-5;
+        transition-delay: .5s;
+      }
+      .color-6 {
+        background-color: $color-6;
+        transition-delay: .6s;
+      }
+      .color-7 {
+        background-color: $color-7;
+        transition-delay: .7s;
       }
     }
   }

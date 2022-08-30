@@ -66,7 +66,7 @@ export default function Nav(props) {
           <FiSearch />
         </span>
       </div>
-      <div className="home-nav__theme-switcher" onClick={changeTheme}>
+      <div className={`home-nav__theme-switcher ${props.darkMode ? 'dark' : ''}`} onClick={changeTheme}>
         <div className={`default-mode ${props.darkMode ? "dark" : ""} `}>
           <BsSun />
         </div>

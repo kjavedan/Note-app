@@ -19,9 +19,8 @@ export default function Home({mainState, setMainState}) {
     const shortDate =  dayName + ' ' + day + ' ' + shortMonth;
     return shortDate;
   }
-  
+  console.log('home rendered')
   const [darkMode, setDarkMode] = React.useState(false);
-
 
   // state to open the editor
   const [openEditor, setOpenEditor] = React.useState(false);
@@ -44,6 +43,7 @@ export default function Home({mainState, setMainState}) {
     },3000)
   }, [openEditor])
 
+  console.log(mainState)
 
   function openClickedElement(id, category) {
     setClickedElement(id);

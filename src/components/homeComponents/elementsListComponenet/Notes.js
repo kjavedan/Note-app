@@ -13,7 +13,8 @@ export default function Notes(props) {
       gutter: 10,
     });
   });
-
+  console.log('notes rendered')
+  console.log(props)
   // display the elements from the main state
   const elements = props.mainState.map((item) => {
     if (item.category === "note") {

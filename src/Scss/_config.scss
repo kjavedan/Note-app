@@ -21,6 +21,7 @@ $primary-dark-clr-3: #3a3a4c;
 $primary-dark-clr-4: #6f6fc8;
 $primary-dark-clr-5: #32a7e2;
 $primary-dark-clr-6: #353444;
+$primary-dark-clr-7: #575757;
 
 // text colors dark mode
 $primary-dark-txt-clr-1: #fff;
@@ -44,7 +45,8 @@ $color-2: #e6f0fd;
 $color-3: #d9d9d9;
 $color-4: #ffe598;
 $color-5: #ffe6d6;
-
+$color-6: #b5f7bb;
+$color-7: lightcoral;
 //---------------------------------------
 //fonts
 $ff-primary-1: "Montserrat", sans-serif;
@@ -69,3 +71,14 @@ $ff-primary-2: "Montserrat Alternates", sans-serif;
 }
 
 // animaiton
+@keyframes fade-in-right {
+  0%{
+    opacity: 0;
+    transform: translateX(-50%);
+  }
+  100%{
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+

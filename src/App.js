@@ -13,6 +13,7 @@ export default function App() {
     },[mainState])
     
     const [start, setStart] = React.useState(mainState.length ? true : false)
+  console.log('app rendered')
 
   return (
     <div className='container'>

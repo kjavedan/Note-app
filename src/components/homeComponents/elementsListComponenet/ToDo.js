@@ -26,8 +26,18 @@ export default function ToDo(props) {
     return todoTask;
   }
 
+    function changeTheme(color){
+    let style = {};
+      if(color !=='default'){
+          return style = {
+          backgroundColor : color
+        }
+      }else return style;
+    }
+
   return (
     <div
+      style={changeTheme(props.theme)}
       onClick={() => props.openClickedElement(props.id, props.category)}
       className={`home-notes__note ${props.darkMode ? "dark" : ""}`}
     >

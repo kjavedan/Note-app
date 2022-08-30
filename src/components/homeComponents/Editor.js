@@ -10,11 +10,13 @@ export default function Editor(props) {
   // save the elemnt data for us
   const [elementData, setElementData] = React.useState({});
 
-  // state for saving todo tasks
-  // const [tasks, setTasks] = React.useState()
-
   // open the theme button
   const [openTheme, setOpenTheme] = React.useState(false);
+
+  function changeTheme(color){
+    // change the color in the main state
+    setElementData({...elementData, theme : color})
+  }
 
   // this two will be invoked in the more btn where the user can  save and delete element
   function save(){
@@ -37,7 +39,6 @@ export default function Editor(props) {
     saveElement(elementData.category);
     props.setOpenEditor(false);
   }
-  console.log('Editor rendered');
 
   function saveElement(category){
     if(category === 'note' && !elementData.title && !elementData.body){
@@ -139,11 +140,14 @@ export default function Editor(props) {
           <MdOutlineColorLens />
         </div>
         <div className="theme-container">
-          <span className={`color color-1 ${openTheme ? "show" : ""}`}></span>
-          <span className={`color color-2 ${openTheme ? "show" : ""}`}></span>
-          <span className={`color color-3 ${openTheme ? "show" : ""}`}></span>
-          <span className={`color color-4 ${openTheme ? "show" : ""}`}></span>
-          <span className={`color color-5 ${openTheme ? "show" : ""}`}></span>
+          <div onClick={()=>changeTheme('default')} className={`color default ${openTheme ? "show" : ""}`}><div className="line"></div></div>
+          <span onClick={()=>changeTheme('#ffbbc2')} className={`color color-1 ${openTheme ? "show" : ""}`}></span>
+          <span onClick={()=>changeTheme('#e6f0fd')} className={`color color-2 ${openTheme ? "show" : ""}`}></span>
+          <span onClick={()=>changeTheme('#d9d9d9')} className={`color color-3 ${openTheme ? "show" : ""}`}></span>
+          <span onClick={()=>changeTheme('#ffe598')} className={`color color-4 ${openTheme ? "show" : ""}`}></span>
+          <span onClick={()=>changeTheme('#ffe6d6')} className={`color color-5 ${openTheme ? "show" : ""}`}></span>
+          <span onClick={()=>changeTheme('#b5f7bb')} className={`color color-6 ${openTheme ? "show" : ""}`}></span>
+          <span onClick={()=>changeTheme('lightcoral')} className={`color color-7 ${openTheme ? "show" : ""}`}></span>
         </div>
       </div>
     </div>

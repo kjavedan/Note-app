@@ -32,7 +32,7 @@
       position: fixed;
       bottom: 40px;
       left: 50px;
-      max-height: 220px;
+      height: 180px;
       width: 70px;
       display: flex;
       flex-direction: column;
@@ -130,9 +130,9 @@
 
     &__theme-switcher {
       cursor: pointer;
-      border: solid 1px $primary-txt-clr-5;
+      // border: solid 1px $primary-txt-clr-5;
       border-radius: 20px;
-      height: 30px;
+      height: 32px;
       width: 55px;
       background-color: $primary-clr-1;
       @include centrlize-space-between;
@@ -147,16 +147,20 @@
         background-color: $primary-clr-3;
         color: $primary-clr-1;
         &.dark {
-          color: $primary-clr-3;
-          background-color: $primary-clr-1;
+          color: $primary-clr-1;
+          background-color: $primary-dark-clr-2;
         }
       }
 
       .dark-mode {
         &.dark {
-          color: $primary-clr-1;
+          color: $primary-dark-clr-7;
           background-color: $primary-dark-clr-6;
         }
+      }
+      &.dark{
+        background-color: $primary-dark-clr-2;
+        border: none;
       }
     }
 
@@ -201,6 +205,8 @@
       border-radius: 20px;
       word-wrap: break-word;
 
+
+
       &.dark {
         background-color: $primary-dark-clr-3;
         box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
@@ -209,12 +215,10 @@
       .note-title,
       .todo-title {
         font: 700 1.3rem $ff-primary-2;
-        color: $primary-txt-clr-4;
         text-transform: capitalize;
 
-        &.dark {
-          color: $primary-dark-txt-clr-1;
-        }
+
+
       }
 
       .note-text {
@@ -223,52 +227,38 @@
         line-height: 1.3rem;
         overflow: hidden;
         font-weight: 500;
-        color: $primary-txt-clr-4;
         padding: 0.7rem 0;
 
-        &.dark {
-          color: $primary-dark-txt-clr-2;
-        }
       }
 
       .note-info {
         @include centrlize-space-between;
         font: 600 0.6rem $ff-primary-2;
-        color: $primary-txt-clr-4;
+        // color: $primary-txt-clr-4;
         text-transform: capitalize;
         margin-top: 1rem;
 
-        &.dark {
-          color: $primary-dark-txt-clr-2;
-        }
+
       }
       .todo-list {
         max-height: 174px;
         padding: 0.7rem 0;
         overflow: hidden;
         font: 500 0.8rem $ff-primary-1;
-        color: $primary-txt-clr-4;
+
 
         .todo-task {
           min-height: 28px;
           display: flex;
           align-items: center;
 
-          &.dark {
-            color: $primary-dark-txt-clr-2;
-          }
-
           .check-box {
             height: 16px;
             min-width: 16px;
-         
             margin-right: 0.2rem;
-            border: solid 1px $primary-txt-clr-4;
+            border: solid 1px $primary-txt-clr-2;
             border-radius: 50%;
 
-            &.dark {
-              border-color: $primary-dark-txt-clr-2;
-            }
 
             &.checked {
               background-color: $primary-dark-clr-5;
@@ -287,3 +277,5 @@
     }
   }
 }
+
+
