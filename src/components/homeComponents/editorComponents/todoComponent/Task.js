@@ -1,8 +1,13 @@
 import React from 'react'
 import { FiEdit, FiTrash2 } from "react-icons/fi";
 import { MdDone } from "react-icons/md";
+import bellSound from './bell-sound.wav';
+
 
 export default function Task(props) {
+
+  const audio = new Audio(bellSound)
+
 
     const [taskBody, setTaskBody] = React.useState(props.body);
 
@@ -41,7 +46,7 @@ export default function Task(props) {
     }
 
     function toggleTask(id){
-        console.log(id)
+        audio.play();
         props.setShowTasks(true);
         props.setShowFinishedTasks(true);
         props.setElementData(prevState => {
