@@ -3,10 +3,9 @@ import NoteEditor from "./editorComponents/NoteEditor";
 import ToDoEditor from "./editorComponents/ToDoEditor";
 import { IoIosArrowBack, IoMdMore } from "react-icons/io";
 import { FiShare } from "react-icons/fi";
-import { MdOutlineColorLens, MdPassword } from "react-icons/md";
+import { MdOutlineColorLens, MdPassword, MdFavorite } from "react-icons/md";
 import { BsSave} from "react-icons/bs";
 import { FiTrash } from "react-icons/fi";
-import { GrFavorite } from "react-icons/gr";
 
 export default function Editor(props) {
 
@@ -116,12 +115,12 @@ export default function Editor(props) {
           <div className="more">
             <IoMdMore />
           </div>
-          {openOptions && <div className="more-options">
-            <div className="option"> <span>Save</span> <BsSave /></div>
-            <div className="option"> <span>Delete</span> <FiTrash /></div>
-            <div className="option"> <span>Add to favorite</span> <GrFavorite /></div>
-            <div className="option"> <span>Add to passwords</span> <MdPassword /></div>
-          </div>}
+          <div className={`more-options ${openOptions ? 'open' : ''} ${props.darkMode ? 'dark' : ''} `}>
+            <div className={`option ${props.darkMode ? 'dark' : ''}`}> <span>Save</span> <BsSave /></div>
+            <div className={`option ${props.darkMode ? 'dark' : ''}`}> <span>Delete</span> <FiTrash /></div>
+            <div className={`option ${props.darkMode ? 'dark' : ''}`}> <span>Add to favorite</span> <MdFavorite /></div>
+            <div className={`option ${props.darkMode ? 'dark' : ''}`}> <span>Add to passwords</span> <MdPassword /></div>
+          </div>
 
         </div>
 

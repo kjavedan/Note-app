@@ -53,8 +53,7 @@
       }
 
       .more-options{
-          padding: 1rem 0;
-          width: 200px;
+          width: 160px;
           position: fixed;
           top: 60px;
           right: 20px;
@@ -64,6 +63,16 @@
           display: flex;
           flex-direction: column;
           background-color: $primary-clr-1;
+          visibility: hidden;
+          opacity: 0;
+          transition: all ease-in-out .2s;
+
+          &.open{
+            width: 200px;
+            opacity: 1;
+            padding: 1.5rem 0;
+            visibility: visible;
+          }
 
           .option{
             font: 500 .8rem $ff-primary-1;
@@ -74,12 +83,23 @@
             padding: 0 1rem;
             @include centrlize-space-between;
 
+            &.dark{
+              color: $primary-clr-1;
+
+              &:hover{
+                color: $primary-clr-1;
+              }
+            }
+
             &:hover{
               color: $primary-txt-clr-1;
               font-weight: bold;
             }
-            
           }
+
+           &.dark{
+              background-color: $primary-dark-clr-1;
+            }
         }
     }
   }
