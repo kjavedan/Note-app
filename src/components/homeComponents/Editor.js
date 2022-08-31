@@ -20,6 +20,7 @@ export default function Editor(props) {
 
   
   function handleTheme() {
+    setOpenOptions(false)
     setOpenTheme((prevTheme) => !prevTheme);
   }
 
@@ -84,7 +85,13 @@ export default function Editor(props) {
   
   function handleOptions(){
     console.log(elementData.id);
+    setOpenTheme(false)
     setOpenOptions(prevState => !prevState)
+  }
+
+  function closeOpenStates(){
+    setOpenOptions(false)
+    setOpenTheme(false)
   }
 
   React.useEffect(() => {
@@ -125,19 +132,26 @@ export default function Editor(props) {
         </div>
 
       </div>
-      <div className="editor-main">
+      <div 
+      onClick={closeOpenStates}
+      className="editor-main">
         <textarea
           placeholder="Title"
           type="text"
           className={`title ${props.darkMode ? "dark" : ""}`}
           value={elementData.title}
+          onClick={closeOpenStates}
           onChange={changeTitle}
         ></textarea>
-        <span className={`date ${props.darkMode ? "dark" : ""}`}>
+        <span 
+        onClick={closeOpenStates}
+        className={`date ${props.darkMode ? "dark" : ""}`}>
           {elementData.date}
         </span>
         {/* editor body */}
-        <div className={`body ${props.darkMode ? "dark" : ""}`}>
+        <div 
+        onClick={closeOpenStates}
+        className={`body ${props.darkMode ? "dark" : ""}`}>
           {props.editorType === "note" ? (
             <NoteEditor setElementData={setElementData} elementData={elementData} body={elementData.body} darkMode={props.darkMode} />
           ) : (

@@ -249,7 +249,11 @@
           height: auto;
           width: 100%;
           margin-top: 1rem;
-          transition: all ease-in-out 0.3s;
+
+          &.hide {
+            height: 45px;
+            overflow: hidden;
+          }
 
           .hide-tasks {
             padding-left: 1rem;
@@ -267,10 +271,7 @@
             }
           }
 
-          &.hide {
-            height: 45px;
-            overflow: hidden;
-          }
+          
 
           .task {
             margin-top: 1rem;
