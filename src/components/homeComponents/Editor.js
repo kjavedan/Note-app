@@ -3,12 +3,18 @@ import NoteEditor from "./editorComponents/NoteEditor";
 import ToDoEditor from "./editorComponents/ToDoEditor";
 import { IoIosArrowBack, IoMdMore } from "react-icons/io";
 import { FiShare } from "react-icons/fi";
-import { MdOutlineColorLens } from "react-icons/md";
+import { MdOutlineColorLens, MdPassword } from "react-icons/md";
+import { BsSave} from "react-icons/bs";
+import { FiTrash } from "react-icons/fi";
+import { GrFavorite } from "react-icons/gr";
 
 export default function Editor(props) {
 
   // save the elemnt data for us
   const [elementData, setElementData] = React.useState({});
+
+  // open the more btn 
+  const [openOptions, setOpenOptions] = React.useState(false)
 
   // open the theme button
   const [openTheme, setOpenTheme] = React.useState(false);
@@ -35,10 +41,10 @@ export default function Editor(props) {
 
   function saveElement(category){
     if(category === 'note' && !elementData.title && !elementData.body){
-      deleteEmptyElement(elementData); // deleting empty note
+      deleteElement(elementData, 'empty'); // deleting empty note
     }
     else if(category === 'todo' && !elementData.title && !elementData.tasks.length){
-      deleteEmptyElement(elementData); // deleting empty todo
+      deleteElement(elementData, 'empty'); // deleting empty todo
     }
     else{
       props.setMessage('save');
@@ -66,8 +72,8 @@ export default function Editor(props) {
     }
   }
 
-    function deleteEmptyElement(toBeDeleted){
-    props.setMessage('empty')
+    function deleteElement(toBeDeleted, message){
+    props.setMessage(message)
     props.setMainState(prevState => {
       return prevState.filter(element => {
         if(element.id !== toBeDeleted.id){
@@ -75,6 +81,11 @@ export default function Editor(props) {
         }
       })
     })
+  }
+  
+  function handleOptions(){
+    console.log(elementData.id);
+    setOpenOptions(prevState => !prevState)
   }
 
   React.useEffect(() => {
@@ -95,14 +106,25 @@ export default function Editor(props) {
           </span>
           <span>Home</span>
         </div>
-        <div className="more-container">
+        <div 
+        onClick={handleOptions}
+        className="more-container">
+
           <div className="share">
             <FiShare />
           </div>
           <div className="more">
             <IoMdMore />
           </div>
+          {openOptions && <div className="more-options">
+            <div className="option"> <span>Save</span> <BsSave /></div>
+            <div className="option"> <span>Delete</span> <FiTrash /></div>
+            <div className="option"> <span>Add to favorite</span> <GrFavorite /></div>
+            <div className="option"> <span>Add to passwords</span> <MdPassword /></div>
+          </div>}
+
         </div>
+
       </div>
       <div className="editor-main">
         <textarea

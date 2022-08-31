@@ -23,7 +23,7 @@ export default function Home({mainState, setMainState}) {
   const [darkMode, setDarkMode] = React.useState(false);
 
   // state to open the editor
-  const [openEditor, setOpenEditor] = React.useState(false);
+  const [openEditor, setOpenEditor] = React.useState(true);
 
   // state to open the relative editor
   const [editorType, setEditorType] = React.useState();
