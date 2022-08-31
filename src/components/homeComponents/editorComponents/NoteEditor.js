@@ -12,7 +12,6 @@ export default function NoteEditor(props) {
     document.querySelector("textarea").style.height = "auto";
     props.setElementData({...props.elementData, body : e.target.value})
     setHeight(e.target.scrollHeight);
-    console.log(e.target.value);
   }
 
   return (

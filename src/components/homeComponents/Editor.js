@@ -18,6 +18,9 @@ export default function Editor(props) {
   // open the theme button
   const [openTheme, setOpenTheme] = React.useState(false);
 
+  // state to display different messages to the use
+  const [editorMessage, setEditorMessage] = React.useState({});
+
   
   function handleTheme() {
     setOpenOptions(false)
@@ -41,13 +44,13 @@ export default function Editor(props) {
 
   function saveElement(category){
     if(category === 'note' && !elementData.title && !elementData.body){
-      deleteElement(elementData, 'empty'); // deleting empty note
+      deleteElement(elementData, 'empty', 'lightcoral'); // deleting empty note
     }
     else if(category === 'todo' && !elementData.title && !elementData.tasks.length){
-      deleteElement(elementData, 'empty'); // deleting empty todo
+      deleteElement(elementData, 'empty' , 'lightcoral'); // deleting empty todo
     }
     else{
-      props.setMessage('save');
+      props.setMessage({text: 'save' , color:'lightgreen'});
       // modify the main state with the new value of the current Element and put it on the top of the list
         const newArr = []
          props.mainState.map(element => {
@@ -72,8 +75,8 @@ export default function Editor(props) {
     }
   }
 
-    function deleteElement(toBeDeleted, message){
-    props.setMessage(message)
+    function deleteElement(toBeDeleted, message, color){
+    props.setMessage({text : message, color : color})
     props.setMainState(prevState => {
       return prevState.filter(element => {
         if(element.id !== toBeDeleted.id){
@@ -82,9 +85,28 @@ export default function Editor(props) {
       })
     })
   }
-  
+
+  function displayMessage(value){
+    if(value === 'save'){
+      setEditorMessage({message: 'saved', color: 'lightgreen'})
+      saveElement(elementData.category);
+    }else if(value === 'delete'){
+      deleteElement(elementData, 'note has been deleted', 'lightcoral');
+      props.setOpenEditor(false);
+      return;
+      
+    }else if(value === 'favorite'){
+      setEditorMessage({message: 'note added to favorite', color: 'lightgreen'})
+    }else{
+      setEditorMessage({message: 'note added to passwords', color: 'lightgreen'})
+    }
+    setTimeout(()=>{
+      setEditorMessage({})
+    },2000)
+  }
+
   function handleOptions(){
-    console.log(elementData.id);
+    // console.log(elementData.id);
     setOpenTheme(false)
     setOpenOptions(prevState => !prevState)
   }
@@ -123,18 +145,26 @@ export default function Editor(props) {
             <IoMdMore />
           </div>
           <div className={`more-options ${openOptions ? 'open' : ''} ${props.darkMode ? 'dark' : ''} `}>
-            <div className={`option ${props.darkMode ? 'dark' : ''}`}> <span>Save</span> <BsSave /></div>
-            <div className={`option ${props.darkMode ? 'dark' : ''}`}> <span>Delete</span> <FiTrash /></div>
-            <div className={`option ${props.darkMode ? 'dark' : ''}`}> <span>Add to favorite</span> <MdFavorite /></div>
-            <div className={`option ${props.darkMode ? 'dark' : ''}`}> <span>Add to passwords</span> <MdPassword /></div>
+            <div onClick={()=>displayMessage('save')} className={`option ${props.darkMode ? 'dark' : ''}`}> <span>Save</span> <BsSave /></div>
+            <div onClick={()=>displayMessage('delete')} className={`option ${props.darkMode ? 'dark' : ''}`}> <span>Delete</span> <FiTrash /></div>
+            <div onClick={()=>displayMessage('favorite')} className={`option ${props.darkMode ? 'dark' : ''}`}> <span>Add to favorite</span> <MdFavorite /></div>
+            <div onClick={()=>displayMessage('pass')} className={`option ${props.darkMode ? 'dark' : ''}`}> <span>Add to passwords</span> <MdPassword /></div>
           </div>
-
         </div>
-
       </div>
+
+      
       <div 
       onClick={closeOpenStates}
       className="editor-main">
+
+        <div 
+        style={{backgroundColor : editorMessage.color}}
+        className={`editor-main__message`}
+        >
+        {editorMessage ? editorMessage.message : ''}
+        </div>
+       
         <textarea
           placeholder="Title"
           type="text"
@@ -143,6 +173,7 @@ export default function Editor(props) {
           onClick={closeOpenStates}
           onChange={changeTitle}
         ></textarea>
+
         <span 
         onClick={closeOpenStates}
         className={`date ${props.darkMode ? "dark" : ""}`}>
@@ -153,13 +184,14 @@ export default function Editor(props) {
         onClick={closeOpenStates}
         className={`body ${props.darkMode ? "dark" : ""}`}>
           {props.editorType === "note" ? (
-            <NoteEditor setElementData={setElementData} elementData={elementData} body={elementData.body} darkMode={props.darkMode} />
+            <NoteEditor setElementData={setElementData} elementData={elementData} body={elementData.body} setEditorMessage={setEditorMessage} darkMode={props.darkMode} />
           ) : (
-            <ToDoEditor setElementData={setElementData} elementData={elementData} tasks={elementData.tasks} darkMode={props.darkMode} />
+            <ToDoEditor setElementData={setElementData} elementData={elementData} tasks={elementData.tasks} setEditorMessage={setEditorMessage} darkMode={props.darkMode} />
           )}
         </div>
         {/* ---------- */}
       </div>
+
       <div className={`editor-footer ${props.darkMode ? "dark" : ""}`}>
         <div className="theme-btn" onClick={handleTheme}>
           <MdOutlineColorLens />

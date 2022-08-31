@@ -13,8 +13,7 @@ export default function Notes(props) {
       gutter: 10,
     });
   });
-  console.log('notes rendered')
-  console.log(props)
+
   // display the elements from the main state
   const elements = props.mainState.map((item) => {
     if (item.category === "note") {
@@ -49,26 +48,11 @@ export default function Notes(props) {
       );
     }
   });
-  let style = {};
  
-  function getMessage(){
-    if(props.message === 'save'){
-      style.backgroundColor = 'lightgreen'
-      style.width = '80px'
-      return 'saved'
-    }
-    else{
-      style.backgroundColor = 'lightcoral'
-      return "empty"
-    } 
-  }
-  
-  const message = getMessage();
-  
 
   return (
     <div>
-     {props.message && <div className="message" style={style}>{message === 'empty' ? <AiOutlineWarning /> : <IoMdDoneAll />}{message}</div>}
+     <div style={{backgroundColor : props.message.color}} className="message">{props.message.text}</div>
       <div className={`home-notes ${props.darkMode ? "dark" : ""}`}>
         {elements}
       </div>

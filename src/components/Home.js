@@ -19,7 +19,6 @@ export default function Home({mainState, setMainState}) {
     const shortDate =  dayName + ' ' + day + ' ' + shortMonth;
     return shortDate;
   }
-  console.log('home rendered')
   const [darkMode, setDarkMode] = React.useState(false);
 
   // state to open the editor
@@ -32,18 +31,17 @@ export default function Home({mainState, setMainState}) {
   const [clickedElement, setClickedElement] = React.useState();
 
   // state to notify the user with happening changes
-  const [message, setMessage] = React.useState();
+  const [message, setMessage] = React.useState({});
 
   // clear the notification message after 3 seconds and delete empty elements
   // bug -> it deletes the element before the user can enter any input
   // solution -> send the checking to editor page and send the result for the home page
   React.useEffect(()=>{
     setTimeout(()=>{
-      setMessage();
+      setMessage({});
     },3000)
   }, [openEditor])
 
-  console.log(mainState)
 
   function openClickedElement(id, category) {
     setClickedElement(id);

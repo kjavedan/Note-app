@@ -61,16 +61,15 @@ export default function ToDoEditor(props) {
         return {...prevState, tasks: [{id: nanoid(), body: taskBody, isChecked: false},...prevState.tasks]}
       })
     }else{
-      setMessage('danger');
+      props.setEditorMessage({message : "can't add an empty message", color : 'lightcoral'});
       setTimeout(()=>{
-        setMessage('')
+        props.setEditorMessage({})
       },2000)
     }
   }
 
   return (
     <div className="tasks-container">
-      <div className={`message ${message}`}>{message === 'danger' ? "can't add an empty task" : ""}</div>
       <div className={`create-task ${props.darkMode ? 'dark' : ''}`}>
         <form onSubmit={handleSubmit}>
           <input

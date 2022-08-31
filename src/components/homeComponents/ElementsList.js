@@ -5,8 +5,6 @@ import Notes from "./elementsListComponenet/Notes";
 
 export default function ElementsList(props) {
 
-  console.log('elementList rendered')
-  console.log(props)
   return (
     <div>
       <Nav

@@ -107,8 +107,25 @@
   &-main {
     width: 100%;
     padding: 8%;
-    margin: 4.5rem auto;
+    margin: auto;
+    padding-top: 6rem;
+    padding-bottom: 5rem;
     height: auto;
+
+
+    &__message{
+        height: 30px;
+        padding: 0 1rem;
+        display: flex;
+        align-items: center;
+        font: 500 .7rem $ff-primary-2;
+        color: $primary-clr-1;
+        border-radius: 20px;
+        position: fixed;
+        top: 60px;
+        left: 50%;
+        transform: translateX(-50%);
+    }
 
     .title {
       text-transform: capitalize;
@@ -179,25 +196,6 @@
         // border: solid 1px black;
         padding: 0.2rem 0;
 
-
-        .message{
-          width: 200px;
-          height: 30px;
-          font: 500 .8rem $ff-primary-2;
-          color: $primary-clr-1;
-          display: none;
-          position: fixed;
-          left: 50%;
-          transform: translateX(-50%);
-          top: 60px;
-          border-radius: 20px;
-          @include centrlize;
-
-          &.danger{
-            background-color: lightcoral;
-            display: flex;
-          }
-        }
 
         .create-task {
           width: 100%;
