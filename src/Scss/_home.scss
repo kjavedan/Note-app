@@ -179,6 +179,15 @@
     font: 500 0.8rem $ff-primary-2;
     border-radius: 20px;
   }
+  &-modyfire{
+    height: 70px;
+    width: 100%;
+    background-color: red;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 30;
+  }
 
   &-notes {
     margin: 0 auto;
