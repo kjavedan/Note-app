@@ -19,7 +19,7 @@ export default function Home({ mainState, setMainState }) {
   }
 
   // state to modify the home page (changing themes, delete and etc..)
-  const [modificationMode, setModificationMode] = React.useState(false);
+  const [modificationMode, setModificationMode] = React.useState(true);
 
   // state to change the app theme
   const [darkMode, setDarkMode] = React.useState(false);

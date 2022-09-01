@@ -179,15 +179,69 @@
     font: 500 0.8rem $ff-primary-2;
     border-radius: 20px;
   }
+
   &-modyfire{
-    height: 70px;
-    width: 100%;
-    background-color: red;
-    position: fixed;
-    top: 0;
-    left: 0;
-    z-index: 30;
-  }
+    margin: 0 auto;
+      height: 30px;
+      width: 80%;
+      background-color: $primary-clr-1;
+      position: fixed;
+      top: 0;
+      left: 10%;
+      z-index: 30;
+      border-radius: 20px;
+      box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+      @include centrlize-space-between;
+      padding: 0 10%;
+      visibility: hidden;
+      opacity: 0;
+      transition: all ease-in-out .2s;
+
+      .modyfire-btns{
+        width: 65%;
+        height: 100%;
+        @include centrlize-space-between;
+
+        .btn{
+          border: none;
+          background-color: transparent;
+          height: 30px;
+          width: 30px;
+          font-size: 1.1rem;
+          color: $primary-txt-clr-4;
+          cursor: pointer;
+
+          &:hover{
+            color: $primary-txt-clr-7;
+            font-size: 1.2rem;
+          }
+        }
+      }
+        .modyfire-left-container{
+          font-size: 1.2rem;
+          width: 18%;
+          height: 100%;
+          @include centrlize-space-between;
+
+          .counter{
+          font-family: $ff-primary-2;
+          }
+          .close-modyfire{
+            height: 33px;
+            border: none;
+            background-color: transparent;
+            cursor: pointer;
+            font-size: 1.9rem;
+          }
+        }
+        &.open{
+          left: 0;
+          height: 70px;
+          width: 100%;
+          visibility: visible;
+          opacity: 1;
+        }
+    }
 
   &-notes {
     margin: 0 auto;

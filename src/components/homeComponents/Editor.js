@@ -4,8 +4,8 @@ import ToDoEditor from "./editorComponents/ToDoEditor";
 import { IoIosArrowBack, IoMdMore } from "react-icons/io";
 import { FiShare } from "react-icons/fi";
 import { MdOutlineColorLens, MdPassword, MdFavorite } from "react-icons/md";
-import { BsSave } from "react-icons/bs";
 import { FiTrash } from "react-icons/fi";
+import { BsSave } from "react-icons/bs";
 
 export default function Editor(props) {
   // save the elemnt data for us
