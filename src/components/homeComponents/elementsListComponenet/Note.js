@@ -19,10 +19,17 @@ export default function Note(props) {
     }
   }
 
+ 
+      
   return (
     <div
       style={changeTheme(props.theme)}
-      onClick={() => props.openClickedElement(props.id, props.category)}
+      onClick={props.modificationMode ? props.selectElement : () => props.openClickedElement(props.id, props.category)}
+      onMouseDown={props.startTimer}
+      onTouchStart={props.startTimer}
+      onMouseUp={props.stopTimer}
+      onMouseLeave={props.stopTimer}
+      onTouchEnd={props.stopTimer}
       className={`home-notes__note ${props.darkMode ? "dark" : ""}`}
     >
       <h4

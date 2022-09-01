@@ -22,6 +22,7 @@ export default function ElementsList(props) {
       mainState={props.mainState}
       openClickedElement={props.openClickedElement}
       message={props.message}
+      modificationMode={props.modificationMode}
       setModificationMode={props.setModificationMode}
       />
       <Sidebar 

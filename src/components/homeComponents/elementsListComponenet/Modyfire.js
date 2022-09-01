@@ -13,8 +13,11 @@ export default function Modyfire(props) {
             <button className="btn delete"><FiTrash /></button>
         </div>
         <div className="modyfire-left-container">
-            <span className="counter">1</span>
-            <button className="close-modyfire"><AiOutlineClose /></button>
+            <span className="counter">5</span>
+            <button 
+            onClick={(()=>props.setModificationMode(false))}
+            className="close-modyfire"><AiOutlineClose />
+            </button>
         </div>
     </div>
   )
