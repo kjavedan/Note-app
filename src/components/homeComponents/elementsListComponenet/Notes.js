@@ -2,8 +2,8 @@ import React from "react";
 import Masonry from "masonry-layout";
 import Note from "./Note";
 import ToDo from "./ToDo";
-import { AiOutlineWarning,  AiOutlineFileDone } from 'react-icons/ai'
-import { IoMdDoneAll  } from 'react-icons/io'
+import { AiOutlineWarning, AiOutlineFileDone } from "react-icons/ai";
+import { IoMdDoneAll } from "react-icons/io";
 
 export default function Notes(props) {
   React.useEffect(() => {
@@ -48,11 +48,12 @@ export default function Notes(props) {
       );
     }
   });
- 
 
   return (
     <div>
-     <div style={{backgroundColor : props.message.color}} className="message">{props.message.text}</div>
+      <div style={{ backgroundColor: props.message.color }} className="message">
+        {props.message.text}
+      </div>
       <div className={`home-notes ${props.darkMode ? "dark" : ""}`}>
         {elements}
       </div>

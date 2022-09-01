@@ -30,7 +30,7 @@ export default function Nav(props) {
         <div className={`container ${showBtns ? "show" : ""}`}>
           <span
             className="create-note"
-            onClick = {()=> props.createElement('note')}
+            onClick={() => props.createElement("note")}
           >
             <AiOutlineFileAdd />
           </span>
@@ -40,7 +40,7 @@ export default function Nav(props) {
         <div className={`container ${showBtns ? "show" : ""}`}>
           <span
             className="create-todo"
-            onClick={()=> props.createElement('todo')}
+            onClick={() => props.createElement("todo")}
           >
             <TiTick />
           </span>
@@ -66,7 +66,10 @@ export default function Nav(props) {
           <FiSearch />
         </span>
       </div>
-      <div className={`home-nav__theme-switcher ${props.darkMode ? 'dark' : ''}`} onClick={changeTheme}>
+      <div
+        className={`home-nav__theme-switcher ${props.darkMode ? "dark" : ""}`}
+        onClick={changeTheme}
+      >
         <div className={`default-mode ${props.darkMode ? "dark" : ""} `}>
           <BsSun />
         </div>

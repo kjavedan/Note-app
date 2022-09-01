@@ -5,20 +5,23 @@ import ElementsList from "./homeComponents/ElementsList";
 import { nanoid } from "nanoid";
 import { IoMdHeartEmpty, IoMdReturnLeft } from "react-icons/io";
 
-export default function Home({mainState, setMainState}) {
-
+export default function Home({ mainState, setMainState }) {
   const date = new Date();
 
-
-  function getShortDate(){
-    const option1 = { month: 'short'};
-    const option2 = { weekday : 'short'}
-    const shortMonth = new Intl.DateTimeFormat('en-US', option1).format(date);
+  function getShortDate() {
+    const option1 = { month: "short" };
+    const option2 = { weekday: "short" };
+    const shortMonth = new Intl.DateTimeFormat("en-US", option1).format(date);
     const day = date.getDate();
-    const dayName =  new Intl.DateTimeFormat('en-US', option2).format(date);
-    const shortDate =  dayName + ' ' + day + ' ' + shortMonth;
+    const dayName = new Intl.DateTimeFormat("en-US", option2).format(date);
+    const shortDate = dayName + " " + day + " " + shortMonth;
     return shortDate;
   }
+
+  // state to modify the home page (changing themes, delete and etc..)
+  const [modificationMode, setModificationMode] = React.useState(false);
+
+  // state to change the app theme
   const [darkMode, setDarkMode] = React.useState(false);
 
   // state to open the editor
@@ -33,15 +36,11 @@ export default function Home({mainState, setMainState}) {
   // state to notify the user with happening changes
   const [message, setMessage] = React.useState({});
 
-  // clear the notification message after 3 seconds and delete empty elements
-  // bug -> it deletes the element before the user can enter any input
-  // solution -> send the checking to editor page and send the result for the home page
-  React.useEffect(()=>{
-    setTimeout(()=>{
+  React.useEffect(() => {
+    setTimeout(() => {
       setMessage({});
-    },3000)
-  }, [openEditor])
-
+    }, 3000);
+  }, [openEditor]);
 
   function openClickedElement(id, category) {
     setClickedElement(id);
@@ -49,35 +48,33 @@ export default function Home({mainState, setMainState}) {
     setOpenEditor((prevState) => !prevState);
   }
 
-  const newNote =  {
-      id: nanoid(),
-      title: "",
-      body: "",
-      date: date.toLocaleString(),
-      shortDate : getShortDate(),
-      category: "note",
-      theme: "default",
-    }
+  const newNote = {
+    id: nanoid(),
+    title: "",
+    body: "",
+    date: date.toLocaleString(),
+    shortDate: getShortDate(),
+    category: "note",
+    theme: "default",
+  };
 
   const newTodo = {
-      id: nanoid(),
-      title: "",
-      theme: "default",
-      date: date.toLocaleString(),
-      shortDate : getShortDate(),
-      category: "todo",
-      tasks: [
-        
-      ],
-    }
+    id: nanoid(),
+    title: "",
+    theme: "default",
+    date: date.toLocaleString(),
+    shortDate: getShortDate(),
+    category: "todo",
+    tasks: [],
+  };
 
-  function createElement(category){
-    if(category === 'note'){
+  function createElement(category) {
+    if (category === "note") {
       setMainState([newNote, ...mainState]);
-      setClickedElement(newNote.id)
-    }else{
-      setClickedElement(newTodo.id)
-      setMainState([newTodo, ...mainState])
+      setClickedElement(newNote.id);
+    } else {
+      setClickedElement(newTodo.id);
+      setMainState([newTodo, ...mainState]);
     }
     setEditorType(category);
     setOpenEditor((prevState) => !prevState);
@@ -104,6 +101,8 @@ export default function Home({mainState, setMainState}) {
           setMainState={setMainState}
           createElement={createElement}
           message={message}
+          modificationMode={modificationMode}
+          setModificationMode={setModificationMode}
         />
       )}
     </div>

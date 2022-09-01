@@ -72,13 +72,12 @@ $ff-primary-2: "Montserrat Alternates", sans-serif;
 
 // animaiton
 @keyframes fade-in-right {
-  0%{
+  0% {
     opacity: 0;
     transform: translateX(-50%);
   }
-  100%{
+  100% {
     opacity: 1;
     transform: translateX(0);
   }
 }
-

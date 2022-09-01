@@ -3,7 +3,6 @@ import { MdDone } from "react-icons/md";
 import { nanoid } from "nanoid";
 
 export default function ToDo(props) {
-
   // function to display the todo task on the screen
   function dispalyTask(tasks) {
     const todoTask = tasks.map((task) => {
@@ -26,22 +25,22 @@ export default function ToDo(props) {
     return todoTask;
   }
 
-    function changeTheme(color){
+  function changeTheme(color) {
     let style = {};
-      if(color !=='default'){
-          return style = {
-          backgroundColor : color
-        }
-      }else return style;
-    }
-    function changeTextColor(color){
+    if (color !== "default") {
+      return (style = {
+        backgroundColor: color,
+      });
+    } else return style;
+  }
+  function changeTextColor(color) {
     let style = {};
-    if(color === 'default' && props.darkMode){
-      return style = {
-        color : '#FFF'
-      }  
+    if (color === "default" && props.darkMode) {
+      return (style = {
+        color: "#FFF",
+      });
     }
-   }
+  }
 
   return (
     <div
@@ -49,11 +48,19 @@ export default function ToDo(props) {
       onClick={() => props.openClickedElement(props.id, props.category)}
       className={`home-notes__note ${props.darkMode ? "dark" : ""}`}
     >
-      <h4 style={changeTextColor(props.theme)} className={`note-title ${props.darkMode ? "dark" : ""}`}>
+      <h4
+        style={changeTextColor(props.theme)}
+        className={`note-title ${props.darkMode ? "dark" : ""}`}
+      >
         {props.title}
       </h4>
-      <div style={changeTextColor(props.theme)} className="todo-list">{dispalyTask(props.tasks)}</div>
-      <div style={changeTextColor(props.theme)} className={`note-info ${props.darkMode ? "dark" : ""}`}>
+      <div style={changeTextColor(props.theme)} className="todo-list">
+        {dispalyTask(props.tasks)}
+      </div>
+      <div
+        style={changeTextColor(props.theme)}
+        className={`note-info ${props.darkMode ? "dark" : ""}`}
+      >
         <span className="note-date">{props.shortDate}</span>
         <span className="note-category">{props.category}</span>
       </div>

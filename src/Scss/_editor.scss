@@ -1,7 +1,6 @@
 .editor {
   height: 100vh;
   width: 100%;
-  
 
   &-nav {
     position: fixed;
@@ -37,13 +36,7 @@
     .more-container {
       width: 70px;
       font-weight: bold;
-      @include centrlize-space-between;
-
-      .share {
-        color: $primary-txt-clr-6;
-        font-size: 1.3rem;
-        cursor: pointer;
-      }
+      @include centrlize;
 
       .more {
         color: $primary-txt-clr-6;
@@ -52,55 +45,55 @@
         font-size: 1.5rem;
       }
 
-      .more-options{
-          width: 160px;
-          position: fixed;
-          top: 60px;
-          right: 20px;
-          z-index: 20;
-          border-radius: 20px;
-          box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-          display: flex;
-          flex-direction: column;
-          background-color: $primary-clr-1;
-          visibility: hidden;
-          opacity: 0;
-          transition: all ease-in-out .2s;
+      .more-options {
+        width: 160px;
+        position: fixed;
+        top: 60px;
+        right: 20px;
+        z-index: 20;
+        border-radius: 20px;
+        box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+        display: flex;
+        flex-direction: column;
+        background-color: $primary-clr-1;
+        visibility: hidden;
+        opacity: 0;
+        transition: all ease-in-out 0.2s;
 
-          &.open{
-            width: 200px;
-            opacity: 1;
-            padding: 1.5rem 0;
-            visibility: visible;
-          }
-
-          .option{
-            font: 500 .8rem $ff-primary-1;
-            color: $primary-txt-clr-4;
-            width: 100%;
-            height: 50px;
-            cursor: pointer;
-            padding: 0 1rem;
-            @include centrlize-space-between;
-
-            &.dark{
-              color: $primary-clr-1;
-
-              &:hover{
-                color: $primary-clr-1;
-              }
-            }
-
-            &:hover{
-              color: $primary-txt-clr-1;
-              font-weight: bold;
-            }
-          }
-
-           &.dark{
-              background-color: $primary-dark-clr-1;
-            }
+        &.open {
+          width: 200px;
+          opacity: 1;
+          padding: 1.5rem 0;
+          visibility: visible;
         }
+
+        .option {
+          font: 500 0.8rem $ff-primary-1;
+          color: $primary-txt-clr-4;
+          width: 100%;
+          height: 50px;
+          cursor: pointer;
+          padding: 0 1rem;
+          @include centrlize-space-between;
+
+          &.dark {
+            color: $primary-clr-1;
+
+            &:hover {
+              color: $primary-clr-1;
+            }
+          }
+
+          &:hover {
+            color: $primary-txt-clr-1;
+            font-weight: bold;
+          }
+        }
+
+        &.dark {
+          background-color: $primary-dark-clr-1;
+        }
+      }
     }
   }
 
@@ -112,19 +105,18 @@
     padding-bottom: 5rem;
     height: auto;
 
-
-    &__message{
-        height: 30px;
-        padding: 0 1rem;
-        display: flex;
-        align-items: center;
-        font: 500 .7rem $ff-primary-2;
-        color: $primary-clr-1;
-        border-radius: 20px;
-        position: fixed;
-        top: 60px;
-        left: 50%;
-        transform: translateX(-50%);
+    &__message {
+      height: 30px;
+      padding: 0 1rem;
+      display: flex;
+      align-items: center;
+      font: 500 0.7rem $ff-primary-2;
+      color: $primary-clr-1;
+      border-radius: 20px;
+      position: fixed;
+      top: 60px;
+      left: 50%;
+      transform: translateX(-50%);
     }
 
     .title {
@@ -196,12 +188,12 @@
         // border: solid 1px black;
         padding: 0.2rem 0;
 
-
         .create-task {
           width: 100%;
           height: auto;
           background-color: $primary-clr-1;
-          box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;          
+          box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px,
+            rgba(0, 0, 0, 0.23) 0px 3px 6px;
           border-radius: 20px;
           padding: 0.3rem 0 0.1rem 0;
 
@@ -269,8 +261,6 @@
             }
           }
 
-          
-
           .task {
             margin-top: 1rem;
             min-height: 45px;
@@ -297,10 +287,10 @@
               align-items: center;
 
               .tick {
-                display : none;
+                display: none;
 
                 &.checked {
-                  display : block;
+                  display: block;
                 }
               }
             }
@@ -313,11 +303,11 @@
               align-items: center;
               justify-content: space-around;
 
-              input{
+              input {
                 outline: none;
                 border: none;
 
-                &.dark{
+                &.dark {
                   color: $primary-clr-1;
                   background-color: $primary-dark-clr-1;
                 }
@@ -358,10 +348,10 @@
             }
           }
         }
-        .tasks{
-          .task{
+        .tasks {
+          .task {
             display: flex;
-            &.checked{
+            &.checked {
               display: none;
             }
           }
@@ -380,9 +370,9 @@
             width: 100%;
             text-decoration-line: line-through;
           }
-          .task{
+          .task {
             display: none;
-            &.checked{
+            &.checked {
               display: flex;
             }
           }
@@ -427,19 +417,19 @@
         visibility: hidden;
         opacity: 0;
         transform: translateX(-50%);
-        transition: all ease-in-out .2s;
-        
+        transition: all ease-in-out 0.2s;
+
         &.show {
-        visibility: visible;
-        opacity: 1;
-        transform: translateX(0%);
+          visibility: visible;
+          opacity: 1;
+          transform: translateX(0%);
         }
       }
-      .default{
+      .default {
         border: solid 2px $primary-txt-clr-1;
         @include centrlize;
 
-        .line{
+        .line {
           height: 23px;
           width: 2px;
           background-color: $primary-txt-clr-1;
@@ -450,35 +440,35 @@
 
       .color-1 {
         background-color: $color-1;
-        transition-delay: .1s;
+        transition-delay: 0.1s;
       }
 
       .color-2 {
         background-color: $color-2;
-        transition-delay: .2s;
+        transition-delay: 0.2s;
       }
 
       .color-3 {
         background-color: $color-3;
-        transition-delay: .3s;
+        transition-delay: 0.3s;
       }
 
       .color-4 {
         background-color: $color-4;
-        transition-delay: .4s;
+        transition-delay: 0.4s;
       }
 
       .color-5 {
         background-color: $color-5;
-        transition-delay: .5s;
+        transition-delay: 0.5s;
       }
       .color-6 {
         background-color: $color-6;
-        transition-delay: .6s;
+        transition-delay: 0.6s;
       }
       .color-7 {
         background-color: $color-7;
-        transition-delay: .7s;
+        transition-delay: 0.7s;
       }
     }
   }
