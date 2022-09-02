@@ -12,10 +12,6 @@ export default function Notes(props) {
   const intervalRef = React.useRef(null);
 
   console.log(timer)
-  
-   function selectElement(){
-    console.log('hi')
-  }
 
   function startTimer(){
     if(intervalRef.current) return;
@@ -30,9 +26,23 @@ export default function Notes(props) {
       setTimer(0);
     }
   }
+  // select Element function will only work when we are in modification Mode
+   function selectElement(id){
+    console.log(id)
+    props.setMainState(prevState =>{
+      return prevState.map(element =>{
+        if(element.id === id){
+          return {...element, isHeld : !element.isHeld}
+        }else{
+          return element;
+        }
+      })
+    })
+    // toggle isHeld
+  }
 
   React.useEffect(()=>{
-      if(timer > 10){
+      if(timer > 6){
         props.setModificationMode(true);
         setTimer(0);
       }
@@ -82,9 +92,11 @@ export default function Notes(props) {
           shortDate={item.shortDate}
           title={item.title}
           category={item.category}
+          isHeld={item.isHeld}
           modificationMode={props.modificationMode}
           startTimer={startTimer}
           stopTimer={stopTimer}
+          selectElement={selectElement}
         />
       );
     } else {
@@ -98,11 +110,13 @@ export default function Notes(props) {
           tasks={item.tasks}
           theme={item.theme}
           category={item.category}
+          isHeld={item.isHeld}
           date={item.date}
           shortDate={item.shortDate}
           modificationMode={props.modificationMode}
           startTimer={startTimer}
           stopTimer={stopTimer}
+          selectElement={selectElement}
         />
       );
     }

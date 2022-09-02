@@ -20,6 +20,7 @@ export default function ElementsList(props) {
       <Notes
       darkMode={props.darkMode}
       mainState={props.mainState}
+      setMainState={props.setMainState}
       openClickedElement={props.openClickedElement}
       message={props.message}
       modificationMode={props.modificationMode}

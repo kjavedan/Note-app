@@ -55,6 +55,7 @@ export default function Home({ mainState, setMainState }) {
     date: date.toLocaleString(),
     shortDate: getShortDate(),
     category: "note",
+    isHeld: true,
     theme: "default",
   };
 
@@ -65,6 +66,7 @@ export default function Home({ mainState, setMainState }) {
     date: date.toLocaleString(),
     shortDate: getShortDate(),
     category: "todo",
+    isHeld: false,
     tasks: [],
   };
 

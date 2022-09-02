@@ -24,13 +24,13 @@ export default function Note(props) {
   return (
     <div
       style={changeTheme(props.theme)}
-      onClick={props.modificationMode ? props.selectElement : () => props.openClickedElement(props.id, props.category)}
+      onClick={props.modificationMode ?()=> props.selectElement(props.id) : () => props.openClickedElement(props.id, props.category)}
       onMouseDown={props.startTimer}
       onTouchStart={props.startTimer}
       onMouseUp={props.stopTimer}
       onMouseLeave={props.stopTimer}
       onTouchEnd={props.stopTimer}
-      className={`home-notes__note ${props.darkMode ? "dark" : ""}`}
+      className={`home-notes__note ${props.darkMode ? "dark" : ""} ${props.isHeld ? 'held' : ''}`}
     >
       <h4
         style={changeTextColor(props.theme)}
