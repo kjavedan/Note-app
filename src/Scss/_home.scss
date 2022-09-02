@@ -211,6 +211,10 @@
           color: $primary-txt-clr-4;
           cursor: pointer;
 
+          &.dark{
+              color: $primary-clr-1;
+          }
+
           &:hover{
             color: $primary-txt-clr-7;
             font-size: 1.2rem;
@@ -225,21 +229,66 @@
 
           .counter{
           font-family: $ff-primary-2;
+
+          &.dark{
+            color: $primary-clr-1;
           }
+
+          } 
           .close-modyfire{
             height: 33px;
             border: none;
             background-color: transparent;
             cursor: pointer;
             font-size: 1.9rem;
+
+            &.dark{
+            color: $primary-clr-1;
+          }
           }
         }
+        .modyfire-theme{
+          width: 80%;
+          height: 30px;
+          position: fixed;
+          left: 10%;
+          top: 80px;
+          border-radius: 20px;
+          visibility: hidden;
+          opacity: 0;
+          @include centrlize-space-around;
+          box-shadow:  0px 4px 4px  rgba(0, 0, 0, 0.25);
+          transition: all ease-in-out .2s;
+          @include color-theme;
+
+         
+          
+          &.open{
+            height: 70px;
+            width: 100%;
+            left: 0;
+            top: 80px;
+            background-color: $primary-clr-1;
+            visibility: visible;
+            opacity: 1;
+
+
+            &.dark{
+              background-color: $primary-dark-clr-3;
+            }
+          }
+        }
+
         &.open{
           left: 0;
           height: 70px;
           width: 100%;
           visibility: visible;
           opacity: 1;
+
+          &.dark{
+            background-color: $primary-dark-clr-3;
+          }
         }
     }
 
