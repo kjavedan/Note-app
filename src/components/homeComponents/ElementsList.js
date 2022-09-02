@@ -14,6 +14,8 @@ export default function ElementsList(props) {
       />
       <Modyfire
       darkMode={props.darkMode}
+      mainState={props.mainState}
+      setMainState={props.setMainState}
       modificationMode={props.modificationMode}
       setModificationMode={props.setModificationMode}
        />
