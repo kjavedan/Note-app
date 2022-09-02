@@ -11,7 +11,6 @@ export default function Notes(props) {
 
   const intervalRef = React.useRef(null);
 
-  console.log(timer)
 
   function startTimer(){
     if(intervalRef.current) return;
@@ -28,7 +27,6 @@ export default function Notes(props) {
   }
   // select Element function will only work when we are in modification Mode
    function selectElement(id){
-    console.log(id)
     props.setMainState(prevState =>{
       return prevState.map(element =>{
         if(element.id === id){
@@ -56,6 +54,7 @@ export default function Notes(props) {
     });
   });
 
+console.log(props.mainState)
  
 
   /* I have to create a function that fires when a user hold an element

@@ -18,7 +18,6 @@ export default function Note(props) {
       });
     }
   }
-
  
       
   return (

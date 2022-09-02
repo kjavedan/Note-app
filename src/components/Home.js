@@ -55,7 +55,7 @@ export default function Home({ mainState, setMainState }) {
     date: date.toLocaleString(),
     shortDate: getShortDate(),
     category: "note",
-    isHeld: true,
+    isHeld: false,
     theme: "default",
   };
 

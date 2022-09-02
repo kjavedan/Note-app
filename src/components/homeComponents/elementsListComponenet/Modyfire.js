@@ -13,6 +13,31 @@ export default function Modyfire(props) {
       })
     })
   }
+  // delete selected notes
+  function deleteSelectedNotes(){
+    const newArr = []
+    props.mainState.forEach(element =>{
+      if(!element.isHeld){
+        newArr.push(element)
+      }
+    })
+    props.setMainState(newArr);
+    props.setModificationMode(false)
+    
+  }
+  // change selected notes themes
+  function changeTheme(){
+
+  }
+  // add selected notes to favorites
+  function addToFavorites(){
+
+  }
+  // add selected notes to passswords
+  function addToPasswords(){
+
+  }
+
   // count selected notes
   function counter(){
     let count = 0;
@@ -31,7 +56,9 @@ export default function Modyfire(props) {
             <button className="btn add-to-passwords"><MdPassword /></button>
             <button className="btn add-to-favorite"><MdFavorite /></button>
             <button className="btn change-theme"><MdOutlineColorLens /></button>
-            <button className="btn delete"><FiTrash /></button>
+            <button 
+            onClick={deleteSelectedNotes}
+            className="btn delete"><FiTrash /></button>
         </div>
         <div className="modyfire-left-container">
             <span className="counter">{count}</span>
