@@ -27,13 +27,26 @@ export default function Modyfire(props) {
     props.setModificationMode(false)
     
   }
-  // change selected notes themes
-  function changeTheme(){
+  function toggleTheme(){
     setOpentTheme(!openTheme)
+  }
+  // change selected notes themes
+  function changeTheme(value){
+    console.log(value)
     // create another component -> theme popup
     // add the colors divs and pass their value to the funciton
     // change helded elements theme to that value
+    props.setMainState(prevState => {
+      return prevState.map(element => {
+        if(element.isHeld){
+          return {...element, theme : value}
+        }else{
+          return element;
+        }
+      })
+    })
   }
+
   // add selected notes to favorites
   function addToFavorites(){
 
@@ -58,15 +71,20 @@ export default function Modyfire(props) {
   return (
     <div className={`home-modyfire ${props.darkMode ? 'dark' : ''} ${props.modificationMode ? 'open' : ''}`}>
         <div className="modyfire-btns">
+        {/* password */}
             <button className={`btn add-to-passwords ${props.darkMode ? 'dark' : ''}`}><MdPassword /></button>
+        {/* favorite */}
             <button className={`btn add-to-favorite ${props.darkMode ? 'dark' : ''}`}><MdFavorite /></button>
+        {/* theme btn*/}
             <button 
-            onClick={changeTheme}
+            onClick={toggleTheme}
             className={`btn change-theme ${props.darkMode ? 'dark' : ''}`}><MdOutlineColorLens /></button>
+        {/* delete */}
             <button 
             onClick={deleteSelectedNotes}
             className={`btn delete ${props.darkMode ? 'dark' : ''}`}><FiTrash /></button>
         </div>
+        {/* counter & close modyfire */}
         <div className="modyfire-left-container">
             <span className={`counter ${props.darkMode ? 'dark' : ''}`}>{count}</span>
             <button 
@@ -74,6 +92,7 @@ export default function Modyfire(props) {
             className={`close-modyfire ${props.darkMode ? 'dark' : ''}`}><AiOutlineClose />
             </button>
         </div>
+        {/* theme bar */}
         <div className={`modyfire-theme ${props.darkMode ? 'dark' : ''} ${openTheme ? 'open' : ''}`}>
             <div
             onClick={() => changeTheme("default")}
