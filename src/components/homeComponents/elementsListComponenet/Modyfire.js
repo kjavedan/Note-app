@@ -2,6 +2,7 @@ import React from 'react'
 import { MdOutlineColorLens, MdPassword, MdFavorite } from "react-icons/md";
 import { FiTrash } from "react-icons/fi";
 import { AiOutlineClose } from "react-icons/ai";
+import { BiSelectMultiple } from "react-icons/bi";
 
 export default function Modyfire(props) {
 
@@ -12,6 +13,13 @@ export default function Modyfire(props) {
     props.setMainState(prevState =>{
       return prevState.map(element => {
         return {...element, isHeld : false}
+      })
+    })
+  }
+  function selectAll(){
+    props.setMainState(prevState => {
+      return prevState.map(element => {
+        return {...element, isHeld: true}
       })
     })
   }
@@ -27,15 +35,12 @@ export default function Modyfire(props) {
     props.setModificationMode(false)
     
   }
+  
   function toggleTheme(){
     setOpentTheme(!openTheme)
   }
   // change selected notes themes
   function changeTheme(value){
-    console.log(value)
-    // create another component -> theme popup
-    // add the colors divs and pass their value to the funciton
-    // change helded elements theme to that value
     props.setMainState(prevState => {
       return prevState.map(element => {
         if(element.isHeld){
@@ -83,6 +88,10 @@ export default function Modyfire(props) {
             <button 
             onClick={deleteSelectedNotes}
             className={`btn delete ${props.darkMode ? 'dark' : ''}`}><FiTrash /></button>
+        {/* select all */}
+            <button 
+            onClick={selectAll}
+            className={`btn select-all ${props.darkMode ? 'dark' : ''}`}><BiSelectMultiple /></button>
         </div>
         {/* counter & close modyfire */}
         <div className="modyfire-left-container">
