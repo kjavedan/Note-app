@@ -54,7 +54,6 @@ export default function Notes(props) {
     });
   });
 
-console.log(props.mainState)
  
 
   /* I have to create a function that fires when a user hold an element
@@ -92,6 +91,7 @@ console.log(props.mainState)
           title={item.title}
           category={item.category}
           isHeld={item.isHeld}
+          isFavorite={item.isFavorite}
           modificationMode={props.modificationMode}
           startTimer={startTimer}
           stopTimer={stopTimer}
@@ -110,6 +110,7 @@ console.log(props.mainState)
           theme={item.theme}
           category={item.category}
           isHeld={item.isHeld}
+          isFavorite={item.isFavorite}
           date={item.date}
           shortDate={item.shortDate}
           modificationMode={props.modificationMode}

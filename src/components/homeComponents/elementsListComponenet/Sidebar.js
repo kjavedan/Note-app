@@ -7,46 +7,80 @@ import { BsFiles } from "react-icons/bs";
 
 
 export default function Sidebar(props) {
+
+
+  const [sidebar, setSidebarOpen] = React.useState(false);
+
+  const [heldCategory, setHeldCategory] = React.useState('recent');
+
+  function toggleSidebar(){
+    setSidebarOpen(!sidebar);
+  }
+  function closeSidebar(){
+    setSidebarOpen(false)
+  }
   return (
-    <div className={`home-sidebar ${props.darkMode ? 'dark' : ''}`}>
-      <div className={`sidebar-toggler ${props.darkMode ? 'dark' : ''}`}></div>
-      <div className="sidebar-menu">
-      {/* recent */}
-        <div className={`category-container ${props.darkMode ? 'dark' : ''}`}>
-          <p className="category-name">recent</p>
-          <GiBackwardTime />
-        </div>
-      {/* favorite */}
-        <div className={`category-container ${props.darkMode ? 'dark' : ''}`}>
-          <p className="category-name">favorite</p>
-          <MdFavorite />
-        </div>
-        <div className="line"></div>
-      {/* All materials */}
-        <div className={`category-container ${props.darkMode ? 'dark' : ''}`}>
-          <p className="category-name">all materials</p>
-          <BsFiles />
-        </div>
-      {/* Notes */}
-        <div className={`category-container ${props.darkMode ? 'dark' : ''}`}>
-          <p className="category-name">notes</p>
-          <MdOutlineNoteAlt />
-        </div>
-      {/* Todos */}
-        <div className={`category-container ${props.darkMode ? 'dark' : ''}`}>
-          <p className="category-name">todos</p>
-          <TiTick />
-        </div>
-      {/* passwords */}
-        <div className={`category-container ${props.darkMode ? 'dark' : ''}`}>
-          <p className="category-name">passwords</p>
-          <MdPassword />
-        </div>
-        <div className="line"></div>
-      {/* deleted */}
-        <div className={`category-container ${props.darkMode ? 'dark' : ''}`}>
-          <p className="category-name">deleted</p>
-          <FiTrash />
+    <div className="home-sidebar-container">
+      <div 
+      onClick={closeSidebar}
+      className={`close-sidebar ${sidebar ? 'open' : ''}`}></div>
+      <div className={`sidebar ${props.darkMode ? 'dark' : ''} ${sidebar ? 'open' : ''}`}>
+        <div 
+        onClick={toggleSidebar}
+        onTouchMove={toggleSidebar}
+        className={`sidebar-toggler ${props.darkMode ? 'dark' : ''}`}></div>
+        <div className="sidebar-menu">
+        {/* recent */}
+          <div 
+          onClick={(()=>{setHeldCategory('recent')})}
+          className={`category-container ${props.darkMode ? 'dark' : ''} ${heldCategory === 'recent' ? 'active' : ''}`}>
+            <p className="category-name">recent</p>
+            <GiBackwardTime />
+          </div>
+        {/* favorite */}
+          <div 
+          onClick={(()=>{setHeldCategory('favorite')})}
+          className={`category-container ${props.darkMode ? 'dark' : ''} ${heldCategory === 'favorite' ? 'active' : ''}`}>
+            <p className="category-name">favorite</p>
+            <MdFavorite />
+          </div>
+          <div className="line"></div>
+        {/* All materials */}
+          <div 
+          onClick={(()=>{setHeldCategory('all')})}
+          className={`category-container ${props.darkMode ? 'dark' : ''} ${heldCategory === 'all' ? 'active' : ''}`}>
+            <p className="category-name">all materials</p>
+            <BsFiles />
+          </div>
+        {/* Notes */}
+          <div 
+          onClick={(()=>{setHeldCategory('notes')})}
+          className={`category-container ${props.darkMode ? 'dark' : ''} ${heldCategory === 'notes' ? 'active' : ''}`}>
+            <p className="category-name">notes</p>
+            <MdOutlineNoteAlt />
+          </div>
+        {/* Todos */}
+          <div 
+          onClick={(()=>{setHeldCategory('todo')})}
+          className={`category-container ${props.darkMode ? 'dark' : ''} ${heldCategory === 'todo' ? 'active' : ''}`}>
+            <p className="category-name">todo</p>
+            <TiTick />
+          </div>
+        {/* passwords */}
+          <div 
+          onClick={(()=>{setHeldCategory('pass')})}
+          className={`category-container ${props.darkMode ? 'dark' : ''} ${heldCategory === 'pass' ? 'active' : ''}`}>
+            <p className="category-name">passwords</p>
+            <MdPassword />
+          </div>
+          <div className="line"></div>
+        {/* deleted */}
+          <div 
+          onClick={(()=>{setHeldCategory('deleted')})}
+          className={`category-container ${props.darkMode ? 'dark' : ''} ${heldCategory === 'deleted' ? 'active' : ''}`}>
+            <p className="category-name">deleted</p>
+            <FiTrash />
+          </div>
         </div>
       </div>
     </div>

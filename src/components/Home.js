@@ -47,6 +47,7 @@ export default function Home({ mainState, setMainState }) {
     setEditorType(category);
     setOpenEditor((prevState) => !prevState);
   }
+  console.log(mainState)
 
   const newNote = {
     id: nanoid(),
@@ -56,6 +57,9 @@ export default function Home({ mainState, setMainState }) {
     shortDate: getShortDate(),
     category: "note",
     isHeld: false,
+    isHide: false,
+    isPassword: false,
+    isFavorite: false,
     theme: "default",
   };
 
@@ -67,6 +71,9 @@ export default function Home({ mainState, setMainState }) {
     shortDate: getShortDate(),
     category: "todo",
     isHeld: false,
+    isHide: false,
+    isPassword: false,
+    isFavorite: false,
     tasks: [],
   };
 

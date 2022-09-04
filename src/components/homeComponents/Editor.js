@@ -33,6 +33,23 @@ export default function Editor(props) {
   function changeTitle(e) {
     setElementData({ ...elementData, title: e.target.value });
   }
+  // change element property (isFavorite, isPassword)
+  function toggleProperty(propertyName, message){
+    displayMessage(message)
+    setElementData({...elementData, [propertyName]: !elementData[propertyName]})
+  }
+  function addToFavorite(){
+    toggleProperty('isFavorite', 'favorite')
+  }
+  function mooveOutFavorite(){
+    toggleProperty('isFavorite', 'uncheck-favorite')
+  }
+  function addToPasswords(){
+   toggleProperty('isPassword', 'pass')
+  }
+  function moveOutPassword(){
+   toggleProperty('isPassword', 'uncheck-password')
+  }
 
   function backToHome() {
     saveElement(elementData.category);
@@ -95,18 +112,33 @@ export default function Editor(props) {
     if (value === "save") {
       setEditorMessage({ message: "saved", color: "lightgreen" });
       saveElement(elementData.category);
-    } else if (value === "delete") {
+    } 
+    else if (value === "delete") {
       deleteElement(elementData, "note has been deleted", "lightcoral");
       props.setOpenEditor(false);
       return;
-    } else if (value === "favorite") {
+    }
+    else if (value === "favorite") {
       setEditorMessage({
-        message: "note added to favorite",
+        message: "added to favorite",
         color: "lightgreen",
       });
-    } else {
+    } 
+    else if(value === 'uncheck-favorite'){
       setEditorMessage({
-        message: "note added to passwords",
+        message: "moved out from favorites",
+        color: "lightgreen",
+      });
+    } 
+    else if(value === 'pass') {
+      setEditorMessage({
+        message: "added to passwords",
+        color: "lightgreen",
+      });
+    }
+    else {
+      setEditorMessage({
+        message: "moved out from passwords",
         color: "lightgreen",
       });
     }
@@ -116,7 +148,6 @@ export default function Editor(props) {
   }
 
   function handleOptions() {
-    // console.log(elementData.id);
     setOpenTheme(false);
     setOpenOptions((prevState) => !prevState);
   }
@@ -130,7 +161,6 @@ export default function Editor(props) {
     props.mainState.forEach((item) => {
       if (item.id === props.clickedElement) {
         setElementData(item);
-        // setTasks(item.tasks)
       }
     });
   }, []);
@@ -153,33 +183,33 @@ export default function Editor(props) {
               props.darkMode ? "dark" : ""
             } `}
           >
+          {/* message */}
             <div
               onClick={() => displayMessage("save")}
               className={`option ${props.darkMode ? "dark" : ""}`}
             >
-              {" "}
               <span>Save</span> <BsSave />
             </div>
+            {/* delete btn */}
             <div
               onClick={() => displayMessage("delete")}
               className={`option ${props.darkMode ? "dark" : ""}`}
             >
-              {" "}
               <span>Delete</span> <FiTrash />
             </div>
+            {/* add to favorite */}
             <div
-              onClick={() => displayMessage("favorite")}
+              onClick={elementData.isFavorite ? mooveOutFavorite : addToFavorite}
               className={`option ${props.darkMode ? "dark" : ""}`}
             >
-              {" "}
-              <span>Add to favorite</span> <MdFavorite />
+              <span>{elementData.isFavorite ? 'move out favorite' : 'add to favorite'}</span> <MdFavorite />
             </div>
+            {/* add to password */}
             <div
-              onClick={() => displayMessage("pass")}
+              onClick={elementData.isPassword ? moveOutPassword : addToPasswords}
               className={`option ${props.darkMode ? "dark" : ""}`}
             >
-              {" "}
-              <span>Add to passwords</span> <MdPassword />
+              <span>{elementData.isPassword ? 'move out password' : 'add to password'}</span> <MdPassword />
             </div>
           </div>
         </div>

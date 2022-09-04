@@ -1,5 +1,5 @@
 import React from "react";
-import { MdFormatLineSpacing } from "react-icons/md";
+import { MdFormatLineSpacing, MdFavorite } from "react-icons/md";
 
 export default function Note(props) {
   function changeTheme(color) {
@@ -31,6 +31,7 @@ export default function Note(props) {
       onTouchEnd={props.stopTimer}
       className={`home-notes__note ${props.darkMode ? "dark" : ""} ${props.isHeld ? 'held' : ''}`}
     >
+      <span className={`favorite ${props.darkMode ? 'dark' : ''}`}>{props.isFavorite? <MdFavorite /> : ''}</span>
       <h4
         style={changeTextColor(props.theme)}
         className={`note-title ${props.darkMode ? "dark" : ""}`}

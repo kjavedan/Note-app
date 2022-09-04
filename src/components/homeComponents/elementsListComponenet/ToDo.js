@@ -1,5 +1,5 @@
 import React from "react";
-import { MdDone } from "react-icons/md";
+import { MdDone, MdFavorite } from "react-icons/md";
 import { nanoid } from "nanoid";
 
 export default function ToDo(props) {
@@ -53,6 +53,7 @@ export default function ToDo(props) {
       onTouchEnd={props.stopTimer}
       className={`home-notes__note ${props.darkMode ? "dark" : ''} ${props.isHeld ? 'held' : ''}`}
     >
+      <span className={`favorite ${props.darkMode ? 'dark' : ''}`}>{props.isFavorite? <MdFavorite /> : ''}</span>
       <h4
         style={changeTextColor(props.theme)}
         className={`note-title ${props.darkMode ? "dark" : ""}`}

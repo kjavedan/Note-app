@@ -291,81 +291,110 @@
           }
         }
     }
-
-  &-sidebar{
+  &-sidebar-container{
     position: fixed;
     top: 0;
     left: 0;
+    min-width: auto;
     height: 100vh;
-    width: 40%;
-    background-color: $primary-clr-1;
     z-index: 33;
-    border-radius: 20px;
-    box-shadow: 3px 4px 4px rgba(0, 0, 0, 0.25);
-
-    &.dark{
-      background-color: $primary-dark-clr-3;
+    
+    &.open{
     }
 
-    .sidebar-toggler{
-      height: 100px;
-      width: 30px;
-      border-radius: 30px;
+    .close-sidebar{
+      background-color: transparent;
+      width: 100vw;
+      height: 100vh;
+      display: none;
+      
+      &.open{
+        display: block;
+      }
+    }
+    .sidebar{
+      position: fixed;
+      top: 0;
+      left: -40%;
+      height: 100vh;
+      width: 40%;
       background-color: $primary-clr-1;
-      position: absolute;
-      top: 50%;
-      cursor: pointer;
-      right: -15px;
-      transform: translateY(-50%);
-      box-shadow: 3px 0px 2px rgba(0, 0, 0, 0.20);
-
+      border-radius: 20px;
+      box-shadow: 3px 4px 4px rgba(0, 0, 0, 0.25);
+      transition: all ease-in-out .2s;
+  
       &.dark{
         background-color: $primary-dark-clr-3;
       }
-    }
-
-    .sidebar-menu{
-      height: 100%;
-      width: 100%;
-      display: flex;
-      flex-direction: column;
-      padding: 3rem 0;
-      justify-content: space-around;
-
-      .category-container{
-        @include centrlize-space-between;
-        position: relative;
-        z-index: 35;
-        padding: 0 1rem;
-        width: 100%;
-        height: 60px;
-        border-top-right-radius: 20px;
-        border-bottom-right-radius: 20px;
-        font: 500 .9rem $ff-primary-2;
-        color: $primary-txt-clr-4;
-        text-transform: capitalize;
-
+  
+      &.open{
+        left: 0;
+      }
+  
+      .sidebar-toggler{
+        height: 100px;
+        width: 20px;
+        border-radius: 30px;
+        background-color: $primary-clr-1;
+        position: absolute;
+        top: 50%;
+        cursor: pointer;
+        right: -10px;
+        transform: translateY(-50%);
+        box-shadow: 3px 0px 2px rgba(0, 0, 0, 0.20);
+  
         &.dark{
-          color: $primary-clr-1;
-        }
-
-        &:hover{
-          background-color: $primary-clr-3;
-          font-size: 1rem;
-          font-weight: bold;
-          cursor: pointer;
-
-          &.dark{
-            background-color: $primary-clr-2;
-          }
+          background-color: $primary-dark-clr-3;
         }
       }
-      .line{
-        width: 80%;
-        background-color: $primary-txt-clr-2;
-        height: 1px;
-        border-radius: 2px;
-        margin: 1rem auto;
+  
+      .sidebar-menu{
+        height: 100%;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        padding-top: 3rem;
+        padding-bottom: 6rem;
+        justify-content: space-around;
+  
+        .category-container{
+          @include centrlize-space-between;
+          position: relative;
+          z-index: 35;
+          padding: 0 1rem;
+          width: 100%;
+          height: 50px;
+          border-top-right-radius: 20px;
+          border-bottom-right-radius: 20px;
+          font: 500 14px $ff-primary-2;
+          color: $primary-txt-clr-2;
+          text-transform: capitalize;
+  
+          &.dark{
+            color: $primary-clr-1;
+          }
+  
+          &:hover{
+            font-size: .9rem;
+            font-weight: bold;
+            cursor: pointer;
+          }
+
+          &.active{
+            background-color: $primary-clr-3;
+
+            &.dark{
+              background-color: $primary-clr-2;
+            }
+          }
+        }
+        .line{
+          width: 80%;
+          background-color: $primary-txt-clr-2;
+          height: 1px;
+          border-radius: 2px;
+          margin: 1rem auto;
+        }
       }
     }
   }
@@ -396,10 +425,21 @@
         box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
       }
 
+      .favorite{
+        position: absolute;
+        right: 10px;
+        top: 1.3rem;
+        
+        &.dark{
+          color: $primary-clr-1;
+        }
+      }
+
       .note-title,
       .todo-title {
         font: 700 1.3rem $ff-primary-2;
         text-transform: capitalize;
+        width: 90%;
       }
 
       .note-text {

@@ -52,13 +52,32 @@ export default function Modyfire(props) {
     })
   }
 
+  function toggleProperty(propertyName, toggleTo){
+    props.setMainState(prevState => {
+      return prevState.map(element =>{
+        if(element.isHeld){
+          return {...element, [propertyName] : toggleTo}
+        }else{
+          return element;
+        }
+      })
+    })
+  }
   // add selected notes to favorites
   function addToFavorites(){
-
+    toggleProperty('isFavorite', true)
+  }
+  //remove from favorite
+  function removeFromFavorite(){
+    toggleProperty('isFavorite', false)
   }
   // add selected notes to passswords
   function addToPasswords(){
-
+    toggleProperty('isPassword', true)
+  }
+  // remove from passwords
+  function removeFromPasswords(){
+    toggleProperty('isPassword', false)
   }
 
   // count selected notes
@@ -77,9 +96,13 @@ export default function Modyfire(props) {
     <div className={`home-modyfire ${props.darkMode ? 'dark' : ''} ${props.modificationMode ? 'open' : ''}`}>
         <div className="modyfire-btns">
         {/* password */}
-            <button className={`btn add-to-passwords ${props.darkMode ? 'dark' : ''}`}><MdPassword /></button>
+            <button 
+            onClick={addToPasswords}
+            className={`btn add-to-passwords ${props.darkMode ? 'dark' : ''}`}><MdPassword /></button>
         {/* favorite */}
-            <button className={`btn add-to-favorite ${props.darkMode ? 'dark' : ''}`}><MdFavorite /></button>
+            <button 
+            onClick={addToFavorites}
+            className={`btn add-to-favorite ${props.darkMode ? 'dark' : ''}`}><MdFavorite /></button>
         {/* theme btn*/}
             <button 
             onClick={toggleTheme}
