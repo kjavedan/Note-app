@@ -8,21 +8,29 @@ export default function Modyfire(props) {
 
   const [openTheme, setOpentTheme] = React.useState(false);
 
-  function closeModyfire(){
-    props.setModificationMode(false);
-    props.setMainState(prevState =>{
-      return prevState.map(element => {
-        return {...element, isHeld : false}
-      })
-    })
-  }
-  function selectAll(){
+  const [selectedAll, setSelectedAll] = React.useState(false)
+
+  function toggleAllProperties(propertyName , toggleTo){
     props.setMainState(prevState => {
       return prevState.map(element => {
-        return {...element, isHeld: true}
+        return {...element , [propertyName] : toggleTo}
       })
     })
   }
+  function closeModyfire(){
+    props.setModificationMode(false);
+    toggleAllProperties('isHeld', false)
+  }
+  function selectAll(){
+    setSelectedAll(true)
+    toggleAllProperties('isHeld', true)
+  }
+  function unSelectAll(){
+    setSelectedAll(false)
+    toggleAllProperties('isHeld', false)
+  }
+
+
   // delete selected notes
   function deleteSelectedNotes(){
     const newArr = []
@@ -35,22 +43,11 @@ export default function Modyfire(props) {
     props.setModificationMode(false)
     
   }
-  
+  // open theme options
   function toggleTheme(){
     setOpentTheme(!openTheme)
   }
-  // change selected notes themes
-  function changeTheme(value){
-    props.setMainState(prevState => {
-      return prevState.map(element => {
-        if(element.isHeld){
-          return {...element, theme : value}
-        }else{
-          return element;
-        }
-      })
-    })
-  }
+
 
   function toggleProperty(propertyName, toggleTo){
     props.setMainState(prevState => {
@@ -113,7 +110,7 @@ export default function Modyfire(props) {
             className={`btn delete ${props.darkMode ? 'dark' : ''}`}><FiTrash /></button>
         {/* select all */}
             <button 
-            onClick={selectAll}
+            onClick={selectedAll ? unSelectAll : selectAll}
             className={`btn select-all ${props.darkMode ? 'dark' : ''}`}><BiSelectMultiple /></button>
         </div>
         {/* counter & close modyfire */}
@@ -127,37 +124,37 @@ export default function Modyfire(props) {
         {/* theme bar */}
         <div className={`modyfire-theme ${props.darkMode ? 'dark' : ''} ${openTheme ? 'open' : ''}`}>
             <div
-            onClick={() => changeTheme("default")}
+            onClick={() => toggleProperty("theme","default")}
             className={`color default ${openTheme ? "show" : ""}`}
           >
             <div className="line"></div>
           </div>
           <span
-            onClick={() => changeTheme("#ffbbc2")}
+            onClick={() => toggleProperty("theme","#ffbbc2")}
             className={`color color-1 ${openTheme ? "show" : ""}`}
           ></span>
           <span
-            onClick={() => changeTheme("#e6f0fd")}
+            onClick={() => toggleProperty("theme","#e6f0fd")}
             className={`color color-2 ${openTheme ? "show" : ""}`}
           ></span>
           <span
-            onClick={() => changeTheme("#d9d9d9")}
+            onClick={() => toggleProperty("theme","#d9d9d9")}
             className={`color color-3 ${openTheme ? "show" : ""}`}
           ></span>
           <span
-            onClick={() => changeTheme("#ffe598")}
+            onClick={() => toggleProperty("theme","#ffe598")}
             className={`color color-4 ${openTheme ? "show" : ""}`}
           ></span>
           <span
-            onClick={() => changeTheme("#ffe6d6")}
+            onClick={() => toggleProperty("theme","#ffe6d6")}
             className={`color color-5 ${openTheme ? "show" : ""}`}
           ></span>
           <span
-            onClick={() => changeTheme("#b5f7bb")}
+            onClick={() => toggleProperty("theme","#b5f7bb")}
             className={`color color-6 ${openTheme ? "show" : ""}`}
           ></span>
           <span
-            onClick={() => changeTheme("lightcoral")}
+            onClick={() => toggleProperty("theme","lightcoral")}
             className={`color color-7 ${openTheme ? "show" : ""}`}
           ></span>
         </div>
