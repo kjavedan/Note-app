@@ -43,38 +43,51 @@ export default function Modyfire(props) {
     props.setModificationMode(false)
     
   }
-  // open theme options
-  function toggleTheme(){
-    setOpentTheme(!openTheme)
-  }
 
-
-  function toggleProperty(propertyName, toggleTo){
+  function toggleProperty(propertyName){
     props.setMainState(prevState => {
       return prevState.map(element =>{
         if(element.isHeld){
-          return {...element, [propertyName] : toggleTo}
+          return {...element, [propertyName] : !element[propertyName]}
         }else{
           return element;
         }
       })
     })
   }
+
   // add selected notes to favorites
   function addToFavorites(){
-    toggleProperty('isFavorite', true)
+    toggleProperty('isFavorite')
   }
   //remove from favorite
   function removeFromFavorite(){
-    toggleProperty('isFavorite', false)
+    toggleProperty('isFavorite')
   }
   // add selected notes to passswords
   function addToPasswords(){
-    toggleProperty('isPassword', true)
+    toggleProperty('isPassword')
   }
   // remove from passwords
   function removeFromPasswords(){
-    toggleProperty('isPassword', false)
+    toggleProperty('isPassword')
+  }
+
+    // open theme options
+  function toggleTheme(){
+    setOpentTheme(!openTheme)
+  }
+
+  function changeTheme(value){
+     props.setMainState(prevState => {
+      return prevState.map(element =>{
+        if(element.isHeld){
+          return {...element, theme : value}
+        }else{
+          return element;
+        }
+      })
+    })
   }
 
   // count selected notes
@@ -124,37 +137,37 @@ export default function Modyfire(props) {
         {/* theme bar */}
         <div className={`modyfire-theme ${props.darkMode ? 'dark' : ''} ${openTheme ? 'open' : ''}`}>
             <div
-            onClick={() => toggleProperty("theme","default")}
+            onClick={() => changeTheme("default")}
             className={`color default ${openTheme ? "show" : ""}`}
           >
             <div className="line"></div>
           </div>
           <span
-            onClick={() => toggleProperty("theme","#ffbbc2")}
+            onClick={() => changeTheme("#ffbbc2")}
             className={`color color-1 ${openTheme ? "show" : ""}`}
           ></span>
           <span
-            onClick={() => toggleProperty("theme","#e6f0fd")}
+            onClick={() => changeTheme("#e6f0fd")}
             className={`color color-2 ${openTheme ? "show" : ""}`}
           ></span>
           <span
-            onClick={() => toggleProperty("theme","#d9d9d9")}
+            onClick={() => changeTheme("#d9d9d9")}
             className={`color color-3 ${openTheme ? "show" : ""}`}
           ></span>
           <span
-            onClick={() => toggleProperty("theme","#ffe598")}
+            onClick={() => changeTheme("#ffe598")}
             className={`color color-4 ${openTheme ? "show" : ""}`}
           ></span>
           <span
-            onClick={() => toggleProperty("theme","#ffe6d6")}
+            onClick={() => changeTheme("#ffe6d6")}
             className={`color color-5 ${openTheme ? "show" : ""}`}
           ></span>
           <span
-            onClick={() => toggleProperty("theme","#b5f7bb")}
+            onClick={() => changeTheme("#b5f7bb")}
             className={`color color-6 ${openTheme ? "show" : ""}`}
           ></span>
           <span
-            onClick={() => toggleProperty("theme","lightcoral")}
+            onClick={() => changeTheme("lightcoral")}
             className={`color color-7 ${openTheme ? "show" : ""}`}
           ></span>
         </div>
