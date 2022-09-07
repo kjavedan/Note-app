@@ -36,19 +36,21 @@ export default function Home({ mainState, setMainState }) {
   // state to notify the user with happening changes
   const [message, setMessage] = React.useState({});
 
+  // hide the message after 3 seconds
   React.useEffect(() => {
     setTimeout(() => {
       setMessage({});
     }, 3000);
   }, [openEditor]);
-
+  
+  // we open the relative editor for the clicked or created item by checking its category
   function openClickedElement(id, category) {
     setClickedElement(id);
     setEditorType(category);
     setOpenEditor((prevState) => !prevState);
   }
-  console.log(mainState)
 
+  // new note properties
   const newNote = {
     id: nanoid(),
     title: "",
@@ -63,6 +65,7 @@ export default function Home({ mainState, setMainState }) {
     theme: "default",
   };
 
+  // new todo properties
   const newTodo = {
     id: nanoid(),
     title: "",
@@ -77,6 +80,7 @@ export default function Home({ mainState, setMainState }) {
     tasks: [],
   };
 
+  // check the clicked btn category and create new element base on that
   function createElement(category) {
     if (category === "note") {
       setMainState([newNote, ...mainState]);
@@ -88,7 +92,7 @@ export default function Home({ mainState, setMainState }) {
     setEditorType(category);
     setOpenEditor((prevState) => !prevState);
   }
-
+  // check the openEditor state and display elementslist or the editor according the value of the state
   return (
     <div className={`home ${darkMode ? "dark" : ""}`}>
       {openEditor ? (

@@ -8,17 +8,19 @@ import { MdAdd } from "react-icons/md";
 // ------------------------
 
 export default function Nav(props) {
+
+  // state to show the create btns on click
   const [showBtns, setShowBtns] = React.useState(false);
 
+  // toggle the create btns on the screen
   function toggleBtns() {
     setShowBtns((prevState) => !prevState);
   }
-
+  // changin the entire app theme from the nav
   function changeTheme() {
     props.setDarkMode((prevState) => !prevState);
   }
 
-  function createNote() {}
 
   return (
     <nav className={`home-nav ${props.darkMode ? "dark" : ""}`}>
@@ -53,7 +55,7 @@ export default function Nav(props) {
           </span>
         </div>
       </div>
-
+      {/* search bar */}
       <div
         className={`home-nav__search-container ${props.darkMode ? "dark" : ""}`}
       >
@@ -66,6 +68,7 @@ export default function Nav(props) {
           <FiSearch />
         </span>
       </div>
+      {/* theme changer */}
       <div
         className={`home-nav__theme-switcher ${props.darkMode ? "dark" : ""}`}
         onClick={changeTheme}

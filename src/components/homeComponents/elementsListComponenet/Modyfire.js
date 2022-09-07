@@ -5,11 +5,20 @@ import { AiOutlineClose } from "react-icons/ai";
 import { BiSelectMultiple } from "react-icons/bi";
 
 export default function Modyfire(props) {
+  // the modyfire component appears when the user hold an element in the elementsList
+  // 1. it deletes element
+  // 2. we can add to favorite
+  // 3. we can add to password
+  // 4. we can change theme
+  // 5. we can select and unSelect all item with select all btn
 
+  // state to open the color bar when the user click the theme btn
   const [openTheme, setOpentTheme] = React.useState(false);
 
+  // state to determaine the sellectall btn wheather it should select or deSelect
   const [selectedAll, setSelectedAll] = React.useState(false)
 
+  // function used different places to toggle the given prperty name to the given value
   function toggleAllProperties(propertyName , toggleTo){
     props.setMainState(prevState => {
       return prevState.map(element => {
@@ -17,15 +26,21 @@ export default function Modyfire(props) {
       })
     })
   }
+
+  // close the modyfire page when its clicked
   function closeModyfire(){
     props.setModificationMode(false);
     toggleAllProperties('isHeld', false)
   }
+
+  // select all elements when its clicked
   function selectAll(){
     setSelectedAll(true)
     toggleAllProperties('isHeld', true)
   }
-  function unSelectAll(){
+
+  // deSelect All item when its clicked
+  function deSelectAll(){
     setSelectedAll(false)
     toggleAllProperties('isHeld', false)
   }
@@ -43,7 +58,7 @@ export default function Modyfire(props) {
     props.setModificationMode(false)
     
   }
-
+  // this part need some fixing 
   function toggleProperty(propertyName){
     props.setMainState(prevState => {
       return prevState.map(element =>{
@@ -56,28 +71,20 @@ export default function Modyfire(props) {
     })
   }
 
-  // add selected notes to favorites
-  function addToFavorites(){
+  // toggle selected notes to or from favorites category
+  function toggleFavorite(){
     toggleProperty('isFavorite')
   }
-  //remove from favorite
-  function removeFromFavorite(){
-    toggleProperty('isFavorite')
-  }
-  // add selected notes to passswords
-  function addToPasswords(){
-    toggleProperty('isPassword')
-  }
-  // remove from passwords
-  function removeFromPasswords(){
+  // toggle selected note to or from password category
+  function togglePassword(){
     toggleProperty('isPassword')
   }
 
-    // open theme options
+  // toggle theme bar when the user click theme btn 
   function toggleTheme(){
     setOpentTheme(!openTheme)
   }
-
+  // chnage the selectd elements value to the clicked color btn in the theme bar
   function changeTheme(value){
      props.setMainState(prevState => {
       return prevState.map(element =>{
@@ -90,7 +97,7 @@ export default function Modyfire(props) {
     })
   }
 
-  // count selected notes
+  // count selected notes and display them in the modyfire bar
   function counter(){
     let count = 0;
     props.mainState.forEach(element =>{
@@ -107,11 +114,11 @@ export default function Modyfire(props) {
         <div className="modyfire-btns">
         {/* password */}
             <button 
-            onClick={addToPasswords}
+            onClick={togglePassword}
             className={`btn add-to-passwords ${props.darkMode ? 'dark' : ''}`}><MdPassword /></button>
         {/* favorite */}
             <button 
-            onClick={addToFavorites}
+            onClick={toggleFavorite}
             className={`btn add-to-favorite ${props.darkMode ? 'dark' : ''}`}><MdFavorite /></button>
         {/* theme btn*/}
             <button 
@@ -123,7 +130,7 @@ export default function Modyfire(props) {
             className={`btn delete ${props.darkMode ? 'dark' : ''}`}><FiTrash /></button>
         {/* select all */}
             <button 
-            onClick={selectedAll ? unSelectAll : selectAll}
+            onClick={selectedAll ? deSelectAll : selectAll}
             className={`btn select-all ${props.darkMode ? 'dark' : ''}`}><BiSelectMultiple /></button>
         </div>
         {/* counter & close modyfire */}
