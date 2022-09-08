@@ -40,6 +40,25 @@ export default function Notes(props) {
       })
     })
   }
+//---------------------------------------------------------------------
+// functions to do some inline styling for both Note and ToDo element
+  function changeTheme(color) {
+    let style = {};
+    if (color !== "default") {
+      return (style = {
+        backgroundColor: color,
+      });
+    } else return style;
+  }
+  function changeTextColor(color) {
+    let style = {};
+    if (color === "default" && props.darkMode) {
+      return (style = {
+        color: "#FFF",
+      });
+    }
+  }
+//-----------------------------------------------------------------------
 // open the modyfire bar when tht timer pass certain number
   React.useEffect(()=>{
       if(timer > 6){
@@ -55,6 +74,7 @@ export default function Notes(props) {
       gutter: 10,
     });
   });
+
 
   // display the elements from the main state 
   const elements = props.mainState.map((item) => {
@@ -77,6 +97,8 @@ export default function Notes(props) {
           startTimer={startTimer}
           stopTimer={stopTimer}
           selectElement={selectElement}
+          changeTheme={changeTheme}
+          changeTextColor={changeTextColor}
         />
       );
     } else {
@@ -98,6 +120,8 @@ export default function Notes(props) {
           startTimer={startTimer}
           stopTimer={stopTimer}
           selectElement={selectElement}
+          changeTheme={changeTheme}
+          changeTextColor={changeTextColor}
         />
       );
     }

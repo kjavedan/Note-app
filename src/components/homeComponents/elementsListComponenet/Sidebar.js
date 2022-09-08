@@ -8,14 +8,17 @@ import { BsFiles } from "react-icons/bs";
 
 export default function Sidebar(props) {
 
-
+  // state for toggling the sidebar
   const [sidebar, setSidebarOpen] = React.useState(false);
-
+  
+  // state for holding certain categories in the sidebar 
   const [heldCategory, setHeldCategory] = React.useState('recent');
 
+  // toggle sidebar with sidebar btn
   function toggleSidebar(){
     setSidebarOpen(!sidebar);
   }
+  // close the side bar with clicking on the rest of the screen
   function closeSidebar(){
     setSidebarOpen(false)
   }

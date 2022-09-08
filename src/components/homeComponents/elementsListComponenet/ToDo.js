@@ -3,7 +3,7 @@ import { MdDone, MdFavorite } from "react-icons/md";
 import { nanoid } from "nanoid";
 
 export default function ToDo(props) {
-  // function to display the todo task on the screen
+  // function to display all todo tasks on the screen
   function dispalyTask(tasks) {
     const todoTask = tasks.map((task) => {
       return (
@@ -25,26 +25,9 @@ export default function ToDo(props) {
     return todoTask;
   }
 
-  function changeTheme(color) {
-    let style = {};
-    if (color !== "default") {
-      return (style = {
-        backgroundColor: color,
-      });
-    } else return style;
-  }
-  function changeTextColor(color) {
-    let style = {};
-    if (color === "default" && props.darkMode) {
-      return (style = {
-        color: "#FFF",
-      });
-    }
-  }
-
   return (
     <div
-      style={changeTheme(props.theme)}
+      style={props.changeTheme(props.theme)}
       onClick={props.modificationMode ? ()=> props.selectElement(props.id) : () => props.openClickedElement(props.id, props.category)}
       onMouseDown={props.startTimer}
       onTouchStart={props.startTimer}
@@ -55,16 +38,16 @@ export default function ToDo(props) {
     >
       <span className={`favorite ${props.darkMode ? 'dark' : ''}`}>{props.isFavorite? <MdFavorite /> : ''}</span>
       <h4
-        style={changeTextColor(props.theme)}
+        style={props.changeTextColor(props.theme)}
         className={`note-title ${props.darkMode ? "dark" : ""}`}
       >
         {props.title}
       </h4>
-      <div style={changeTextColor(props.theme)} className="todo-list">
+      <div style={props.changeTextColor(props.theme)} className="todo-list">
         {dispalyTask(props.tasks)}
       </div>
       <div
-        style={changeTextColor(props.theme)}
+        style={props.changeTextColor(props.theme)}
         className={`note-info ${props.darkMode ? "dark" : ""}`}
       >
         <span className="note-date">{props.shortDate}</span>
