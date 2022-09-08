@@ -7,17 +7,20 @@ import { IoMdDoneAll } from "react-icons/io";
 
 export default function Notes(props) {
 
+  // state for counting the time the user hold an element so we can open the modyfire
   const [timer, setTimer] = React.useState(0);
 
+  // ref hook in order to clean the set interval function 
   const intervalRef = React.useRef(null);
 
-
+  // start timer fires when the userr hold the element
   function startTimer(){
     if(intervalRef.current) return;
     intervalRef.current = setInterval(()=>{
       setTimer(prevTime => prevTime + 1)
     },100)
   }
+  // stop timer fires when the user lift his/her thumeb from the element
   function stopTimer(){
     if(intervalRef.current){
       clearInterval(intervalRef.current);
@@ -36,16 +39,15 @@ export default function Notes(props) {
         }
       })
     })
-    // toggle isHeld
   }
-
+// open the modyfire bar when tht timer pass certain number
   React.useEffect(()=>{
       if(timer > 6){
         props.setModificationMode(true);
         setTimer(0);
       }
     })
-
+// implementing masonry liberay fo our elements layout
   React.useEffect(() => {
     const grid = document.querySelector(".home-notes");
     const masonry = new Masonry(grid, {
@@ -54,28 +56,7 @@ export default function Notes(props) {
     });
   });
 
- 
-
-  /* I have to create a function that fires when a user hold an element
-     for more than 1s -> open the modification Mode
-     change the property of isHeld of that specefic element and add to 
-     the counter
-     1.get id
-     2.itterate over state
-     3.change isHeld of that element
-     4.now we will check modification mode if its true we will fire
-     another onClick function for the element where we will change
-     the isHeld property of that item and increase the counter by 1
-  */ 
-
-     // we need to function
-     // 1. openModificationMode() -> will work only if the modification
-     // mode is false
-
-     // 2. selectElementInModificatiomMode() -> will work only if the 
-     // modification mode is true
-
-  // display the elements from the main state
+  // display the elements from the main state 
   const elements = props.mainState.map((item) => {
     if (item.category === "note") {
       return (
@@ -127,6 +108,7 @@ export default function Notes(props) {
       <div style={{ backgroundColor: props.message.color }} className="message">
         {props.message.text}
       </div>
+      {/* all of our elements */}
       <div className={`home-notes ${props.darkMode ? "dark" : ""}`}>
         {elements}
       </div>

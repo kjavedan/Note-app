@@ -2,6 +2,7 @@ import React from "react";
 import { MdFormatLineSpacing, MdFavorite } from "react-icons/md";
 
 export default function Note(props) {
+  
   function changeTheme(color) {
     let style = {};
     if (color !== "default") {

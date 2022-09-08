@@ -58,6 +58,7 @@ export default function Modyfire(props) {
     props.setModificationMode(false)
     
   }
+  
   // this part need some fixing 
   function toggleProperty(propertyName){
     props.setMainState(prevState => {
@@ -75,6 +76,7 @@ export default function Modyfire(props) {
   function toggleFavorite(){
     toggleProperty('isFavorite')
   }
+
   // toggle selected note to or from password category
   function togglePassword(){
     toggleProperty('isPassword')
