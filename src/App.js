@@ -2,6 +2,7 @@ import React from "react";
 import Home from "./components/Home";
 import Start from "./components/Start";
 export default function App() {
+  
   const [mainState, setMainState] = React.useState(
     JSON.parse(localStorage.getItem("notes")) || []
   );

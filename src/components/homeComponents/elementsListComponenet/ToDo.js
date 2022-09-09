@@ -4,7 +4,7 @@ import { nanoid } from "nanoid";
 
 export default function ToDo(props) {
   // function to display all todo tasks on the screen
-  function dispalyTask(tasks) {
+  function displayTasks(tasks) {
     const todoTask = tasks.map((task) => {
       return (
         <div
@@ -25,6 +25,7 @@ export default function ToDo(props) {
     return todoTask;
   }
 
+  // To Do component
   return (
     <div
       style={props.changeTheme(props.theme)}
@@ -43,9 +44,11 @@ export default function ToDo(props) {
       >
         {props.title}
       </h4>
+      {/* display tasks */}
       <div style={props.changeTextColor(props.theme)} className="todo-list">
-        {dispalyTask(props.tasks)}
+        {displayTasks(props.tasks)}
       </div>
+
       <div
         style={props.changeTextColor(props.theme)}
         className={`note-info ${props.darkMode ? "dark" : ""}`}

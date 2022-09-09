@@ -11,9 +11,6 @@ export default function Sidebar(props) {
   // state for toggling the sidebar
   const [sidebar, setSidebarOpen] = React.useState(false);
   
-  // state for holding certain categories in the sidebar 
-  const [heldCategory, setHeldCategory] = React.useState('recent');
-
   // toggle sidebar with sidebar btn
   function toggleSidebar(){
     setSidebarOpen(!sidebar);
@@ -22,6 +19,11 @@ export default function Sidebar(props) {
   function closeSidebar(){
     setSidebarOpen(false)
   }
+  // toggle categories -> one at the time
+  function handleClick(category){
+    props.setHeldCategory(category)
+  }
+
   return (
     <div className="home-sidebar-container">
       <div 
@@ -35,52 +37,52 @@ export default function Sidebar(props) {
         <div className="sidebar-menu">
         {/* recent */}
           <div 
-          onClick={(()=>{setHeldCategory('recent')})}
-          className={`category-container ${props.darkMode ? 'dark' : ''} ${heldCategory === 'recent' ? 'active' : ''}`}>
+          onClick={() => handleClick('recent')}
+          className={`category-container ${props.darkMode ? 'dark' : ''} ${props.heldCategory === 'recent' ? 'active' : ''}`}>
             <p className="category-name">recent</p>
             <GiBackwardTime />
           </div>
         {/* favorite */}
           <div 
-          onClick={(()=>{setHeldCategory('favorite')})}
-          className={`category-container ${props.darkMode ? 'dark' : ''} ${heldCategory === 'favorite' ? 'active' : ''}`}>
+          onClick={() => handleClick('favorite')}
+          className={`category-container ${props.darkMode ? 'dark' : ''} ${props.heldCategory === 'favorite' ? 'active' : ''}`}>
             <p className="category-name">favorite</p>
             <MdFavorite />
           </div>
           <div className="line"></div>
         {/* All materials */}
           <div 
-          onClick={(()=>{setHeldCategory('all')})}
-          className={`category-container ${props.darkMode ? 'dark' : ''} ${heldCategory === 'all' ? 'active' : ''}`}>
+          onClick={() => handleClick('all')}
+          className={`category-container ${props.darkMode ? 'dark' : ''} ${props.heldCategory === 'all' ? 'active' : ''}`}>
             <p className="category-name">all materials</p>
             <BsFiles />
           </div>
         {/* Notes */}
           <div 
-          onClick={(()=>{setHeldCategory('notes')})}
-          className={`category-container ${props.darkMode ? 'dark' : ''} ${heldCategory === 'notes' ? 'active' : ''}`}>
+          onClick={() => handleClick('note')}
+          className={`category-container ${props.darkMode ? 'dark' : ''} ${props.heldCategory === 'notes' ? 'active' : ''}`}>
             <p className="category-name">notes</p>
             <MdOutlineNoteAlt />
           </div>
         {/* Todos */}
           <div 
-          onClick={(()=>{setHeldCategory('todo')})}
-          className={`category-container ${props.darkMode ? 'dark' : ''} ${heldCategory === 'todo' ? 'active' : ''}`}>
+          onClick={() => handleClick('todo')}
+          className={`category-container ${props.darkMode ? 'dark' : ''} ${props.heldCategory === 'todo' ? 'active' : ''}`}>
             <p className="category-name">todo</p>
             <TiTick />
           </div>
         {/* passwords */}
           <div 
-          onClick={(()=>{setHeldCategory('pass')})}
-          className={`category-container ${props.darkMode ? 'dark' : ''} ${heldCategory === 'pass' ? 'active' : ''}`}>
+          onClick={() => handleClick('pass')}
+          className={`category-container ${props.darkMode ? 'dark' : ''} ${props.heldCategory === 'pass' ? 'active' : ''}`}>
             <p className="category-name">passwords</p>
             <MdPassword />
           </div>
           <div className="line"></div>
         {/* deleted */}
           <div 
-          onClick={(()=>{setHeldCategory('deleted')})}
-          className={`category-container ${props.darkMode ? 'dark' : ''} ${heldCategory === 'deleted' ? 'active' : ''}`}>
+          onClick={() => handleClick('deleted')}
+          className={`category-container ${props.darkMode ? 'dark' : ''} ${props.heldCategory === 'deleted' ? 'active' : ''}`}>
             <p className="category-name">deleted</p>
             <FiTrash />
           </div>

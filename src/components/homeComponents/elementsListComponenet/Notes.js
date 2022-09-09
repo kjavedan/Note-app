@@ -77,7 +77,7 @@ export default function Notes(props) {
 
 
   // display the elements from the main state 
-  const elements = props.mainState.map((item) => {
+  const elements = props.filteredState.map((item) => {
     if (item.category === "note") {
       return (
         <Note

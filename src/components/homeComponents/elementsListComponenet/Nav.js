@@ -16,7 +16,7 @@ export default function Nav(props) {
   function toggleBtns() {
     setShowBtns((prevState) => !prevState);
   }
-  // changin the entire app theme from the nav
+  // changing the entire app theme from the nav
   function changeTheme() {
     props.setDarkMode((prevState) => !prevState);
   }
