@@ -20,16 +20,17 @@ export default function Editor(props) {
   // state to display different messages to the use
   const [editorMessage, setEditorMessage] = React.useState({});
 
+  // open the theme bar in the fotter on clicking the theme btn
   function handleTheme() {
     setOpenOptions(false);
     setOpenTheme((prevTheme) => !prevTheme);
   }
-
+  // change the theme on clicking any color btn 
   function changeTheme(color) {
     setElementData({ ...elementData, theme: color });
     setOpenTheme(false);
   }
-
+  // change the title of the element
   function changeTitle(e) {
     setElementData({ ...elementData, title: e.target.value });
   }
@@ -38,24 +39,33 @@ export default function Editor(props) {
     displayMessage(message)
     setElementData({...elementData, [propertyName]: !elementData[propertyName]})
   }
+  // toggle more btn on click in the navbar
+   function handleOptions() {
+    setOpenTheme(false);
+    setOpenOptions((prevState) => !prevState);
+  }
+  // add the element to favorites on clicking add to favorite in the more btn
   function addToFavorite(){
     toggleProperty('isFavorite', 'favorite')
   }
+  // move the element out of favorites on clicking move out of favorite in the more btn
   function mooveOutFavorite(){
     toggleProperty('isFavorite', 'uncheck-favorite')
   }
+   // add the element to passwords on clicking add to passwords in the more btn
   function addToPasswords(){
    toggleProperty('isPassword', 'pass')
   }
+   // move the element out of passwords on clicking move out of passwords in the more btn
   function moveOutPassword(){
    toggleProperty('isPassword', 'uncheck-password')
   }
-
+  // save the element and bring us back to home page
   function backToHome() {
     saveElement(elementData.category);
     props.setOpenEditor(false);
   }
-
+  //if the element is not empty save the element base on its category
   function saveElement(category) {
     if (category === "note" && !elementData.title && !elementData.body) {
       deleteElement(elementData, "empty", "lightcoral"); // deleting empty note
@@ -96,7 +106,7 @@ export default function Editor(props) {
       props.setMainState(newArr);
     }
   }
-
+  // delete the element and show the deleted message in the main page
   function deleteElement(toBeDeleted, message, color) {
     props.setMessage({ text: message, color: color });
     props.setMainState((prevState) => {
@@ -107,7 +117,7 @@ export default function Editor(props) {
       });
     });
   }
-
+  // notify the user with any action
   function displayMessage(value) {
     if (value === "save") {
       setEditorMessage({ message: "saved", color: "lightgreen" });
@@ -147,16 +157,12 @@ export default function Editor(props) {
     }, 2000);
   }
 
-  function handleOptions() {
-    setOpenTheme(false);
-    setOpenOptions((prevState) => !prevState);
-  }
-
+  // close other open state such as more btn theme btn when the user try to type something
   function closeOpenStates() {
     setOpenOptions(false);
     setOpenTheme(false);
   }
-
+  // get the clicked element from the home page and set its info to element data in order to modify it
   React.useEffect(() => {
     props.mainState.forEach((item) => {
       if (item.id === props.clickedElement) {
@@ -243,6 +249,8 @@ export default function Editor(props) {
           onClick={closeOpenStates}
           className={`body ${props.darkMode ? "dark" : ""}`}
         >
+        {/* the body of the editor is different for note and todo
+        therefore open it base on the element category */}
           {props.editorType === "note" ? (
             <NoteEditor
               setElementData={setElementData}

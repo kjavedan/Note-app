@@ -16,7 +16,7 @@ export default function Notes(props) {
   // start timer fires when the userr hold the element
   function startTimer(){
     if(intervalRef.current) return;
-    intervalRef.current = setInterval(()=>{
+      intervalRef.current = setInterval(()=>{
       setTimer(prevTime => prevTime + 1)
     },100)
   }
