@@ -1,11 +1,8 @@
 import React from "react";
 import NoteEditor from "./editorComponents/NoteEditor";
 import ToDoEditor from "./editorComponents/ToDoEditor";
-import { IoIosArrowBack, IoMdMore } from "react-icons/io";
-import { MdOutlineColorLens, MdPassword, MdFavorite } from "react-icons/md";
-import { FiTrash } from "react-icons/fi";
-import { BsSave } from "react-icons/bs";
 import EditorNav from "./editorComponents/EditorNav";
+import EditorFootter from "./editorComponents/EditorFootter";
 
 export default function Editor(props) {
   // save the elemnt data for us
@@ -20,21 +17,10 @@ export default function Editor(props) {
   // state to display different messages to the use
   const [editorMessage, setEditorMessage] = React.useState({});
 
-  // open the theme bar in the fotter on clicking the theme btn
-  function handleTheme() {
-    setOpenOptions(false);
-    setOpenTheme((prevTheme) => !prevTheme);
-  }
-  // change the theme on clicking any color btn 
-  function changeTheme(color) {
-    setElementData({ ...elementData, theme: color });
-    setOpenTheme(false);
-  }
   // change the title of the element
   function changeTitle(e) {
     setElementData({ ...elementData, title: e.target.value });
   }
- 
   // save the element and bring us back to home page
   function backToHome() {
     saveElement(elementData.category);
@@ -131,7 +117,6 @@ export default function Editor(props) {
       setEditorMessage({});
     }, 2000);
   }
-
   // close other open state such as more btn theme btn when the user try to type something
   function closeOpenStates() {
     setOpenOptions(false);
@@ -159,7 +144,7 @@ export default function Editor(props) {
       setOpenTheme={setOpenTheme} 
       displayMessage={displayMessage}
       />
-
+      {/* editor body */}
       <div onClick={closeOpenStates} className="editor-main">
         <div
           style={{ backgroundColor: editorMessage.color }}
@@ -208,50 +193,14 @@ export default function Editor(props) {
             />
           )}
         </div>
-        {/* ---------- */}
       </div>
-
-      <div className={`editor-footer ${props.darkMode ? "dark" : ""}`}>
-        <div className="theme-btn" onClick={handleTheme}>
-          <MdOutlineColorLens />
-        </div>
-        <div className="theme-container">
-          <div
-            onClick={() => changeTheme("default")}
-            className={`color default ${openTheme ? "show" : ""}`}
-          >
-            <div className="line"></div>
-          </div>
-          <span
-            onClick={() => changeTheme("#ffbbc2")}
-            className={`color color-1 ${openTheme ? "show" : ""}`}
-          ></span>
-          <span
-            onClick={() => changeTheme("#e6f0fd")}
-            className={`color color-2 ${openTheme ? "show" : ""}`}
-          ></span>
-          <span
-            onClick={() => changeTheme("#d9d9d9")}
-            className={`color color-3 ${openTheme ? "show" : ""}`}
-          ></span>
-          <span
-            onClick={() => changeTheme("#ffe598")}
-            className={`color color-4 ${openTheme ? "show" : ""}`}
-          ></span>
-          <span
-            onClick={() => changeTheme("#ffe6d6")}
-            className={`color color-5 ${openTheme ? "show" : ""}`}
-          ></span>
-          <span
-            onClick={() => changeTheme("#b5f7bb")}
-            className={`color color-6 ${openTheme ? "show" : ""}`}
-          ></span>
-          <span
-            onClick={() => changeTheme("lightcoral")}
-            className={`color color-7 ${openTheme ? "show" : ""}`}
-          ></span>
-        </div>
-      </div>
+      <EditorFootter
+      setOpenOptions={setOpenOptions}
+      openTheme={openTheme}
+      setOpenTheme={setOpenTheme}
+      elementData={elementData}
+      setElementData={setElementData}
+       />    
     </div>
   );
 }

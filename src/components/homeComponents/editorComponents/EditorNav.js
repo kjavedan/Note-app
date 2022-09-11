@@ -65,14 +65,14 @@ export default function EditorNav(props) {
             </div>
             {/* add to favorite */}
             <div
-              onClick={props.elementData.isFavorite ? props.moveOutFavorite : props.addToFavorite}
+              onClick={props.elementData.isFavorite ? moveOutFavorite : addToFavorite}
               className={`option ${props.darkMode ? "dark" : ""}`}
             >
               <span>{props.elementData.isFavorite ? 'move out favorite' : 'add to favorite'}</span> <MdFavorite />
             </div>
             {/* add to password */}
             <div
-              onClick={props.elementData.isPassword ? props.moveOutPassword : props.addToPasswords}
+              onClick={props.elementData.isPassword ? moveOutPassword : addToPasswords}
               className={`option ${props.darkMode ? "dark" : ""}`}
             >
               <span>{props.elementData.isPassword ? 'move out password' : 'add to password'}</span> <MdPassword />

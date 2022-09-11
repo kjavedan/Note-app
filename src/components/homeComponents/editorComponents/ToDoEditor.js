@@ -1,5 +1,5 @@
 import React from "react";
-import Task from "./todoComponent/Task";
+import Task from "./todoComponents/Task";
 import { BsChevronDown } from "react-icons/bs";
 import { FaPlus } from "react-icons/fa";
 import { nanoid } from "nanoid";
