@@ -1,8 +1,7 @@
 import React from "react";
-import NoteEditor from "./editorComponents/NoteEditor";
-import ToDoEditor from "./editorComponents/ToDoEditor";
 import EditorNav from "./editorComponents/EditorNav";
 import EditorFootter from "./editorComponents/EditorFootter";
+import EditorBody from "./editorComponents/EditorBody";
 
 export default function Editor(props) {
   // save the elemnt data for us
@@ -17,10 +16,6 @@ export default function Editor(props) {
   // state to display different messages to the use
   const [editorMessage, setEditorMessage] = React.useState({});
 
-  // change the title of the element
-  function changeTitle(e) {
-    setElementData({ ...elementData, title: e.target.value });
-  }
   // save the element and bring us back to home page
   function backToHome() {
     saveElement(elementData.category);
@@ -117,11 +112,6 @@ export default function Editor(props) {
       setEditorMessage({});
     }, 2000);
   }
-  // close other open state such as more btn theme btn when the user try to type something
-  function closeOpenStates() {
-    setOpenOptions(false);
-    setOpenTheme(false);
-  }
   // get the clicked element from the home page and set its info to element data in order to modify it
   React.useEffect(() => {
     props.mainState.forEach((item) => {
@@ -133,7 +123,6 @@ export default function Editor(props) {
 
   return (
     <div>
-      
       <EditorNav 
       darkMode={props.darkMode} 
       backToHome={backToHome} 
@@ -144,56 +133,15 @@ export default function Editor(props) {
       setOpenTheme={setOpenTheme} 
       displayMessage={displayMessage}
       />
-      {/* editor body */}
-      <div onClick={closeOpenStates} className="editor-main">
-        <div
-          style={{ backgroundColor: editorMessage.color }}
-          className={`editor-main__message`}
-        >
-          {editorMessage ? editorMessage.message : ""}
-        </div>
-
-        <textarea
-          placeholder="Title"
-          type="text"
-          className={`title ${props.darkMode ? "dark" : ""}`}
-          value={elementData.title}
-          onClick={closeOpenStates}
-          onChange={changeTitle}
-        ></textarea>
-
-        <span
-          onClick={closeOpenStates}
-          className={`date ${props.darkMode ? "dark" : ""}`}
-        >
-          {elementData.date}
-        </span>
-        {/* editor body */}
-        <div
-          onClick={closeOpenStates}
-          className={`body ${props.darkMode ? "dark" : ""}`}
-        >
-        {/* the body of the editor is different for note and todo
-        therefore open it base on the element category */}
-          {props.editorType === "note" ? (
-            <NoteEditor
-              setElementData={setElementData}
-              elementData={elementData}
-              body={elementData.body}
-              setEditorMessage={setEditorMessage}
-              darkMode={props.darkMode}
-            />
-          ) : (
-            <ToDoEditor
-              setElementData={setElementData}
-              elementData={elementData}
-              tasks={elementData.tasks}
-              setEditorMessage={setEditorMessage}
-              darkMode={props.darkMode}
-            />
-          )}
-        </div>
-      </div>
+      <EditorBody
+      elementData={elementData}
+      setElementData={setElementData}
+      editorMessage={editorMessage}
+      setEditorMessage={setEditorMessage}
+      setOpenOptions={setOpenOptions}
+      setOpenTheme={setOpenTheme}
+      editorType={props.editorType}
+       />
       <EditorFootter
       setOpenOptions={setOpenOptions}
       openTheme={openTheme}
@@ -204,4 +152,3 @@ export default function Editor(props) {
     </div>
   );
 }
-
