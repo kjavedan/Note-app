@@ -2,10 +2,10 @@ import React from "react";
 import NoteEditor from "./editorComponents/NoteEditor";
 import ToDoEditor from "./editorComponents/ToDoEditor";
 import { IoIosArrowBack, IoMdMore } from "react-icons/io";
-import { FiShare } from "react-icons/fi";
 import { MdOutlineColorLens, MdPassword, MdFavorite } from "react-icons/md";
 import { FiTrash } from "react-icons/fi";
 import { BsSave } from "react-icons/bs";
+import EditorNav from "./editorComponents/EditorNav";
 
 export default function Editor(props) {
   // save the elemnt data for us
@@ -34,32 +34,7 @@ export default function Editor(props) {
   function changeTitle(e) {
     setElementData({ ...elementData, title: e.target.value });
   }
-  // change element property (isFavorite, isPassword)
-  function toggleProperty(propertyName, message){
-    displayMessage(message)
-    setElementData({...elementData, [propertyName]: !elementData[propertyName]})
-  }
-  // toggle more btn on click in the navbar
-   function handleOptions() {
-    setOpenTheme(false);
-    setOpenOptions((prevState) => !prevState);
-  }
-  // add the element to favorites on clicking add to favorite in the more btn
-  function addToFavorite(){
-    toggleProperty('isFavorite', 'favorite')
-  }
-  // move the element out of favorites on clicking move out of favorite in the more btn
-  function mooveOutFavorite(){
-    toggleProperty('isFavorite', 'uncheck-favorite')
-  }
-   // add the element to passwords on clicking add to passwords in the more btn
-  function addToPasswords(){
-   toggleProperty('isPassword', 'pass')
-  }
-   // move the element out of passwords on clicking move out of passwords in the more btn
-  function moveOutPassword(){
-   toggleProperty('isPassword', 'uncheck-password')
-  }
+ 
   // save the element and bring us back to home page
   function backToHome() {
     saveElement(elementData.category);
@@ -173,53 +148,17 @@ export default function Editor(props) {
 
   return (
     <div>
-      <div className={`editor-nav ${props.darkMode ? "dark" : ""}`}>
-        <div className="back-to-home" onClick={backToHome}>
-          <span className="back-to-home__icon">
-            <IoIosArrowBack />
-          </span>
-          <span>Home</span>
-        </div>
-        <div className="more-container">
-          <div onClick={handleOptions} className="more">
-            <IoMdMore />
-          </div>
-          <div
-            className={`more-options ${openOptions ? "open" : ""} ${
-              props.darkMode ? "dark" : ""
-            } `}
-          >
-          {/* message */}
-            <div
-              onClick={() => displayMessage("save")}
-              className={`option ${props.darkMode ? "dark" : ""}`}
-            >
-              <span>Save</span> <BsSave />
-            </div>
-            {/* delete btn */}
-            <div
-              onClick={() => displayMessage("delete")}
-              className={`option ${props.darkMode ? "dark" : ""}`}
-            >
-              <span>Delete</span> <FiTrash />
-            </div>
-            {/* add to favorite */}
-            <div
-              onClick={elementData.isFavorite ? mooveOutFavorite : addToFavorite}
-              className={`option ${props.darkMode ? "dark" : ""}`}
-            >
-              <span>{elementData.isFavorite ? 'move out favorite' : 'add to favorite'}</span> <MdFavorite />
-            </div>
-            {/* add to password */}
-            <div
-              onClick={elementData.isPassword ? moveOutPassword : addToPasswords}
-              className={`option ${props.darkMode ? "dark" : ""}`}
-            >
-              <span>{elementData.isPassword ? 'move out password' : 'add to password'}</span> <MdPassword />
-            </div>
-          </div>
-        </div>
-      </div>
+      
+      <EditorNav 
+      darkMode={props.darkMode} 
+      backToHome={backToHome} 
+      elementData={elementData} 
+      setElementData={setElementData}
+      openOptions={openOptions}
+      setOpenOptions={setOpenOptions}
+      setOpenTheme={setOpenTheme} 
+      displayMessage={displayMessage}
+      />
 
       <div onClick={closeOpenStates} className="editor-main">
         <div
@@ -316,3 +255,4 @@ export default function Editor(props) {
     </div>
   );
 }
+
