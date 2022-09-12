@@ -19,7 +19,15 @@ export default function ElementsList(props) {
 
   // iterate over main state and return the selected category elements
   function filterElements(){
-     return props.mainState.filter(element => {
+      if(heldCategory === 'all'){
+        return([...props.mainState].sort((objA, objB) => objA.time - objB.time))
+        
+      }
+      else if(heldCategory === 'deleted'){
+         console.log('display deleted elements')
+      }
+      else{
+        return props.mainState.filter(element => {
       if(heldCategory === 'recent'){
         return element
       }
@@ -34,14 +42,8 @@ export default function ElementsList(props) {
       }
       else if(heldCategory === 'todo' && element.category === 'todo'){
         return element
-      }
-      else if(heldCategory === 'all'){
-        // call function to sort element base on creation date
-      }
-      else if(heldCategory === 'deleted'){
-         console.log('display deleted elements')
-      }
-     })
+      }})
+    }
   }
   
   return (

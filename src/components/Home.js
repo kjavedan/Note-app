@@ -1,9 +1,7 @@
 import React from "react";
-import Masonry from "masonry-layout";
 import Editor from "./homeComponents/Editor";
 import ElementsList from "./homeComponents/ElementsList";
 import { nanoid } from "nanoid";
-import { IoMdHeartEmpty, IoMdReturnLeft } from "react-icons/io";
 
 export default function Home({ mainState, setMainState }) {
   const date = new Date();
@@ -55,6 +53,7 @@ export default function Home({ mainState, setMainState }) {
     id: nanoid(),
     title: "",
     body: "",
+    time: date.getTime(),
     date: date.toLocaleString(),
     shortDate: getShortDate(),
     category: "note",
@@ -70,6 +69,7 @@ export default function Home({ mainState, setMainState }) {
     id: nanoid(),
     title: "",
     theme: "default",
+    time: date.getTime(),
     date: date.toLocaleString(),
     shortDate: getShortDate(),
     category: "todo",

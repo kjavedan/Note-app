@@ -1,5 +1,5 @@
 import React from 'react'
-import ToDoEditor from './ToDoEditor';
+import ToDoEditor from './editorBodyComponents/ToDoEditor';
 import NoteEditor from './editorBodyComponents/NoteEditor';
 
 export default function EditorBody(props) {
@@ -16,7 +16,7 @@ export default function EditorBody(props) {
 
   return (
     <div onClick={closeOpenStates} className="editor-main">
-    
+
         {/* editor message */}
         <div
           style={{ backgroundColor: props.editorMessage.color }}
