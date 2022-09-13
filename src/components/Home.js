@@ -28,6 +28,9 @@ export default function Home({ mainState, setMainState }) {
   // state to open the relative editor
   const [editorType, setEditorType] = React.useState();
 
+  // state for holding certain categories in the sidebar 
+  const [heldCategory, setHeldCategory] = React.useState('recent');
+
   // state to save the clicked element id so we can open it in its relative editor
   const [clickedElement, setClickedElement] = React.useState();
 
@@ -116,6 +119,8 @@ export default function Home({ mainState, setMainState }) {
           message={message}
           modificationMode={modificationMode}
           setModificationMode={setModificationMode}
+          heldCategory={heldCategory}
+          setHeldCategory={setHeldCategory}
         />
       )}
     </div>

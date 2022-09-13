@@ -8,39 +8,38 @@ export default function ElementsList(props) {
   // the elements list component is responsible for many things
   // 1. <Nav/> ->firing the createElement method from the nav in order to create new element
   // 2. <Modyfire/> -> modyfing the main state (delete, add to favorite, add to pass and change theme)
-  // 3. <Notes/> -> display the received elements from mainState and display them on the screen
+  // 3. <Notes/> -> display the received elements from mainState and display them on the screen after aplying filttering
   ///4. <Sidebar/> -> display elements base on certain conditions for instance different categories
 
-  // state for holding certain categories in the sidebar 
-  const [heldCategory, setHeldCategory] = React.useState('recent');
 
   // pass the filtered state base on the selected category to be displayed
   const [filteredState, setFilteredState] = ([filterElements()])
 
   // iterate over main state and return the selected category elements
   function filterElements(){
-      if(heldCategory === 'all'){
+    // sort element by date
+      if(props.heldCategory === 'all'){
         return([...props.mainState].sort((objA, objB) => objA.time - objB.time))
         
-      }
-      else if(heldCategory === 'deleted'){
+      } 
+      else if(props.heldCategory === 'deleted'){
          console.log('display deleted elements')
       }
       else{
         return props.mainState.filter(element => {
-      if(heldCategory === 'recent'){
+      if(props.heldCategory === 'recent'){
         return element
       }
-      else if(heldCategory === 'favorite' && element.isFavorite){
+      else if(props.heldCategory === 'favorite' && element.isFavorite){
         return element
       }
-      else if(heldCategory === 'pass' && element.isPassword){
+      else if(props.heldCategory === 'pass' && element.isPassword){
         return element
       }
-      else if(heldCategory === 'note' && element.category === 'note'){
+      else if(props.heldCategory === 'note' && element.category === 'note'){
         return element
       }
-      else if(heldCategory === 'todo' && element.category === 'todo'){
+      else if(props.heldCategory === 'todo' && element.category === 'todo'){
         return element
       }})
     }
@@ -74,8 +73,8 @@ export default function ElementsList(props) {
       mainState={props.mainState} 
       modificationMode={props.modificationMode}
       setModificationMode={props.setModificationMode}
-      heldCategory={heldCategory}
-      setHeldCategory={setHeldCategory}
+      heldCategory={props.heldCategory}
+      setHeldCategory={props.setHeldCategory}
       />
     </div>
   );
