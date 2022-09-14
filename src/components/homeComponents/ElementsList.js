@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState, useEffect} from "react";
 import Nav from "./elementsListComponenet/Nav";
 import Modyfire from "./elementsListComponenet/Modyfire";
 import Sidebar from "./elementsListComponenet/Sidebar";
@@ -11,16 +11,19 @@ export default function ElementsList(props) {
   // 3. <Notes/> -> display the received elements from mainState and display them on the screen after aplying filttering
   ///4. <Sidebar/> -> display elements base on certain conditions for instance different categories
 
-
   // pass the filtered state base on the selected category to be displayed
-  const [filteredState, setFilteredState] = ([filterElements()])
+  const [filteredState, setFilteredState] = useState(filterElements())
+
+ // set filtered state when ever the held category changes
+  useEffect(()=>{
+    setFilteredState(filterElements())
+  },[props.heldCategory, props.mainState])
 
   // iterate over main state and return the selected category elements
   function filterElements(){
     // sort element by date
       if(props.heldCategory === 'all'){
         return([...props.mainState].sort((objA, objB) => objA.time - objB.time))
-        
       } 
       else if(props.heldCategory === 'deleted'){
          console.log('display deleted elements')
@@ -51,6 +54,8 @@ export default function ElementsList(props) {
       darkMode={props.darkMode}
       setDarkMode={props.setDarkMode}
       createElement={props.createElement}
+      setFilteredState={setFilteredState}
+      filterElements={filterElements}
       />
       <Modyfire
       darkMode={props.darkMode}
@@ -75,6 +80,7 @@ export default function ElementsList(props) {
       setModificationMode={props.setModificationMode}
       heldCategory={props.heldCategory}
       setHeldCategory={props.setHeldCategory}
+      filterElements={filterElements}
       />
     </div>
   );

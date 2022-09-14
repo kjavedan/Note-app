@@ -134,6 +134,7 @@ export default function Editor(props) {
       displayMessage={displayMessage}
       />
       <EditorBody
+      darkMode={props.darkMode}
       elementData={elementData}
       setElementData={setElementData}
       editorMessage={editorMessage}
@@ -143,6 +144,7 @@ export default function Editor(props) {
       editorType={props.editorType}
        />
       <EditorFootter
+      darkMode={props.darkMode}
       setOpenOptions={setOpenOptions}
       openTheme={openTheme}
       setOpenTheme={setOpenTheme}

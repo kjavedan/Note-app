@@ -20,7 +20,21 @@ export default function Nav(props) {
   function changeTheme() {
     props.setDarkMode((prevState) => !prevState);
   }
-
+  // searching for a specefic info
+  function handleChange(e){
+    const value = e.target.value.trim().toLowerCase();
+    // resetting the filltered state after each change in the search bar
+    props.setFilteredState(props.filterElements())
+    // return any matching element
+    props.setFilteredState(prevState => prevState.filter(element => {
+      // if the title matches the entered input
+      if(element.title.includes(value)) return element
+      // if the note body matches the entered input
+      else if(element.body && element.body.includes(value)) return element
+      // if the task body in the tasks array of the todo element matches the entered input
+      else if(element.category === 'todo' && element.tasks.filter(task => task.body.includes(value))[0]) return element
+    }))
+  }
 
   return (
     <nav className={`home-nav ${props.darkMode ? "dark" : ""}`}>
@@ -60,9 +74,10 @@ export default function Nav(props) {
         className={`home-nav__search-container ${props.darkMode ? "dark" : ""}`}
       >
         <input
+          onChange={handleChange}
           className={props.darkMode ? "dark" : ""}
           type="text"
-          placeholder="Search for your note"
+          placeholder="Search for anything"
         />
         <span className="search-icon">
           <FiSearch />

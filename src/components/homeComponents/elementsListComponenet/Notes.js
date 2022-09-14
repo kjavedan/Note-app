@@ -2,8 +2,7 @@ import React from "react";
 import Masonry from "masonry-layout";
 import Note from "./Note";
 import ToDo from "./ToDo";
-import { AiOutlineWarning, AiOutlineFileDone } from "react-icons/ai";
-import { IoMdDoneAll } from "react-icons/io";
+
 
 export default function Notes(props) {
 
@@ -74,15 +73,13 @@ export default function Notes(props) {
       gutter: 10,
     });
   });
-
-
   // display the elements from the main state 
-  const elements = props.filteredState.map((item) => {
+  const elements = props.filteredState.map( item => {
     if (item.category === "note") {
       return (
         <Note
-          openClickedElement={props.openClickedElement}
           key={item.id}
+          openClickedElement={props.openClickedElement}
           darkMode={props.darkMode}
           id={item.id}
           body={item.body}
@@ -104,8 +101,8 @@ export default function Notes(props) {
     } else {
       return (
         <ToDo
-          openClickedElement={props.openClickedElement}
           key={item.id}
+          openClickedElement={props.openClickedElement}
           darkMode={props.darkMode}
           id={item.id}
           title={item.title}

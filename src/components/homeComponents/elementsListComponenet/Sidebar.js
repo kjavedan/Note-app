@@ -60,7 +60,7 @@ export default function Sidebar(props) {
         {/* Notes */}
           <div 
           onClick={() => handleClick('note')}
-          className={`category-container ${props.darkMode ? 'dark' : ''} ${props.heldCategory === 'notes' ? 'active' : ''}`}>
+          className={`category-container ${props.darkMode ? 'dark' : ''} ${props.heldCategory === 'note' ? 'active' : ''}`}>
             <p className="category-name">notes</p>
             <MdOutlineNoteAlt />
           </div>
