@@ -26,7 +26,7 @@ export default function ElementsList(props) {
         return([...props.mainState].sort((objA, objB) => objA.time - objB.time))
       } 
       else if(props.heldCategory === 'deleted'){
-         console.log('display deleted elements')
+         return props.recyclebin
       }
       else{
         return props.mainState.filter(element => {

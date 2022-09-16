@@ -110,6 +110,8 @@ export default function Home({ mainState, setMainState }) {
           setMainState={setMainState}
           clickedElement={clickedElement}
           setMessage={setMessage}
+          recyclebin={recyclebin}
+          setRecyclebin={setRecyclebin}
         />
       ) : (
         <ElementsList
@@ -124,6 +126,8 @@ export default function Home({ mainState, setMainState }) {
           setModificationMode={setModificationMode}
           heldCategory={heldCategory}
           setHeldCategory={setHeldCategory}
+          recyclebin={recyclebin}
+          setRecyclebin={setRecyclebin}
         />
       )}
     </div>

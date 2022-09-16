@@ -61,14 +61,17 @@ export default function Editor(props) {
       });
       props.setMainState(newArr);
     }
-  }
-  // delete the element and show the deleted message in the main page
+  } 
+  // move the delted element to recyclebin and show the notification message in the main page
   function deleteElement(toBeDeleted, message, color) {
     props.setMessage({ text: message, color: color });
     props.setMainState((prevState) => {
       return prevState.filter((element) => {
         if (element.id !== toBeDeleted.id) {
           return element;
+        }
+        else if(message !== 'empty'){
+          props.setRecyclebin([...props.recyclebin, elementData])
         }
       });
     });
@@ -80,7 +83,7 @@ export default function Editor(props) {
       saveElement(elementData.category);
     } 
     else if (value === "delete") {
-      deleteElement(elementData, "note has been deleted", "lightcoral");
+      deleteElement(elementData, "note moved to recyclebin", "lightcoral");
       props.setOpenEditor(false);
       return;
     }
@@ -154,3 +157,9 @@ export default function Editor(props) {
     </div>
   );
 }
+/*
+the problem is that even the empty messages will be sent to recylebin 
+how to solve?
+1. double check in the delete function
+2. rewrite the delete function and the save function
+*/ 
