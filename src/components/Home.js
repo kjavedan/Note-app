@@ -37,6 +37,9 @@ export default function Home({ mainState, setMainState }) {
   // state for holding certain categories in the sidebar 
   const [heldCategory, setHeldCategory] = React.useState('recent');
 
+  // state for holding deleted elements
+  const [recyclebin, setRecyclebin] = React.useState([])
+
   // hide the message after 3 seconds
   React.useEffect(() => {
     setTimeout(() => {
