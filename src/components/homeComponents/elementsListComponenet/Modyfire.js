@@ -48,13 +48,18 @@ export default function Modyfire(props) {
 
   // delete selected notes
   function deleteSelectedNotes(){
-    const newArr = []
+    const remainedElements = []
+    const deletedElements = []
     props.mainState.forEach(element =>{
       if(!element.isHeld){
-        newArr.push(element)
+        remainedElements.push(element)
+      }
+      else{
+       deletedElements.push({...element, isHeld: false})
       }
     })
-    props.setMainState(newArr);
+    props.setMainState(remainedElements);
+    props.setRecyclebin([...props.recyclebin, ...deletedElements])
     props.setModificationMode(false)
     
   }
