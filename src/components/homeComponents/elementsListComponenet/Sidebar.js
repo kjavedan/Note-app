@@ -83,7 +83,7 @@ export default function Sidebar(props) {
           <div 
           onClick={() => handleClick('deleted')}
           className={`category-container ${props.darkMode ? 'dark' : ''} ${props.heldCategory === 'deleted' ? 'active' : ''}`}>
-            <p className="category-name">deleted</p>
+            <p className="category-name">recyclebin</p>
             <FiTrash />
           </div>
         </div>

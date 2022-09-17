@@ -60,8 +60,7 @@ export default function Modyfire(props) {
     })
     props.setMainState(remainedElements);
     props.setRecyclebin([...props.recyclebin, ...deletedElements])
-    props.setModificationMode(false)
-    
+    props.setModificationMode(false)  
   }
   
   // this part need some fixing 

@@ -38,7 +38,13 @@ export default function Home({ mainState, setMainState }) {
   const [heldCategory, setHeldCategory] = React.useState('recent');
 
   // state for holding deleted elements
-  const [recyclebin, setRecyclebin] = React.useState([])
+  const [recyclebin, setRecyclebin] = React.useState(
+    JSON.parse(localStorage.getItem("recyclebin"))||[])
+
+    React.useEffect(() => {
+      localStorage.setItem("recyclebin", JSON.stringify(recyclebin));
+    }, [recyclebin]);
+ 
 
   // hide the message after 3 seconds
   React.useEffect(() => {
