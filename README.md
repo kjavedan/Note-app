@@ -44,6 +44,7 @@ First let's have a look on the folders structure.
 
 Now let's create a diagram of it so we can have a better understanding of the system's flow
 
+<img width="1635" alt="note-app-diagram" src="https://user-images.githubusercontent.com/75374340/190888343-9b31623b-1a67-4efe-9cb2-57228b7e9b20.png">
 
 
 
