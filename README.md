@@ -4,49 +4,10 @@ I'm going to try me best to explain how this application's system work so hang o
 
 First let's have a look on the folders structure.
 
-.
-└── src/
-    ├── components/
-    │   ├── Start
-    │   ├── Home
-    │   └── homeComponents/
-    │       ├── Editor
-    │       ├── ElementsList
-    │       ├── editorComponents/
-    │       │   ├── EditorNav
-    │       │   ├── EditorBody
-    │       │   ├── EditorFotter
-    │       │   └── editorBodyComponents/
-    │       │       ├── NoteEditor
-    │       │       ├── ToDoEditor
-    │       │       └── todoEditorComponents/
-    │       │           └── Task
-    │       └── elementsListComponents/
-    │           ├── Nav
-    │           ├── Modyfire
-    │           ├── Sidebar
-    │           ├── Notes
-    │           └── noteComponents/
-    │               ├── Note
-    │               └── ToDo
-    ├── Images/
-    │   ├── note-book.png
-    │   └── noteBook.svg
-    ├── Scss/
-    │   ├── _config
-    │   ├── _editor
-    │   ├── _home
-    │   └── _start
-    ├── App.js
-    ├── App.test.js
-    ├── index.js
-    └── index.scss
+<img width="944" alt="folders_structure" src="https://user-images.githubusercontent.com/75374340/190889134-1931e4d4-f111-4332-b468-7fc0ffb9463f.png">
 
 Now let's create a diagram of it so we can have a better understanding of the system's flow
 
-<img width="1635" alt="note-app-diagram" src="https://user-images.githubusercontent.com/75374340/190888343-9b31623b-1a67-4efe-9cb2-57228b7e9b20.png">
+<img width="1602" alt="system's_flow" src="https://user-images.githubusercontent.com/75374340/190889147-f0a52a9e-8103-4e7d-93d4-53491d05ee8e.png">
 
 
-
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
