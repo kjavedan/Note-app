@@ -41,5 +41,5 @@ The Home compenent is responsible for:
 **Home states:** 8 in total
 
 ***Home activity diagram:***
-<img width="1232" alt="home_activity_diagram" src="https://user-images.githubusercontent.com/75374340/190897860-12815c26-d597-40b0-92c2-bd7cb931d2bb.png">
+<img width="1232" alt="home_activity_diagram" src="https://user-images.githubusercontent.com/75374340/190897970-e4df0258-9e1c-4fd0-b1e8-3fe6edb6615b.png">
 
