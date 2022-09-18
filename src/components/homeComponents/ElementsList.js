@@ -74,6 +74,9 @@ export default function ElementsList(props) {
       message={props.message}
       modificationMode={props.modificationMode}
       setModificationMode={props.setModificationMode}
+      heldCategory={props.heldCategory}
+      recyclebin={props.recyclebin}
+      setRecyclebin={props.setRecyclebin}
       />
       <Sidebar 
       darkMode={props.darkMode} 

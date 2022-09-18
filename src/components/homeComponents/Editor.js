@@ -157,9 +157,3 @@ export default function Editor(props) {
     </div>
   );
 }
-/*
-the problem is that even the empty messages will be sent to recylebin 
-how to solve?
-1. double check in the delete function
-2. rewrite the delete function and the save function
-*/ 

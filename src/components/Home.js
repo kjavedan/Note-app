@@ -41,10 +41,10 @@ export default function Home({ mainState, setMainState }) {
   const [recyclebin, setRecyclebin] = React.useState(
     JSON.parse(localStorage.getItem("recyclebin"))||[])
 
-    React.useEffect(() => {
-      localStorage.setItem("recyclebin", JSON.stringify(recyclebin));
-    }, [recyclebin]);
- 
+  // getting the recyclebin from the local storage
+  React.useEffect(() => {
+    localStorage.setItem("recyclebin", JSON.stringify(recyclebin));
+  }, [recyclebin]);
 
   // hide the message after 3 seconds
   React.useEffect(() => {

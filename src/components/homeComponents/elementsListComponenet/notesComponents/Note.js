@@ -1,5 +1,5 @@
 import React from "react";
-import { MdFormatLineSpacing, MdFavorite } from "react-icons/md";
+import { MdFavorite } from "react-icons/md";
 
 export default function Note(props) {
   

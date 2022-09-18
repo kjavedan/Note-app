@@ -1,8 +1,8 @@
 import React from "react";
 import Masonry from "masonry-layout";
-import Note from "./Note";
-import ToDo from "./ToDo";
-
+import Note from "./notesComponents/Note";
+import ToDo from "./notesComponents/ToDo";
+import { RecyclebinContext } from "../../context/recyclebinContext";
 
 export default function Notes(props) {
 
@@ -29,15 +29,21 @@ export default function Notes(props) {
   }
   // select Element function will only work when we are in modification Mode
    function selectElement(id){
-    props.setMainState(prevState =>{
-      return prevState.map(element =>{
-        if(element.id === id){
-          return {...element, isHeld : !element.isHeld}
-        }else{
-          return element;
-        }
+    if(props.heldCategory === 'deleted'){
+      // props.setIsRecyclebin(true)
+    }
+    else{
+      // props.setIsRecyclebin(false)
+      props.setMainState(prevState =>{
+        return prevState.map(element =>{
+          if(element.id === id){
+            return {...element, isHeld : !element.isHeld}
+          }else{
+            return element;
+          }
+        })
       })
-    })
+    }
   }
 //---------------------------------------------------------------------
 // functions to do some inline styling for both Note and ToDo element
