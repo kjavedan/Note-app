@@ -8,6 +8,6 @@ First let's have a look on the folders structure.
 
 Now let's create a diagram of it so we can have a better understanding of the system's flow
 
-<img width="1602" alt="system's_flow" src="https://user-images.githubusercontent.com/75374340/190889147-f0a52a9e-8103-4e7d-93d4-53491d05ee8e.png">
+<img width="1427" alt="system's_flow" src="https://user-images.githubusercontent.com/75374340/190889303-cf7c73e2-2aa7-4beb-99ab-f0fdce55ab14.png">
 
 
