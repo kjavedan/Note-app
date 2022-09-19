@@ -116,6 +116,7 @@ export default function Home({ mainState, setMainState }) {
           setMainState={setMainState}
           clickedElement={clickedElement}
           setMessage={setMessage}
+          heldCategory={heldCategory}
           recyclebin={recyclebin}
           setRecyclebin={setRecyclebin}
         />

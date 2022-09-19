@@ -115,13 +115,22 @@ export default function Editor(props) {
       setEditorMessage({});
     }, 2000);
   }
-  // get the clicked element from the home page and set its info to element data in order to modify it
-  React.useEffect(() => {
-    props.mainState.forEach((item) => {
+  // initilize elementData state in the useEffect base on the heldCategory
+  function initilizeElementData(state){
+    state.forEach((item) => {
       if (item.id === props.clickedElement) {
         setElementData(item);
       }
     });
+  }
+  // get the clicked element from the home page and set its info to element data in order to modify it
+  React.useEffect(() => {
+    if(props.heldCategory !=='deleted'){
+     initilizeElementData(props.mainState)
+    }
+    else{
+     initilizeElementData(props.recyclebin)
+    }
   }, []);
 
   return (
@@ -145,6 +154,7 @@ export default function Editor(props) {
       setOpenOptions={setOpenOptions}
       setOpenTheme={setOpenTheme}
       editorType={props.editorType}
+      heldCategory={props.heldCategory}
        />
       <EditorFootter
       darkMode={props.darkMode}

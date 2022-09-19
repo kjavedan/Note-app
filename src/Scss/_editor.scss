@@ -142,6 +142,10 @@
         border-radius: 2px;
         background-color: rgb(187, 184, 184);
       }
+      &:disabled{
+        background-color: transparent;
+        color: gray;
+      }
     }
 
     .date {

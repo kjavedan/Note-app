@@ -33,6 +33,7 @@ export default function EditorBody(props) {
           value={props.elementData.title}
           onClick={closeOpenStates}
           onChange={changeTitle}
+          disabled={props.heldCategory === 'deleted' ? true : false}
         ></textarea>
 
         {/* date tag under the title */}
@@ -57,6 +58,7 @@ export default function EditorBody(props) {
               body={props.elementData.body}
               setEditorMessage={props.setEditorMessage}
               darkMode={props.darkMode}
+              
             />
           ) : (
             <ToDoEditor
