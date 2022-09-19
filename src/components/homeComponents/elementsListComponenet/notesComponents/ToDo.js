@@ -45,7 +45,8 @@ export default function ToDo(props) {
         {props.title}
       </h4>
       {/* display tasks */}
-      <div style={props.changeTextColor(props.theme)} className="todo-list">
+      <div 
+      style={props.changeTextColor(props.theme)} className="todo-list">
         {displayTasks(props.tasks)}
       </div>
 

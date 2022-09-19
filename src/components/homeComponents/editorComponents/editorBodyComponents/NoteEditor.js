@@ -20,7 +20,8 @@ export default function NoteEditor(props) {
         onChange={handleChange}
         value={props.body}
         style={style}
-        placeholder="Type your note here..."
+        placeholder={props.heldCategory === 'deleted' ? 'You can not edit in the recyclebin, Sorry :(' : "Type your note here..."}
+        disabled={props.heldCategory === 'deleted' ? true : false}
       ></textarea>
     </div>
   );

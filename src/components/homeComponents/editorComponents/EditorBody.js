@@ -58,7 +58,7 @@ export default function EditorBody(props) {
               body={props.elementData.body}
               setEditorMessage={props.setEditorMessage}
               darkMode={props.darkMode}
-              
+              heldCategory={props.heldCategory}
             />
           ) : (
             <ToDoEditor
@@ -67,6 +67,7 @@ export default function EditorBody(props) {
               tasks={props.elementData.tasks}
               setEditorMessage={props.setEditorMessage}
               darkMode={props.darkMode}
+              heldCategory={props.heldCategory}
             />
           )}
         </div>
