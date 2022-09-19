@@ -144,6 +144,7 @@ export default function Editor(props) {
       setOpenOptions={setOpenOptions}
       setOpenTheme={setOpenTheme} 
       displayMessage={displayMessage}
+      heldCategory={props.heldCategory}
       />
       <EditorBody
       darkMode={props.darkMode}

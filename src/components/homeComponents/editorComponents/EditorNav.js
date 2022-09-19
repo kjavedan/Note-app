@@ -41,9 +41,10 @@ export default function EditorNav(props) {
           <span>Home</span>
         </div>
         <div className="more-container">
+          {props.heldCategory !== 'deleted' &&
           <div onClick={handleOptions} className="more">
             <IoMdMore />
-          </div>
+          </div>}
           <div
             className={`more-options ${props.openOptions ? "open" : ""} ${
               props.darkMode ? "dark" : ""

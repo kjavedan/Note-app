@@ -66,6 +66,11 @@ export default function Task(props) {
     });
   }
 
+  // disable functionality if we are at recyclebin
+  function isRecyclebin(){
+   return props.heldCategory === 'deleted' ? true : false
+  }
+
   return (
     <div
       className={`task ${props.darkMode ? "dark" : ""} ${
@@ -73,14 +78,14 @@ export default function Task(props) {
       }`}
     >
       <button 
-      disabled={props.heldCategory === 'deleted' ? true : false} 
+      disabled={isRecyclebin()}
       onClick={() => toggleTask(props.id)} className="check">
         <span className={`tick ${props.isChecked ? "checked" : ""}`}>
           <MdDone />
         </span>
       </button>
       <div className="btns">
-        <button 
+        <div 
         id="btn" 
         className={props.darkMode ? "dark" : ""}>
           {edit ? (
@@ -93,13 +98,13 @@ export default function Task(props) {
             />
           ) : (
             <button 
-            disabled={props.heldCategory === 'deleted' ? true : false} 
+            disabled={isRecyclebin()}
             onClick={() => toggleTask(props.id)} 
             className={`to-do-text ${props.darkMode ? "dark" : ""}`}>
               {props.body}
             </button>
           )}
-        </button>
+        </div>
 
         {edit ? (
           <button
@@ -109,7 +114,7 @@ export default function Task(props) {
           </button>
         ) : (
           <button
-          disabled={props.heldCategory === 'deleted' ? true : false} 
+          disabled={isRecyclebin()}
           onClick={() => editTask(props.id)} 
           className="edit">
             <FiEdit />
@@ -117,7 +122,7 @@ export default function Task(props) {
         )}
 
         <button
-        disabled={props.heldCategory === 'deleted' ? true : false} 
+        disabled={isRecyclebin()}
         onClick={() => deleteTask(props.id)} 
         className="delete">
           <FiTrash2 />
