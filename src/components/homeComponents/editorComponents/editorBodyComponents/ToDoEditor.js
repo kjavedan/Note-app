@@ -34,6 +34,7 @@ export default function ToDoEditor(props) {
             setElementData={props.setElementData}
             setShowTasks={setShowTasks}
             setShowFinishedTasks={setShowFinishedTasks}
+            heldCategory={props.heldCategory}
           />
         );
       });
@@ -85,9 +86,12 @@ export default function ToDoEditor(props) {
             className={props.darkMode ? "dark" : ""}
             type="text"
             autoFocus={true}
-            placeholder="Enter your task..."
+            placeholder={props.heldCategory === 'deleted' ? 'Recyclebin is uneditable :(' : "Enter your task..."}
+            disabled={props.heldCategory === 'deleted' ? true : false}
           />
-          <button className={props.darkMode ? "dark" : ""}>
+          <button 
+          disabled={props.heldCategory === 'deleted' ? true : false}
+          className={props.darkMode ? "dark" : ""}>
             <FaPlus />
           </button>
         </form>

@@ -72,39 +72,54 @@ export default function Task(props) {
         props.isChecked ? "checked" : ""
       }`}
     >
-      <div onClick={() => toggleTask(props.id)} className="check">
+      <button 
+      disabled={props.heldCategory === 'deleted' ? true : false} 
+      onClick={() => toggleTask(props.id)} className="check">
         <span className={`tick ${props.isChecked ? "checked" : ""}`}>
           <MdDone />
         </span>
-      </div>
+      </button>
       <div className="btns">
-        <button id="btn" className={props.darkMode ? "dark" : ""}>
+        <button 
+        id="btn" 
+        className={props.darkMode ? "dark" : ""}>
           {edit ? (
             <input
-              className={`${props.darkMode ? "dark" : ""}`}
+              className={props.darkMode ? "dark" : ""}
               type="text"
               autoFocus={true}
               value={taskBody}
               onChange={handleChange}
             />
           ) : (
-            <div onClick={() => toggleTask(props.id)} className="to-do-text">
+            <button 
+            disabled={props.heldCategory === 'deleted' ? true : false} 
+            onClick={() => toggleTask(props.id)} 
+            className={`to-do-text ${props.darkMode ? "dark" : ""}`}>
               {props.body}
-            </div>
+            </button>
           )}
         </button>
 
         {edit ? (
-          <button onClick={() => confirmEdit(props.id)} className="edit">
+          <button
+          onClick={() => confirmEdit(props.id)} 
+          className="edit">
             <MdDone />
           </button>
         ) : (
-          <button onClick={() => editTask(props.id)} className="edit">
+          <button
+          disabled={props.heldCategory === 'deleted' ? true : false} 
+          onClick={() => editTask(props.id)} 
+          className="edit">
             <FiEdit />
           </button>
         )}
 
-        <button onClick={() => deleteTask(props.id)} className="delete">
+        <button
+        disabled={props.heldCategory === 'deleted' ? true : false} 
+        onClick={() => deleteTask(props.id)} 
+        className="delete">
           <FiTrash2 />
         </button>
       </div>
