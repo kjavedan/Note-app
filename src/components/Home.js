@@ -94,6 +94,9 @@ export default function Home({ mainState, setMainState }) {
 
   // check the clicked btn category and create new element base on that
   function createElement(category) {
+
+    setHeldCategory('recent')
+
     if (category === "note") {
       setMainState([newNote, ...mainState]);
       setClickedElement(newNote.id);
@@ -129,6 +132,7 @@ export default function Home({ mainState, setMainState }) {
           setMainState={setMainState}
           createElement={createElement}
           message={message}
+          setMessage={setMessage}
           modificationMode={modificationMode}
           setModificationMode={setModificationMode}
           heldCategory={heldCategory}

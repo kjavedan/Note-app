@@ -64,6 +64,8 @@ export default function ElementsList(props) {
       modificationMode={props.modificationMode}
       setModificationMode={props.setModificationMode}
       setRecyclebin={props.setRecyclebin}
+      message={props.message}
+      setMessage={props.setMessage}
        />
       <Notes
       darkMode={props.darkMode}

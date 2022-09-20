@@ -61,6 +61,17 @@ export default function Modyfire(props) {
     props.setMainState(remainedElements);
     props.setRecyclebin(prevState => [...prevState, ...deletedElements])
     props.setModificationMode(false)  
+    props.setMessage({text: getMessage(), color:'lightgreen'})
+  }
+
+  function getMessage(){
+    let message;
+    const count = counter()
+    if(count > 1){
+      return (`moved ${count} notes to recyclebin`)
+    }else{
+      return 'note moved to recyclebin'
+    }
   }
   
   // this part need some fixing 
@@ -114,6 +125,13 @@ export default function Modyfire(props) {
     return count;
   }
   const count = counter();
+
+  // remove notification after 3 second
+  React.useEffect(()=>{
+    setTimeout(()=>{
+      props.setMessage({})
+    },3000)
+  },[props.message])
 
   return (
     <div className={`home-modyfire ${props.darkMode ? 'dark' : ''} ${props.modificationMode ? 'open' : ''}`}>

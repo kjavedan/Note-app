@@ -4,7 +4,6 @@ import {FiTrash} from 'react-icons/fi'
 
 export default function RecyclebinFootter(props) {
 
-    console.log(props.elementData)
     function deletePermanently(){
         props.setRecyclebin(prevState => {
             return prevState.filter(elemenet => {
@@ -13,7 +12,7 @@ export default function RecyclebinFootter(props) {
                 }
             })
         })
-        props.setMessage({text:'removed permanently', color:'red'})
+        props.setMessage({text:'removed permanently', color:'lightcoral'})
         props.setOpenEditor(false)
     }
     
