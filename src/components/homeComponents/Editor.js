@@ -165,6 +165,10 @@ export default function Editor(props) {
       elementData={elementData}
       setElementData={setElementData}
       heldCategory={props.heldCategory}
+      setOpenEditor={props.setOpenEditor}
+      setMainState={props.setMainState}
+      setRecyclebin={props.setRecyclebin}
+      setMessage={props.setMessage}
        />    
     </div>
   );
