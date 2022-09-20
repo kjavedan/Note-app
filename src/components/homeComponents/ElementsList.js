@@ -18,6 +18,13 @@ export default function ElementsList(props) {
   useEffect(()=>{
     setFilteredState(filterElements())
   },[props.heldCategory, props.mainState])
+ 
+  // remove the home notification after 2 second
+  React.useEffect(()=>{
+    setTimeout(()=>{
+      props.setMessage({})
+    },2000)
+  },[props.message])
 
   // iterate over main state and return the selected category elements
   function filterElements(){
@@ -66,6 +73,7 @@ export default function ElementsList(props) {
       setRecyclebin={props.setRecyclebin}
       message={props.message}
       setMessage={props.setMessage}
+      heldCategory={props.heldCategory}
        />
       <Notes
       darkMode={props.darkMode}

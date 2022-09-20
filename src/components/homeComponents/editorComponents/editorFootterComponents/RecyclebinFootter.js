@@ -12,18 +12,35 @@ export default function RecyclebinFootter(props) {
                 }
             })
         })
-        props.setMessage({text:'removed permanently', color:'lightcoral'})
+        props.setMessage({text:'Note removed permanently', color:'lightcoral'})
+        props.setOpenEditor(false)
+    }
+
+    function restore(){
+        props.setRecyclebin(prevState => {
+            return prevState.filter(element => {
+                if(element.id !== props.elementData.id){
+                    return element
+                }
+                else{
+                    props.setMainState(prevState => [element, ...prevState])
+                }
+            })
+        })
+        props.setMessage({text:'Note has been restored', color:'lightgreen'})
         props.setOpenEditor(false)
     }
     
   return (
     <div className='recyclebin-container'>
-        <button className='restore'>
+        <button 
+        onClick={restore}
+        className={`restore ${props.darkMode ? 'dark' : ''}`}>
             <MdRestore />
         </button>
         <button 
         onClick={deletePermanently}
-        className='delete'>
+        className={`delete ${props.darkMode ? 'dark' : ''}`}>
             <FiTrash />
         </button>
     </div>

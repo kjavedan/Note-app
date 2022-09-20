@@ -211,6 +211,14 @@
           color: $primary-txt-clr-4;
           cursor: pointer;
 
+          &.restore{
+            font-size: 1.3rem;
+
+            &:hover{
+              font-size: 1.4rem;
+            }
+          }
+
           &.dark{
               color: $primary-clr-1;
           }

@@ -9,6 +9,7 @@ export default function EditorFootter(props) {
     <div className={`editor-footer ${props.darkMode ? "dark" : ""}`}>
         {props.heldCategory ==='deleted' ?
         <RecyclebinFootter
+        darkMode={props.darkMode}
         elementData={props.elementData}
         setOpenEditor={props.setOpenEditor}
         setMainState={props.setMainState}

@@ -238,6 +238,9 @@
             &.dark {
               color: $primary-clr-1;
             }
+            &:disabled{
+              cursor: default;
+            }
           }
         }
 
@@ -306,6 +309,10 @@
                   background-color: $primary-dark-clr-5;
                 }
               }
+
+              &:disabled{
+                cursor: default;
+              }
             }
 
             .btns {
@@ -338,6 +345,7 @@
                 }
                 &:disabled{
                   color: gray;
+                  cursor: default;
                 }
               }
               
@@ -367,6 +375,7 @@
 
                 &:disabled{
                   color: gray;
+                  cursor: default;
                 }
               }
 
@@ -445,6 +454,13 @@
         &:hover{
           color: black;
           transform: translateY(-10%);
+
+          &.dark{
+            color: $primary-clr-1
+          }
+        }
+        &.dark{
+          color: $primary-clr-1;
         }
       }
       .restore{

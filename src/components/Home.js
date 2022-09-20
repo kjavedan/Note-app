@@ -47,11 +47,11 @@ export default function Home({ mainState, setMainState }) {
   }, [recyclebin]);
 
   // hide the message after 3 seconds
-  React.useEffect(() => {
-    setTimeout(() => {
-      setMessage({});
-    }, 3000);
-  }, [openEditor]);
+  // React.useEffect(() => {
+  //   setTimeout(() => {
+  //     setMessage({});
+  //   }, 3000);
+  // }, [message]);
   
   // we open the relative editor for the clicked or created item by checking its category
   function openClickedElement(id, category) {
