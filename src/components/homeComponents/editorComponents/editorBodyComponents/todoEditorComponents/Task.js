@@ -97,6 +97,7 @@ export default function Task(props) {
               onChange={handleChange}
             />
           ) : (
+            // task text to toggle the task
             <button 
             disabled={isRecyclebin()}
             onClick={() => toggleTask(props.id)} 
@@ -105,7 +106,7 @@ export default function Task(props) {
             </button>
           )}
         </div>
-
+        {/* edit btns start and finish editing phase */}
         {edit ? (
           <button
           onClick={() => confirmEdit(props.id)} 

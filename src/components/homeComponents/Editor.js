@@ -164,6 +164,7 @@ export default function Editor(props) {
       setOpenTheme={setOpenTheme}
       elementData={elementData}
       setElementData={setElementData}
+      heldCategory={props.heldCategory}
        />    
     </div>
   );
