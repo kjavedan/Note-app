@@ -9,24 +9,6 @@ export default function RegularyModyfire(props) {
   // state to open the color bar when the user click the theme btn
   const [openTheme, setOpentTheme] = React.useState(false);
 
-  // state to determaine the sellectall btn wheather it should select or deSelect
-  const [selectedAll, setSelectedAll] = React.useState(false)
-
-
-
-  // select all elements when its clicked
-  function selectAll(){
-    setSelectedAll(true)
-    props.toggleAllProperties('isHeld', true)
-  }
-
-  // deSelect All item when its clicked
-  function deSelectAll(){
-    setSelectedAll(false)
-    props.toggleAllProperties('isHeld', false)
-  }
-
-
   // delete selected notes
   function deleteSelectedNotes(){
     const remainedElements = []
@@ -96,7 +78,6 @@ export default function RegularyModyfire(props) {
     })
   }
 
-
   return (
     <>
         <div className="modyfire-btns">
@@ -118,7 +99,7 @@ export default function RegularyModyfire(props) {
             className={`btn delete ${props.darkMode ? 'dark' : ''}`}><FiTrash /></button>
         {/* select all */}
             <button 
-            onClick={selectedAll ? deSelectAll : selectAll}
+            onClick={props.selectedAll ? ()=>props.deSelectAll(props.setMainState) : ()=>props.selectAll(props.setMainState)}
             className={`btn select-all ${props.darkMode ? 'dark' : ''}`}><BiSelectMultiple /></button>
         </div>
         {/* counter & close modyfire */}
