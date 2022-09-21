@@ -6,44 +6,24 @@ import { BiSelectMultiple } from "react-icons/bi";
 
 export default function RegularyModyfire(props) {
 
-  // the RegularModyfire component appears when the user hold an element in the elementsList
-  // 1. it deletes element
-  // 2. we can add to favorite
-  // 3. we can add to password
-  // 4. we can change theme
-  // 5. we can select and unSelect all item with select all btn
-
   // state to open the color bar when the user click the theme btn
   const [openTheme, setOpentTheme] = React.useState(false);
 
   // state to determaine the sellectall btn wheather it should select or deSelect
   const [selectedAll, setSelectedAll] = React.useState(false)
 
-  // function used different places to toggle the given prperty name to the given value
-  function toggleAllProperties(propertyName , toggleTo){
-    props.setMainState(prevState => {
-      return prevState.map(element => {
-        return {...element , [propertyName] : toggleTo}
-      })
-    })
-  }
 
-  // close the modyfire page when its clicked
-  function closeModyfire(){
-    props.setModificationMode(false);
-    toggleAllProperties('isHeld', false)
-  }
 
   // select all elements when its clicked
   function selectAll(){
     setSelectedAll(true)
-    toggleAllProperties('isHeld', true)
+    props.toggleAllProperties('isHeld', true)
   }
 
   // deSelect All item when its clicked
   function deSelectAll(){
     setSelectedAll(false)
-    toggleAllProperties('isHeld', false)
+    props.toggleAllProperties('isHeld', false)
   }
 
 
@@ -64,10 +44,11 @@ export default function RegularyModyfire(props) {
     props.setModificationMode(false)  
     props.setMessage({text: getMessage(), color:'lightgreen'})
   }
+  
+  // count selected notes and display them in the modyfire bar
+  const count = props.counter(props.mainState);
 
   function getMessage(){
-    let message;
-    const count = counter()
     if(count > 1){
       return (`moved ${count} notes to recyclebin`)
     }else{
@@ -115,24 +96,6 @@ export default function RegularyModyfire(props) {
     })
   }
 
-  // count selected notes and display them in the modyfire bar
-  function counter(){
-    let count = 0;
-    props.mainState.forEach(element =>{
-      if(element.isHeld){
-        count++;
-      }
-    })
-    return count;
-  }
-  const count = counter();
-
-  // remove notification after 2 second
-  React.useEffect(()=>{
-    setTimeout(()=>{
-      props.setMessage({})
-    },2000)
-  },[props.message])
 
   return (
     <>
@@ -162,7 +125,7 @@ export default function RegularyModyfire(props) {
         <div className="modyfire-left-container">
             <span className={`counter ${props.darkMode ? 'dark' : ''}`}>{count}</span>
             <button 
-            onClick={closeModyfire}
+            onClick={()=> props.closeModyfire(props.setMainState)}
             className={`close-modyfire ${props.darkMode ? 'dark' : ''}`}><AiOutlineClose />
             </button>
         </div>

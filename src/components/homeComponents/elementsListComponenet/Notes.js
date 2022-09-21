@@ -2,7 +2,6 @@ import React from "react";
 import Masonry from "masonry-layout";
 import Note from "./notesComponents/Note";
 import ToDo from "./notesComponents/ToDo";
-import { RecyclebinContext } from "../../context/recyclebinContext";
 
 export default function Notes(props) {
 
@@ -30,10 +29,17 @@ export default function Notes(props) {
   // select Element function will only work when we are in modification Mode
    function selectElement(id){
     if(props.heldCategory === 'deleted'){
-      // props.setIsRecyclebin(true)
+      props.setRecyclebin(prevState =>{
+        return prevState.map(element =>{
+          if(element.id === id){
+            return {...element, isHeld : !element.isHeld}
+          }else{
+            return element;
+          }
+        })
+      })
     }
     else{
-      // props.setIsRecyclebin(false)
       props.setMainState(prevState =>{
         return prevState.map(element =>{
           if(element.id === id){

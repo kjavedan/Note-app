@@ -2,8 +2,6 @@ import React from "react";
 import { MdFavorite } from "react-icons/md";
 
 export default function Note(props) {
-
-  
   return (
     <div
       style={props.changeTheme(props.theme)}

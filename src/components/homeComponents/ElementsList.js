@@ -14,10 +14,10 @@ export default function ElementsList(props) {
   // pass the filtered state base on the selected category to be displayed
   const [filteredState, setFilteredState] = useState(filterElements())
 
- // set filtered state when ever the held category changes
+ // set filtered state when ever the held category changes or the states values change
   useEffect(()=>{
     setFilteredState(filterElements())
-  },[props.heldCategory, props.mainState])
+  },[props.heldCategory, props.mainState, props.recyclebin])
  
   // remove the home notification after 2 second
   React.useEffect(()=>{
@@ -70,6 +70,7 @@ export default function ElementsList(props) {
       setMainState={props.setMainState}
       modificationMode={props.modificationMode}
       setModificationMode={props.setModificationMode}
+      recyclebin={props.recyclebin}
       setRecyclebin={props.setRecyclebin}
       message={props.message}
       setMessage={props.setMessage}
@@ -85,6 +86,7 @@ export default function ElementsList(props) {
       setModificationMode={props.setModificationMode}
       heldCategory={props.heldCategory}
       recyclebin={props.recyclebin}
+      setRecyclebin={props.setRecyclebin}
       />
       <Sidebar 
       darkMode={props.darkMode} 

@@ -46,13 +46,6 @@ export default function Home({ mainState, setMainState }) {
     localStorage.setItem("recyclebin", JSON.stringify(recyclebin));
   }, [recyclebin]);
 
-  // hide the message after 3 seconds
-  // React.useEffect(() => {
-  //   setTimeout(() => {
-  //     setMessage({});
-  //   }, 3000);
-  // }, [message]);
-  
   // we open the relative editor for the clicked or created item by checking its category
   function openClickedElement(id, category) {
     setClickedElement(id);
