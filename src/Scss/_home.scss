@@ -31,25 +31,31 @@
     &__btns-container {
       position: fixed;
       bottom: 40px;
+      height: auto;
       left: 50px;
-      height: 180px;
       width: 70px;
       display: flex;
       flex-direction: column;
       align-items: center;
-      justify-content: space-between;
+      justify-content: space-around;
 
-      .container,
+      // @include large-tablet{
+      //   flex-direction: row;
+      //   top: 0;
+      //   background-color: red;
+      //   height: 80px;
+      //   width: 180px;
+      // }
+
+     
       .create-container {
-        height: 60px;
-        width: 70px;
+        height: 70px;
         color: $primary-txt-clr-2;
         text-align: center;
         font: 500 0.6rem $ff-primary-2;
+        
 
-        .create,
-        .create-note,
-        .create-todo {
+        .create {
           border: none;
           display: flex;
           align-items: center;
@@ -58,40 +64,46 @@
           border-radius: 50%;
           color: $primary-clr-1;
           cursor: pointer;
-        }
-        .create {
-          height: 70px;
+          height: 100%;
           width: 70px;
           background-color: $primary-clr-2;
+          box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.15);
         }
-        .create-note,
-        .create-todo {
-          height: 50px;
-          width: 50px;
-          margin: 0 auto;
-          background-color: $primary-clr-3;
-        }
+  
       }
 
       .container {
+        height: 0px;
+        width: 20px;
         margin-bottom: 0.7rem;
         transition: all 0.2s ease-in-out;
         visibility: hidden;
         opacity: 0;
-        transform: translateY(40%);
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+        font-size: .6rem;
+        font-weight: bold;
+        padding-top: .5rem;
+        background-color: $primary-clr-3;
+        border-radius: 50%;
+        color: transparent;
+        cursor: pointer;
+        transform: translateY(50%);
+        box-shadow:  2px 2px 4px rgba(0, 0, 0, 0.15);
 
-        &:nth-child(1) {
-          transition-delay: 0.2s;
+
+        .create-note, .create-todo{
+          font-size: 1.5rem;
         }
-
+        
         &.show {
+          color: $primary-clr-1;
           transform: translateY(0);
+          height: 60px;
+          width: 60px;
           opacity: 1;
           visibility: visible;
-
-          &:nth-child(2) {
-            transition-delay: 0.1s;
-          }
         }
       }
     }
@@ -104,9 +116,13 @@
       padding: 0 1rem;
       @include centrlize-space-between;
 
+      @include tablet{
+        width: 50%;
+      }
+
       input {
         height: 100%;
-        width: 160px;
+        width: 80%;
         outline: none;
         border: none;
         background-color: #f8f8f8;
@@ -409,12 +425,13 @@
     padding-left: 4%;
     margin-top: 80px;
     width: 100%;
-
+   
     &.dark {
       background-color: $primary-dark-clr-2;
     }
 
     &__note {
+      
       cursor: pointer;
       max-height: 300px;
       width: 45%;
