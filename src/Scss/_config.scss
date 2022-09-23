@@ -158,3 +158,13 @@ $ff-primary-2: "Montserrat Alternates", sans-serif;
     @content;
   }
 }
+@mixin small-laptop{
+  @media only screen and (min-width: 1000px){
+    @content;
+  }
+}
+@mixin laptop{
+  @media only screen and (min-width: 1200px){
+    @content;
+  }
+}
