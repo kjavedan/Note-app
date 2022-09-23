@@ -39,7 +39,7 @@ export default function Nav(props) {
   return (
     <nav className={`home-nav ${props.darkMode ? "dark" : ""}`}>
       <h2 className={`home-nav__title ${props.darkMode ? "dark" : ""}`}>
-        notes
+        Notes
       </h2>
       <div className="home-nav__btns-container">
         {/* note btn */}
@@ -66,7 +66,8 @@ export default function Nav(props) {
         </div>
         {/* create btn */}
         <div className="create-container">
-          <span className="create" onClick={toggleBtns}>
+          <span className={`create ${showBtns ? 'show' : ''}`} 
+          onClick={toggleBtns}>
             <MdAdd />
           </span>
         </div>
