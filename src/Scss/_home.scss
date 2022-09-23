@@ -481,6 +481,7 @@
       }
       .todo-list {
         max-height: 174px;
+        pointer-events: none;
         padding: 0.7rem 0;
         overflow: hidden;
         font: 500 0.8rem $ff-primary-1;
