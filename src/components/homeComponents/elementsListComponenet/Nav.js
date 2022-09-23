@@ -43,20 +43,22 @@ export default function Nav(props) {
       </h2>
       <div className="home-nav__btns-container">
         {/* note btn */}
-        <div className={`container ${showBtns ? "show" : ""}`}>
+        <div 
+        onClick={() => props.createElement("note")}
+        className={`container ${showBtns ? "show" : ""}`}>
           <span
             className="create-note"
-            onClick={() => props.createElement("note")}
           >
             <AiOutlineFileAdd />
           </span>
           Note
         </div>
         {/* todo btn */}
-        <div className={`container ${showBtns ? "show" : ""}`}>
+        <div 
+        onClick={() => props.createElement("todo")}
+        className={`container ${showBtns ? "show" : ""}`}>
           <span
             className="create-todo"
-            onClick={() => props.createElement("todo")}
           >
             <TiTick />
           </span>
