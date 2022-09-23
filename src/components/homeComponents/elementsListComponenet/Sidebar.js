@@ -25,7 +25,7 @@ export default function Sidebar(props) {
   }
 
   return (
-    <div className="home-sidebar-container">
+    <div className={`home-sidebar-container ${props.darkMode ? 'dark' : ''}`}>
       <div 
       onClick={closeSidebar}
       className={`close-sidebar ${sidebar ? 'open' : ''}`}></div>

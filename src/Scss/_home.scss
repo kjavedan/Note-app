@@ -227,6 +227,11 @@
     &.dark {
       background-color: $primary-dark-clr-2;
     }
+
+    @include large-tablet{
+      padding-left: 2rem;
+      padding-right: 2rem;
+    }
   }
    .message {
     color: rgb(255, 255, 255);
@@ -367,6 +372,16 @@
     height: 100vh;
     z-index: 33;
 
+    &.dark{
+      background-color: $primary-dark-clr-2;
+    }
+
+    @include large-tablet{
+    width: 30%;
+    height: 100%;
+    top: 80px;
+    }
+
     .close-sidebar{
       background-color: transparent;
       width: 100vw;
@@ -387,9 +402,23 @@
       border-radius: 20px;
       box-shadow: 3px 4px 4px rgba(0, 0, 0, 0.25);
       transition: all ease-in-out .2s;
+      
+      @include large-tablet{
+        left: 0;
+        position: relative;
+        width: 80%;
+        margin: 0 auto;
+        box-shadow: none;
+        background-color: transparent;
+        border-radius: 0;
+      }
   
       &.dark{
         background-color: $primary-dark-clr-3;
+
+        @include large-tablet{
+          background-color: transparent;
+        }
       }
   
       &.open{
@@ -411,6 +440,10 @@
         &.dark{
           background-color: $primary-dark-clr-3;
         }
+
+        @include large-tablet{
+          display: none;
+        }
       }
   
       .sidebar-menu{
@@ -421,6 +454,10 @@
         padding-top: 3rem;
         padding-bottom: 6rem;
         justify-content: space-around;
+
+        @include large-tablet{
+          padding-top: 1rem;
+        }
   
         .category-container{
           @include centrlize-space-between;
@@ -434,6 +471,10 @@
           font: 500 14px $ff-primary-2;
           color: $primary-txt-clr-2;
           text-transform: capitalize;
+
+          @include large-tablet{
+            border-radius: 20px;
+          }
   
           &.dark{
             color: $primary-clr-1;
@@ -469,6 +510,12 @@
     padding-left: 4%;
     margin-top: 80px;
     width: 100%;
+
+    @include large-tablet{
+      width: 70%;
+      padding-left: 1rem;
+      float: right;
+    }
    
     &.dark {
       background-color: $primary-dark-clr-2;
