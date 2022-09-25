@@ -102,6 +102,7 @@ export default function Notes(props) {
           category={item.category}
           isHeld={item.isHeld}
           isFavorite={item.isFavorite}
+          isPassword={item.isPassword}
           modificationMode={props.modificationMode}
           startTimer={startTimer}
           stopTimer={stopTimer}
@@ -123,6 +124,7 @@ export default function Notes(props) {
           category={item.category}
           isHeld={item.isHeld}
           isFavorite={item.isFavorite}
+          isPassword={item.isPassword}
           date={item.date}
           shortDate={item.shortDate}
           modificationMode={props.modificationMode}

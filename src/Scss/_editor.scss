@@ -195,13 +195,18 @@
         // border: solid 1px black;
         padding: 0.2rem 0;
 
+
+        @include large-tablet{
+          width: 600px;
+          margin: 0 auto;
+        }
+
         .create-task {
           width: 100%;
-          height: auto;
-          background-color: $primary-clr-1;
-          box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px,
-            rgba(0, 0, 0, 0.23) 0px 3px 6px;
-          border-radius: 20px;
+          height: 55px;
+          background-color: #f8f8f8;
+          box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+          border-radius: 15px;
           padding: 0.3rem 0 0.1rem 0;
 
           &.dark {
@@ -210,7 +215,8 @@
 
           input {
             width: 80%;
-            height: 35px;
+            height: 50px;
+            background-color: #f8f8f8;
             border-top-left-radius: 20px;
             border-bottom-left-radius: 20px;
             border: none;
@@ -219,6 +225,10 @@
             font-family: $ff-primary-1;
             color: $primary-txt-clr-4;
             font-weight: 500;
+
+            &:disabled{
+              background-color: transparent;
+            }
 
             &.dark {
               background-color: $primary-dark-clr-1;
@@ -278,7 +288,7 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+            box-shadow: rgba(0, 0, 0, 0.25) 0px 1px 3px, rgba(0, 0, 0, 0.20) 0px 1px 2px;
 
             &.dark {
               background-color: $primary-dark-clr-1;
@@ -316,7 +326,7 @@
             }
 
             .btns {
-              width: 88%;
+              width: 90%;
               margin-right: auto;
               height: 100%;
               display: flex;
@@ -361,6 +371,10 @@
 
                 &.dark {
                   color: $primary-clr-1;
+                }
+
+                input{
+                  width: 100%;
                 }
               }
 

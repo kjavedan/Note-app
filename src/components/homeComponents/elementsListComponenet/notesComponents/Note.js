@@ -1,5 +1,6 @@
 import React from "react";
 import { MdFavorite } from "react-icons/md";
+import { RiKeyFill } from "react-icons/ri";
 
 export default function Note(props) {
   return (
@@ -13,7 +14,10 @@ export default function Note(props) {
       onTouchEnd={props.stopTimer}
       className={`home-notes__note ${props.darkMode ? "dark" : ""} ${props.isHeld ? 'held' : ''}`}
     >
-      <span className={`favorite ${props.darkMode ? 'dark' : ''}`}>{props.isFavorite? <MdFavorite /> : ''}</span>
+      <span className={`favorite ${props.darkMode ? 'dark' : ''}`}>
+        {props.isFavorite? <MdFavorite /> : ''}
+        {props.isPassword? <RiKeyFill /> : ''}
+        </span>
       <h4
         style={props.changeTextColor(props.theme)}
         className={`note-title ${props.darkMode ? "dark" : ""}`}
