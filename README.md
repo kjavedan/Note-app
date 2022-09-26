@@ -4,11 +4,11 @@
 
 ### First let's have a look on the folders structure.
 
-<img width="944" alt="folders_structure" src="https://user-images.githubusercontent.com/75374340/190889134-1931e4d4-f111-4332-b468-7fc0ffb9463f.png">
+<img width="832" alt="note-app-folders-structure" src="https://user-images.githubusercontent.com/75374340/192272561-ab51d50f-7523-427f-987a-19b7cc1acd72.png">
 
 ## Now let's create a diagram of it so we can have a better understanding of the system's flow
 
-<img width="1427" alt="system's_flow" src="https://user-images.githubusercontent.com/75374340/190897682-4877c870-5d5d-42e0-923f-083aab19915e.png">
+<img width="1248" alt="note-app-diagram" src="https://user-images.githubusercontent.com/75374340/192272516-1c4031a4-c847-4c87-ac74-6a108f3f6b16.png">
 
 ## Component's task
 
