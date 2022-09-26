@@ -4,7 +4,7 @@
 
 ### First let's have a look on the folders structure.
 
-<img width="832" alt="note-app-folders-structure" src="https://user-images.githubusercontent.com/75374340/192272561-ab51d50f-7523-427f-987a-19b7cc1acd72.png">
+<img width="816" alt="note-app-folders-structure" src="https://user-images.githubusercontent.com/75374340/192272885-d69ff572-a1c7-45c5-b0bf-ccc8008a6d02.png">
 
 ## Now let's create a diagram of it so we can have a better understanding of the system's flow
 
