@@ -372,22 +372,24 @@
     height: 100vh;
     z-index: 33;
 
+    &.dark{
+    background-color: $primary-dark-clr-2;
+    }
+
     @include large-tablet{
     width: 30%;
-    height: 100%;
     top: 80px;
     z-index: inherit;
     }
     
     @include small-laptop{
-      width: 22%;
+      width: 23%;
     }
 
     .close-sidebar{
       width: 100vw;
       height: 100vh;
       display: none;
-      // background-color: red;
       
       &.open{
         display: block;
@@ -404,7 +406,7 @@
       border-radius: 20px;
       box-shadow: 3px 4px 4px rgba(0, 0, 0, 0.25);
       transition: all ease-in-out .2s;
-      
+
       @include large-tablet{
         left: 0;
         position: relative;
