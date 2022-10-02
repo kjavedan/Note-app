@@ -1,45 +1,30 @@
-## Hi everyone!
+## Note-app is a responsive web application Build with react library for taking daily notes and setting ToDoes to accomplish.
 
-## I'm going to try me best to explain how this application's system work so hang on with me please :)
+### The main focus of the app is the UI-UX aspect of it, where I tried my best to make it visually appealing, still providing a user friendly experience.
 
-### First let's have a look on the folders structure.
+### here a short demo of the application.
+![desktop gif](https://user-images.githubusercontent.com/75374340/192702704-366db813-c094-47a0-b83a-c80e457e1197.gif)
+### and for the mobile screen
+![mobile gif](https://user-images.githubusercontent.com/75374340/192704720-7cc2ab83-b857-462b-9414-c57cf28c1206.gif)
 
-<img width="944" alt="folders_structure" src="https://user-images.githubusercontent.com/75374340/190889134-1931e4d4-f111-4332-b468-7fc0ffb9463f.png">
 
-## Now let's create a diagram of it so we can have a better understanding of the system's flow
-
-<img width="1427" alt="system's_flow" src="https://user-images.githubusercontent.com/75374340/190897682-4877c870-5d5d-42e0-923f-083aab19915e.png">
-
-## Component's task
-
-### index:
-Root component
-
-### App: 
-The App component is resopnsible for holding the application's mainState. Plus, it renders the Start component when the mainState is empty and Home when there is a note in the mainState.
-
-**App states:**
-1. start 
-2. mainState
-
-### Start:
-The Start component is the application's intro
-
-### Home: 
-The Home compenent is responsible for:
-1. determinning current state (Editor or ElementsList) - **state:** openEditor
-2. initializing new element(Note or ToDo) 
-3. determinning Editor type (Note or ToDo) - **state:** editorType
-4. Holding the current element that wants to be opend in the Editor - **state:** clickedElement
-5. openninig the modification mode - **state:** modificationMode
-6. switching the theme **state:** darkMode
-7. holding 3 other states which are being modifyed be the following components
-    - **state:** recyclebin -> Editor, Modyfire
-    - **state:** heldCategory -> Sidebar
-    - **state:** message -> Editor
-
-**Home states:** 8 in total
-
-***Home activity diagram:***
-<img width="1232" alt="home_activity_diagram" src="https://user-images.githubusercontent.com/75374340/190897970-e4df0258-9e1c-4fd0-b1e8-3fe6edb6615b.png">
+## Features:
+  - add new notes & todoes
+  - delete notes & todoes
+  - update notes and todoes
+  - searching 
+  - select items
+  - change items theme 
+  - add items to favorites & passwords
+  - move items to recyclebin
+  - clean recylebin
+  - restore deleted items from recyclebin
+  - categorize items to (recent, note, todo, all, favorite, passwords, recyclebin)
+  - switch app theme to darkmode
+  - fully responsive
+  - saving data in to local storage
+  
+  
+## I will be happy to receive feedback from you :)
+  
 
